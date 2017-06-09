@@ -4,27 +4,22 @@
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
  
-  <div>
-  <ion-content class="background  home-container responsive-sm" align="center" style="height:100%">  		
-      
-    <div layout="column" style="height:100%">
+  <div class="bar bar-subheader bar-dark">
+      <h2 class="title">Isaías: 20</h2>
+  </div>    
     
-    <div style="height:5%">{{obj_header.book_name}}: {{obj_header.chapter}}</div>
-    <div style="height:100%; background-color:red" >
-    <md-content style="height:85%; background-color:black">
-      <div style="text-align: justify;
-    text-justify: inter-word;" ng-repeat="x in obj_reading">
-      <b><span class="verse">{{x.verse}}. </span></b><span class="verse">{{x.data}}</span>
-      <br><br>
+
+  <ion-content class="background  home-container responsive-sm" align="center" style="height:88%">  		
+    <md-content style="height:100%;" class="background has-header">
+      <div style="text-align: justify; text-justify: inter-word;" ng-repeat="x in obj_reading">
+          <b><span class="verse">{{x.verse}}. </span></b> <span class="verse">{{x.data}}</span>
+          <br><br>
       </div>
     </md-content>
-    </div>
-    <div style="height:10%; background-color:blue">Something here</div>
+  </ion-content>
+  <div class="bar bar-footer bar-positive">
+          <h1 class="title">Reina Valera 1960</h1>
   </div>
   <core-progress state="progress"></core-progress>
-
-
-  </ion-content>
- </div>
 
 </ion-view>
