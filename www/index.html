@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
+
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+	<link href="resources/static/css/style.css" rel="stylesheet">
+    <link href="lib/angular-material/angular-material.min.css" rel="stylesheet">
+    
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+	  <script src="lib/angular-aria/angular-aria.min.js"></script>
+    <script src="lib/angular-material/angular-material.min.js"></script>
+    <script src="lib/angular-resource/angular-resource.js"></script>
+    
+  
+    
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="js/ng-cordova.min.js"></script>
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/ng-services.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/translate.js"></script>
+
+    <script src="apps/home/router.js"></script>
+
+    <script src="lib/angular-translate/angular-translate.js"></script>
+    <script src="lib/angular-translate-loader-static-files/angular-translate-loader-static-files.js">
+
+    </script>
+    
+    <script src="apps/home/controller/home.js"></script>
+    <script src="apps/home/controller/locale.js"></script>
+    <script src="apps/home/controller/playlist.js"></script>
+    <script src="apps/home/controller/settings.js"></script>
+    <script src="apps/reader/service/api.js"></script>
+    <script src="apps/reader/controller/reader.js"></script>
+    
+
+  </head>
+  <body ng-app="starter">
+
+  <body ng-app="starter">
+    <ion-nav-view></ion-nav-view>
+  </body>
+  </body>
+</html>
