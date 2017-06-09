@@ -24,7 +24,6 @@ app.controller('ReaderCtrl', function($scope, $http, $mdDialog, API_READER, $sta
 	//var query = Book.query();
 		API_READER.Book.list().$promise.then(function(data) {
      		$scope.book = data;
-     		console.log(data);
      		// Do whatever when the request is finished
 		});
 	}
@@ -33,7 +32,6 @@ app.controller('ReaderCtrl', function($scope, $http, $mdDialog, API_READER, $sta
 	//var query = Book.query();
 		API_READER.Testament.list().$promise.then(function(data) {
      		$scope.testament = data;
-     		console.log(data);
      		// Do whatever when the request is finished
 		});
 	}
@@ -65,12 +63,10 @@ app.controller('ReaderCtrl', function($scope, $http, $mdDialog, API_READER, $sta
 		}
 
 		$http(req).success(function(res) {
-			console.log(res);
 			$scope.content=res;
 			$scope.obj_header=res.obj_header;
 			$scope.obj_reading=res.obj_reading;
 			$rootScope.progress = false;
-			console.log('Success', angular.toJson(res.data));
 		}).error(function(err){
 			console.error(angular.toJson(err))
 			console.log('Err',err)
