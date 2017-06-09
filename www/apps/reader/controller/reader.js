@@ -52,7 +52,7 @@ app.controller('ReaderCtrl', function($scope, $http, $mdDialog, API_READER, $sta
 	var req = {
 			method: 'GET',
 			url: "http://davrv93.pythonanywhere.com/api/believe/verse/reading/",
-			params:{language:'EN'}
+			params:{language:'ES'}
 
 			// headers: {
 			//       'Content-Type': 'application/json' , 
