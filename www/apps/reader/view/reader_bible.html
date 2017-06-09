@@ -10,6 +10,7 @@
     <div layout="column" style="height:100%">
     
     <div style="height:5%">{{obj_header.book_name}}: {{obj_header.chapter}}</div>
+    <div style="height:100%; background-color:red" >
     <md-content style="height:85%; background-color:black">
       <div style="text-align: justify;
     text-justify: inter-word;" ng-repeat="x in obj_reading">
@@ -17,7 +18,8 @@
       <br><br>
       </div>
     </md-content>
-    <div style="height:10%">Something here</div>
+    </div>
+    <div style="height:10%; background-color:blue">Something here</div>
   </div>
   <core-progress state="progress"></core-progress>
 
