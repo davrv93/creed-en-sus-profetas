@@ -5,7 +5,8 @@
 // the 2nd parameter is an array of 'requires'
 
 var app = angular.module('starter', ['ionic','ngResource',               // inject the Ionic framework
-  'pascalprecht.translate', 'ngCordova','ngAria','ngMaterial','ngServices'])
+  'pascalprecht.translate', 'ngCordova','ngAria','ngMaterial','ngServices',
+  'ngMdIcons'])
 
 .run(function($rootScope, $ionicPlatform, $cordovaSQLite) {
     $ionicPlatform.ready(function() {
@@ -24,6 +25,7 @@ var app = angular.module('starter', ['ionic','ngResource',               // inje
         var db = $rootScope.db = $cordovaSQLite.openDB({ name: "my.db", location: "default" });
 
         $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS people (id integer primary key, firstname text, lastname text)");
+
   });
 })
 

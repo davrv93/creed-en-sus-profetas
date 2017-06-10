@@ -1,7 +1,12 @@
-app.controller('HomeCtrl', function($scope, $stateParams,$cordovaSQLite, $mdMedia) {
+app.controller('HomeCtrl', function($scope, $rootScope, $translate, $stateParams,$cordovaSQLite, $mdMedia) {
 
     $scope.$mdMedia= $mdMedia;
     //console.log($scope.$mdMedia);
+
+    $rootScope.change_language = function(locale){
+            console.log('locale',locale)
+            $translate.use(locale);
+        }
 	   
     // TABLA BIBLE_VERSION
         var table_name_bibleRead="BIBLE_READ";

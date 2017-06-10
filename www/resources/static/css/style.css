@@ -18,6 +18,24 @@ footer {
 
 }
 
+.locale_icon{
+  width:25%;
+  height:25%; 
+  position:relative;  
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.locale_word
+{font-size:20px;
+      text-align: center;
+      position: relative;
+      top: 100%;
+        -ms-transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+         transform: translateY(-50%);  
+       }
+
 
 .cargando_valores {
     position: fixed;
