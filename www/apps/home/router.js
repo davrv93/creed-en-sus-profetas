@@ -60,15 +60,14 @@ app.config(function($stateProvider, $urlRouterProvider) {
         }
       }
     })
-    // .state('app.single', {
-    //   url: "/playlists/:playlistId",
-    //   views: {
-    //     'menuContent' :{
-    //       templateUrl: "apps/home/view/playlist.html",
-    //       controller: 'PlaylistCtrl'
-    //     }
-    //   }
-    // })
+    .state('app.reader_spirit_prophecy', {
+       url: "/reader_spirit_prophecy",
+       views: {
+       'menuContent' :{
+           templateUrl: "apps/reader/view/reader_spirit_prophecy.html"
+         }
+       }
+     })
     .state('app.reader_bible', {
       url: "/reader_bible",
       views: {
@@ -77,6 +76,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
         }
       }
     });
+    
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/home');
 });

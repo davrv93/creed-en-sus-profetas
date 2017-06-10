@@ -1,7 +1,7 @@
 app.controller('HomeCtrl', function($scope, $stateParams,$cordovaSQLite, $mdMedia) {
 
     $scope.$mdMedia= $mdMedia;
-    console.log($scope.$mdMedia);
+    //console.log($scope.$mdMedia);
 	   
     // TABLA BIBLE_VERSION
         var table_name_bibleRead="BIBLE_READ";
