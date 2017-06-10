@@ -1,6 +1,12 @@
 
-app.controller('SpiritProphecyReadCtrl', function($scope, $http, $mdDialog, API_READER, $stateParams,$translate,$cordovaSQLite, $rootScope) {
-	
+app.controller('SpiritProphecyReadCtrl', function($scope, $http,$filter, $mdDialog, API_READER, $stateParams,$translate,$cordovaSQLite, $rootScope) {
+	var $translateFilter = $filter('translate');
+
+    $rootScope.change_language = function(locale){
+            $translate.use(locale);
+            $scope.onListReading();
+        }    
+
 
 	$scope.HighLight = function()
 	{ 
@@ -37,36 +43,21 @@ app.controller('SpiritProphecyReadCtrl', function($scope, $http, $mdDialog, API_
 	}
 
 	$scope.onListReading = function(){
-	//var query = Book.query();
-	// var param={
-	// 	microrecurso:'reading'
-	// }
-	// 	API_READER.Reading.select({microrecurso:'reading'}).$promise.then(function(data) {
- //     		$scope.reading = data;
- //     		console.log($scope.reading);
- //     		// Do whatever when the request is finished
-	// 	});
-
+	$rootScope.progress = true;
 	var req = {
 			method: 'GET',
 			url: "https://davrv93.pythonanywhere.com/api/believe/spirit_prophecy_read/reading/",
-			params:{language:'ES'}
-
-
-			// headers: {
-			//       'Content-Type': 'application/json' , 
-			//       'Access-Control-Allow-Origin': '*',
-			//       'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
-			//       'Access-Control-Allow-Headers':'X-Requested-With'	
-			//  }		,
-
+			params:{language: $translate.use()}
 		}
 
 		$http(req).success(function(res) {
 			$scope.content=res;
 			$scope.obj_header=res.obj_header;
-			$scope.obj_reading=res.obj_reading;
+			$scope.obj_reading=res.obj_reading;			
 			$scope.obj_chapter=res.obj_chapter;
+			$scope.pageTitle =  $translateFilter(res.obj_header.book_name);
+			$scope.footerTitle =  $translateFilter(res.obj_chapter.translate_name);
+
 			$rootScope.progress = false;
 		}).error(function(err){
 			console.error(angular.toJson(err))

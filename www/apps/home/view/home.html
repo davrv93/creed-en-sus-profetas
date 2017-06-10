@@ -13,7 +13,7 @@
 	   		<md-button ng-click="change_language('ES')">	   
 	   			<div class="locale_icon" >
 	   				<ng-include src="'resources/apps/home/es.svg'" ></ng-include>
-	   				<p class="locale_word">&emsp;Español&emsp;&emsp;</p>
+	   				<p class="locale_word">&emsp;{{'translate.español' | translate}}&emsp;&emsp;</p>
 	   			</div>
 	   		</md-button>
 	   </md-menu-item>
@@ -21,7 +21,7 @@
 	   		<md-button ng-click="change_language('EN')">	   
 	   			<div class="locale_icon" >
 	   				<ng-include src="'resources/apps/home/en.svg'" ></ng-include>
-	   				<p class="locale_word">&emsp;Inglés&emsp;&emsp;</p>
+	   				<p class="locale_word">&emsp;{{'translate.ingles' | translate}}&emsp;&emsp;</p>
 	   			</div>
 	   		</md-button>
 	   </md-menu-item>
@@ -84,7 +84,7 @@
 				<div  class = "menu-icons" flex-gt-md="30">
 					<a  href="#/app/settings">
 				   		<img src="resources/apps/home/settings.png"/> 
-				   		<h5>{{'reavivados' | translate}}</h5>
+				   		<h5>{{'configuracion' | translate}}</h5>
 				   	</a>
 			   	</div>
 			</div>
@@ -92,7 +92,7 @@
 				<div  class = "menu-icons" flex-gt-md="30">
 					<a  href="#/app/reader_bible">
 				   		<img src="resources/apps/home/calendar.png"/> 
-				   		<h5>{{'espiritu_profecia' | translate}}</h5>
+				   		<h5>{{'calendario' | translate}}</h5>
 				   	</a>
 			   	</div>
 			</div>

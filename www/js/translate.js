@@ -4,8 +4,20 @@ app
 			"app": "Creed en sus profetas",
             "reavivados":"Reavivados por su Palabra",
             "espiritu_profecia":"Espíritu de profecía",
+            "configuracion":"Configuración",
+            "calendario":"Calendario",
             "home":"Menú principal",
             "menu": "Menú",
+            "libro":{
+                "profetas_reyes": {
+                    "titulo": "Profetas y Reyes",
+                    "capitulo1":{
+                        "titulo": "Destruido por falta de conocimiento",
+                        "abreviatura": ""
+                    }
+                }
+
+            },
             "config":{
                 "idioma": "Idioma de aplicación",
                 "tema": "Color de tema",
@@ -96,6 +108,8 @@ app
             "home":"Home",
             "reavivados":"Revived by his Word",
             "espiritu_profecia":"Spirit of prophecy",
+            "configuracion":"Settings",
+            "calendario":"Calendar",
             "config":{
                 "idioma": "App language",
                 "tema": "Theme of app (Color)",
@@ -109,6 +123,16 @@ app
                 "elegido":"You've chosen ",
                 "confirmar":", click on the next button (arrow) to continue",
                 "elegir": "Touch on a flag for choose your app display language"
+            },
+            "libro":{
+                "profetas_reyes": {
+                    "titulo": "Prophets and Kings",
+                    "capitulo1":{
+                        "titulo": "The call of Isaiah",
+                        "abreviatura": ""
+                    }
+                }
+
             },            
             "book":{
                 "genesis":"Genesis",

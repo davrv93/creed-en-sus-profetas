@@ -1,6 +1,12 @@
 
-app.controller('ReaderCtrl', function($scope, $http, $mdDialog, API_READER, $stateParams,$translate,$cordovaSQLite, $rootScope) {
+app.controller('ReaderCtrl', function($scope, $http, $mdDialog, $filter, API_READER, $stateParams,$translate,$cordovaSQLite, $rootScope) {
 	
+	var $translateFilter = $filter('translate');
+
+    $rootScope.change_language = function(locale){
+            $translate.use(locale);
+            $scope.onListReading();
+        }    
 
 	$scope.HighLight = function()
 	{ 
@@ -46,11 +52,11 @@ app.controller('ReaderCtrl', function($scope, $http, $mdDialog, API_READER, $sta
  //     		console.log($scope.reading);
  //     		// Do whatever when the request is finished
 	// 	});
-
+	$rootScope.progress = true;
 	var req = {
 			method: 'GET',
 			url: "https://davrv93.pythonanywhere.com/api/believe/verse/reading/",
-			params:{language:'ES'}
+			params:{language: $translate.use()}
 
 
 			// headers: {
@@ -66,6 +72,7 @@ app.controller('ReaderCtrl', function($scope, $http, $mdDialog, API_READER, $sta
 			$scope.content=res;
 			$scope.obj_header=res.obj_header;
 			$scope.obj_reading=res.obj_reading;
+			$scope.pageTitle =  $translateFilter(res.obj_header.book_name);;
 			$rootScope.progress = false;
 		}).error(function(err){
 			console.error(angular.toJson(err))
@@ -75,8 +82,6 @@ app.controller('ReaderCtrl', function($scope, $http, $mdDialog, API_READER, $sta
 
 	//$scope.onListBook();
 	//$scope.onListTestament();
-	$scope.onListReading();
-
-		
+	$scope.onListReading();		
 })
 

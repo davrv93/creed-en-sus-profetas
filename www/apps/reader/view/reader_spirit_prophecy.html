@@ -1,11 +1,34 @@
-
-<ion-view title="{{'app' | translate}}" ng-controller="SpiritProphecyReadCtrl" onload="onDeviceReady()">
+<ion-view title="{{'app' | translate}}" ng-controller="SpiritProphecyReadCtrl">
   <ion-nav-buttons side="left">
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
- 
+   <ion-nav-buttons side="right">
+    <md-menu>
+   <!-- Trigger element is a md-button with an icon -->
+   <md-button ng-click="$mdMenu.open($event)" class="md-icon-button" aria-label="Open sample menu">
+     <ng-md-icon icon="language"></ng-md-icon>
+   </md-button>
+<md-menu-content>
+     <md-menu-item>
+        <md-button ng-click="change_language('ES')">     
+          <div class="locale_icon" >
+            <ng-include src="'resources/apps/home/es.svg'" ></ng-include>
+            <p class="locale_word">&emsp;{{'translate.español' | translate}}&emsp;&emsp;</p>
+          </div>
+        </md-button>
+     </md-menu-item>
+    <md-menu-item>
+        <md-button ng-click="change_language('EN')">     
+          <div class="locale_icon" >
+            <ng-include src="'resources/apps/home/en.svg'" ></ng-include>
+            <p class="locale_word">&emsp;{{'translate.ingles' | translate}}&emsp;&emsp;</p>
+          </div>
+        </md-button>
+     </md-menu-item>
+   </md-menu-content>
+  </ion-nav-buttons>
   <div class="bar bar-subheader bar-dark">
-      <h2 class="title">{{obj_header.book}}</h2>
+      <h2 class="title">{{pageTitle}}</h2>
   </div>    
     
 
@@ -18,7 +41,7 @@
     </md-content>
   </ion-content>
   <div class="bar bar-footer bar-positive">
-          <h1 class="title">{{obj_chapter.name}}</h1>
+          <h1 class="title">{{footerTitle}}</h1>
   </div>
   <core-progress state="progress"></core-progress>
 
