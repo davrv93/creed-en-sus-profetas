@@ -43,7 +43,7 @@ app.controller('SpiritProphecyReadCtrl', function($scope, $http,$filter, $mdDial
 	}
 
 	$scope.onListReading = function(){
-	$rootScope.progress = true;
+	$rootScope.progress = true	;
 	var req = {
 			method: 'GET',
 			url: "https://davrv93.pythonanywhere.com/api/believe/spirit_prophecy_read/reading/",
