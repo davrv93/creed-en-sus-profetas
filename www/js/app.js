@@ -6,6 +6,7 @@
 
 var app = angular.module('starter', ['ionic','ngResource',               // inject the Ionic framework
   'pascalprecht.translate', 'ngCordova','ngAria','ngMaterial','ngServices',
+  'ngOnload',
   'ngMdIcons'])
 
 .run(function($rootScope, $ionicPlatform, $cordovaSQLite) {
@@ -13,6 +14,7 @@ var app = angular.module('starter', ['ionic','ngResource',               // inje
         //$rootScope.aaa = 'abc 123';
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
+
         $rootScope.progress = true;
         if(window.cordova && window.cordova.plugins.Keyboard) {
             cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -22,9 +24,9 @@ var app = angular.module('starter', ['ionic','ngResource',               // inje
             StatusBar.styleDefault();
         }
 
-        var db = $rootScope.db = $cordovaSQLite.openDB({ name: "my.db", location: "default" });
+        // var db = $rootScope.db = $cordovaSQLite.openDB({ name: "my.db", location: "default" });
 
-        $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS people (id integer primary key, firstname text, lastname text)");
+        // $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS people (id integer primary key, firstname text, lastname text)");
 
   });
 })
@@ -39,7 +41,3 @@ var app = angular.module('starter', ['ionic','ngResource',               // inje
     $httpProvider.useApplyAsync(true);
 })
 
-app.controller("ExampleController", function($scope, $cordovaSQLite) {
- 
-    
-});

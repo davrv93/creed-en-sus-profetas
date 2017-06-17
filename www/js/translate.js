@@ -1,5 +1,5 @@
 app
-    .config(["$translateProvider",function($translateProvider){     
+    .config(["$translateProvider",function($translateProvider, $translate){     
         $translateProvider.translations("ES",{
 			"app": "Creed en sus profetas",
             "reavivados":"Reavivados por su Palabra",
@@ -8,11 +8,20 @@ app
             "calendario":"Calendario",
             "home":"Menú principal",
             "menu": "Menú",
+            "cerrar":"Cerrar",
+            "home_msg": "Clic en el botón de la esquina superior izquierda para ver las opciones.",
+            "errors":{
+                "404":"Hubo un problema al obtener la lectura de hoy, verifique su conexión a internet. Si usted tiene conexión a internet activada entonces la lectura para hoy no ha sido actualizada por el programador, sirvase notificar en Google Play del caso. Gracias"
+            },
             "libro":{
                 "profetas_reyes": {
                     "titulo": "Profetas y Reyes",
                     "capitulo1":{
                         "titulo": "Destruido por falta de conocimiento",
+                        "abreviatura": ""
+                    },
+                    "capitulo2":{
+                        "titulo": "He ahí a vuestro Dios",
                         "abreviatura": ""
                     }
                 }
@@ -106,6 +115,8 @@ app
             "app": "Believe his prophets",
             "menu": "Menu",
             "home":"Home",
+            "cerrar":"Close",
+            "home_msg": "Click the button in the upper left corner to see the options.",
             "reavivados":"Revived by his Word",
             "espiritu_profecia":"Spirit of prophecy",
             "configuracion":"Settings",
@@ -124,11 +135,18 @@ app
                 "confirmar":", click on the next button (arrow) to continue",
                 "elegir": "Touch on a flag for choose your app display language"
             },
+            "errors":{
+                "404":"There was a trouble trying to get the daily reading, please verify your internet connection is enabled. If you have internet connection activated then reading for today has not been updated by the programmer, please notify on Google play the case. Thanks."
+            },
             "libro":{
                 "profetas_reyes": {
                     "titulo": "Prophets and Kings",
                     "capitulo1":{
                         "titulo": "The call of Isaiah",
+                        "abreviatura": ""
+                    },
+                    "capitulo2":{
+                        "titulo": "Behold Your God!",
                         "abreviatura": ""
                     }
                 }
@@ -204,8 +222,11 @@ app
             }
             
         });       
-        
-        $translateProvider.preferredLanguage('ES');
+        if (localStorage.language != undefined) {
+            $translateProvider.preferredLanguage(localStorage.language);
+        } else{
+            $translateProvider.preferredLanguage('ES');
+        }
         $translateProvider.useSanitizeValueStrategy('sanitize');
         $translateProvider.useSanitizeValueStrategy('escape');
         

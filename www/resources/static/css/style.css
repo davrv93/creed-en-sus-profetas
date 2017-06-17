@@ -2,6 +2,11 @@ footer {
   background-color: #ccc;
 }
 
+
+.back-text {
+  display: none !important;
+}
+
 .cargando_fondo{
     /*display: none;*/
      /*transition: all 300ms ease-out 50ms; */
@@ -18,6 +23,20 @@ footer {
 
 }
 
+/* Make it a marquee */
+.marquee {
+    
+    margin: 0 auto;
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+    animation: marquee 35s linear infinite;
+}
+
+@keyframes marquee {
+    0%   { text-indent: 10em }
+    100% { text-indent: -105em }
+}
 .locale_icon{
   width:25%;
   height:25%; 

@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.ionicframework.databaseexample120285" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>DatabaseExample</name>
+<widget id="com.davsoftw.creedasusprofetas" version="3.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>Creed en sus profetas</name>
   <description>
-        An Ionic Framework and Cordova project.
+        Versión 3.0
     </description>
 	<allow-navigation href="http://*/*" />
-    <author email="you@example.com" href="http://example.com.com/">
-      Your Name Here
+    <author email="davrv93@gmail.com" href="http://example.com.com/">
+      Samuel David Roncal Vidal
     </author>
     <content src="index.html"/>
     <access origin="*" />

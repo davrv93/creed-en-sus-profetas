@@ -3,6 +3,9 @@
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
    <ion-nav-buttons side="right">
+    <md-button ng-click="showActionToast();" class="md-icon-button" aria-label="Open sample menu">
+	   <ng-md-icon icon="live_help"></ng-md-icon>
+	 </md-button>
     <md-menu>
 	 <!-- Trigger element is a md-button with an icon -->
 	 <md-button ng-click="$mdMenu.open($event)" class="md-icon-button" aria-label="Open sample menu">
@@ -30,34 +33,32 @@
   </ion-nav-buttons>
  
 
-<ion-content class="has-header background  home-container responsive-sm" style="height:88%" align="center">
+<ion-content ng-init="showConfirm()" class="has-header background  home-container responsive-sm" style="height:100%" align="center">
 <div layout-gt-md="column" layout="column" align="center" flex-gt-md="100">
   	<!-- Cabecera de Logo -->
-  	<div layout-gt-md="column"  flex-gt-md="100" class="main-logo"  align="center">
+  	<div layout-gt-md="column"  flex-gt-md="100" class="main-logo"  align="center" >
   			<img  style="display: block;
     margin: 0 auto;" src="resources/apps/home/creed-logo.png" align="center">
   	</div>
   	<!-- Sección de botones -->
   	
-  	<div layout-gt-md="column" flex-gt-md="100"  flex="100"  style="height: 40%" >
+  	<div layout-gt-md="column" flex-gt-md="100"  flex="100"  style="height: 40%" ng-init="showActionToast();"  >
 		<div layout="row" layout-sm="row" layout-gt-md="row" flex-gt-md="100">
 			<div layout-gt-md="column" layout-xs="row" class = "col" flex="20" flex-gt-md="40"  layout-sm="column" align="center" style=""> 
 			
 			</div>
 			<div layout-gt-md="column" layout-sm="column" layout-xs="row" flex="30" flex-gt-md="10" flex-sm="20"   flex-gt-xs="50" flex-gt-lg="30"   align="center" class = "col responsive"  > 
 				<div  class = "menu-icons" flex-gt-md="30" flex-gt-lg="30">
-					<a  href="#/app/reader_bible">
-				   		<img src="resources/apps/home/bible.png"/> 
-				   		<h5 >{{'reavivados' | translate}}</h5>
-				   	</a>
+					<button style="background-color: Transparent;     border: none;
+						" href="#/app/reader_bible" ng-click="closeToast();" onclick="window.location.href='#/app/reader_bible'" ><img src="resources/apps/home/bible.png"/> </button>				   	
+				   	<h5 >{{'reavivados' | translate}}</h5>
 			   	</div>
 			</div>
 			<div layout-gt-md="column" layout-sm="column" layout-xs="row"  flex="30" flex-gt-md="10" flex-sm="20"  align="center" class = " col responsive" > 
 				<div  class = "menu-icons" flex-gt-md="30">
-					<a  href="#/app/reader_spirit_prophecy">
-				   		<img src="resources/apps/home/egw.png"/> 
-				   		<h5>{{'espiritu_profecia' | translate}}</h5>
-				   	</a>
+					<button style="background-color: Transparent;     border: none;
+						" href="#/app/reader_spirit_prophecy" ng-click="closeToast();" onclick="window.location.href='#/app/reader_spirit_prophecy'" ><img src="resources/apps/home/egw.png"/> </button>				   	
+				   	<h5>{{'espiritu_profecia' | translate}}</h5>
 			   	</div>
 			</div>
 			
@@ -75,7 +76,7 @@
 			<br><br><br><br>
 		</div>
 		<!-- 2da fila -->
-		<div layout-gt-md="row" flex-gt-md="100" class="padding-top-home">
+		<!-- <div layout-gt-md="row" flex-gt-md="100" class="padding-top-home">
 				<div layout="row" layout-sm="row" layout-gt-md="row" flex-gt-md="100">
 			<div layout-gt-md="column" layout-xs="row" class = "col" flex="20" flex-gt-md="40"  layout-sm="column" align="center" style=""> 
 			
@@ -100,12 +101,12 @@
 			<div layout-gt-md="column" layout-xs="row" class = "col" flex="20"  flex-gt-md="40"  layout-sm="column" align="center" style=""> 
 			
 			</div>
-		</div>
+		</div> -->
 		</div>
 	</div>  	
 </div>
 </ion-content>
-<div class="bar bar-footer bar-positive">
+<!-- <div class="bar bar-footer bar-positive">
           <h1 class="title">{{footerTitle}}</h1>
-  </div>
-</ion-view>
+  </div>-->
+ </ion-view>

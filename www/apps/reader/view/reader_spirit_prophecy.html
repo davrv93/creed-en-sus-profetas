@@ -3,12 +3,15 @@
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
    <ion-nav-buttons side="right">
+   <md-button ng-click="onListReading()" class="md-icon-button" aria-label="Refresh">
+     <ng-md-icon icon="refresh"></ng-md-icon>
+   </md-button>
     <md-menu>
    <!-- Trigger element is a md-button with an icon -->
    <md-button ng-click="$mdMenu.open($event)" class="md-icon-button" aria-label="Open sample menu">
      <ng-md-icon icon="language"></ng-md-icon>
    </md-button>
-<md-menu-content>
+  <md-menu-content>
      <md-menu-item>
         <md-button ng-click="change_language('ES')">     
           <div class="locale_icon" >
@@ -26,6 +29,8 @@
         </md-button>
      </md-menu-item>
    </md-menu-content>
+   </md-menu>
+  
   </ion-nav-buttons>
   <div class="bar bar-subheader bar-dark">
       <h2 class="title">{{pageTitle}}</h2>
@@ -34,7 +39,7 @@
 
   <ion-content class="background  home-container responsive-sm" align="center" style="height:88%">  		
     <md-content style="height:100%;" class="background has-header">
-      <div style="text-align: justify; text-justify: inter-word;" ng-repeat="x in obj_reading">
+      <div style="text-align: justify; text-justify: inter-word; margin-left:15px;margin-right:15px;" ng-repeat="x in obj_reading">
           <span class="verse" ng-bind-html="x.data"></span>
           <br><br>
       </div>

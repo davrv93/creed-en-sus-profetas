@@ -1,10 +1,13 @@
 
-app.controller('SpiritProphecyReadCtrl', function($scope, $http,$filter, $mdDialog, API_READER, $stateParams,$translate,$cordovaSQLite, $rootScope) {
+app.controller('SpiritProphecyReadCtrl', function($scope, $http,$filter, $mdDialog, API_READER, $stateParams,$translate,$cordovaSQLite, $rootScope, $state) {
+	
 	var $translateFilter = $filter('translate');
 
     $rootScope.change_language = function(locale){
             $translate.use(locale);
+            localStorage.language = locale;
             $scope.onListReading();
+
         }    
 
 
@@ -44,10 +47,25 @@ app.controller('SpiritProphecyReadCtrl', function($scope, $http,$filter, $mdDial
 
 	$scope.onListReading = function(){
 	$rootScope.progress = true	;
+	var currentDate = new Date()
+	var day = currentDate.getDate();
+	var month = currentDate.getMonth() + 1;
+	var year = currentDate.getFullYear();
+
+
+	if(day<10) {
+	    day='0'+day
+	} 
+
+	if(month<10) {
+	    month='0'+month
+	} 
+
+	var param_date=year+'-'+month+'-'+day;
 	var req = {
 			method: 'GET',
 			url: "https://davrv93.pythonanywhere.com/api/believe/spirit_prophecy_read/reading/",
-			params:{language: $translate.use()}
+			params:{language: $translate.use(), date:param_date}
 		}
 
 		$http(req).success(function(res) {
@@ -60,13 +78,14 @@ app.controller('SpiritProphecyReadCtrl', function($scope, $http,$filter, $mdDial
 
 			$rootScope.progress = false;
 		}).error(function(err){
-			console.error(angular.toJson(err))
 			console.log('Err',err)
+			$scope.obj_reading =  [{'data':$translateFilter('errors.404')}];
+			$scope.pageTitle="Error";
+			$rootScope.progress = false;
+
 		})
 	}
 
-	//$scope.onListBook();
-	//$scope.onListTestament();
 	$scope.onListReading();
 
 		
