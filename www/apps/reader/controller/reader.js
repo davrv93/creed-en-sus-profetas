@@ -1,8 +1,156 @@
-app.controller('ReaderCtrl', function($scope, $sce, $http, $mdDialog, $filter, API_READER, $stateParams,$translate,$cordovaSQLite, $rootScope) {
-	
+app.controller('ReaderCtrl', function($scope, $sce, $http, $mdToast, $cordovaClipboard,  $mdDialog, $filter, API_READER, $stateParams,$translate, $rootScope, $cordovaSocialSharing) {	
 	var $translateFilter = $filter('translate');
+	$scope.list_underline =[];
+
+	var last = {
+      bottom: false,
+      top: true,
+      left: false,
+      right: false
+    };
+
+	$scope.toastPosition = angular.extend({},last);
+
+    $scope.getToastPosition = function() {
+        sanitizePosition();
+
+        return Object.keys($scope.toastPosition)
+        .filter(function(pos) { return $scope.toastPosition[pos]; })
+        .join(' ');
+    };
+
+    function sanitizePosition() {
+        var current = $scope.toastPosition;
+
+        if ( current.bottom && last.top ) current.top = false;
+        if ( current.top && last.bottom ) current.bottom = false;
+        if ( current.right && last.left ) current.left = false;
+        if ( current.left && last.right ) current.right = false;
+
+        last = angular.extend({},current);
+  }
+
+    $scope.showActionToast = function() {
+        var pinTo = $scope.getToastPosition();
+        var toast = $mdToast.simple()
+        .textContent($translateFilter('reader_msg'))
+        .action($translateFilter('cerrar'))
+        .highlightAction(true)
+        .highlightClass('md-accent')// Accent is used by default, this just demonstrates the usage.
+        .position('top right').hideDelay(2000);
+
+        $mdToast.show(toast).then(function(response) {
+            if ( response == 'ok' ) {
+        
+            }
+        });
+    };
+
+    $scope.closeToast = function() {
+        $mdToast.hide();
+    };
+
+	function dynamicSort(property) {
+    	var sortOrder = 1;
+    	if(property[0] === "-") {
+        	sortOrder = -1;
+        	property = property.substr(1);
+	    }
+	    return function (a,b) {
+	        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+        	return result * sortOrder;
+    	}
+	}
+
+	$scope.copyText = function(value) {
+        $cordovaClipboard.copy(value).then(function() {
+            console.log("Copied text");
+        }, function() {
+            console.error("There was an error copying");
+        });
+    }
+	
+	$scope.buildVerse = function(){
+		$scope.list_underline=$scope.list_underline.sort(dynamicSort("id"));
+		var hashtag= $translateFilter('hashtag');
+		var book=$scope.pageTitle +': '+ $scope.obj_header.chapter +'\n'
+		var verse ="";
+		for(key in $scope.list_underline) {
+			verse += $scope.list_underline[key]['verse']+'. '+$scope.list_underline[key]['data']+'\n';
+
+		}
+		var text=hashtag+' '+book+verse;
+		console.log($scope.list_underline);
+		return text
+	}
+
+	$scope.inObject = function(target,data){
+		
+		var condition = true;
+		for(key in data) {			
+			if(data[key]['id']==target['id'])
+			{				
+				condition=true;
+				$scope.list_underline.splice(key,1);
+
+			}else{
+				condition=false;	
+			}  
+
+		}
+		if (condition===false){
+				var obj_underline={
+     			'id':target['id'],
+     			'verse':target['verse'],
+     			'data':target['data']
+     			};
+				$scope.list_underline.push(obj_underline);
+		}
+		//console.log($scope.list_underline)
+	}
+
+    $scope.fillObjUnderline = function (x) {
+     	//x['id']       
+     	if($scope.list_underline.length===0){
+     		//console.log('true')
+     		var obj_underline={
+     			'id':x['id'],
+     			'verse':x['verse'],
+     			'data':x['data']
+     		}
+     		$scope.list_underline.push(obj_underline)
+     	}else{
+     		$scope.inObject(x,$scope.list_underline);	
+     	}
+    };
+
+    $scope.setClass = function(i,x){
+    	var title = document.getElementById('title'+i);
+    	var BackgroundColorHighlight="#337BDF";
+		var BackgroundColor="#8082C6";
+		var HexBackgroundColor="rgb(51, 123, 223)";
+		//console.log(x['id'])
+		$scope.fillObjUnderline(x);
+		
+		if(title.style.backgroundColor===HexBackgroundColor){
+			title.style.backgroundColor=BackgroundColor;	
+		}
+		else
+		{
+			title.style.backgroundColor=BackgroundColorHighlight;		
+		}
+    	// if ( title.className.match(/(?:^|\s)verse-underline(?!\S)/) )
+    	// {
+    	// 	title.className='activated verse';
+    	// 	title.style.backgroundColor="#8082C6";}
+    	// else{
+    	// 	title.className='activated verse-underline';
+    	// 	title.style.backgroundColor="#337BDF";
+    	// }
+    }
 
     $rootScope.change_language = function(locale){
+            $scope.list_underline=[];
             $translate.use(locale);
 			localStorage.language = locale;
             $scope.onListReading();
@@ -23,6 +171,48 @@ app.controller('ReaderCtrl', function($scope, $sce, $http, $mdDialog, $filter, A
 		{
 			elementHtml.style.backgroundColor=BackgroundColorHighlight;		
 		}
+	}
+
+	$scope.shareSocial = function(option){
+		var message=$scope.buildVerse()
+		var image=''
+		var link=''
+		if($scope.list_underline.length==0){
+			$scope.showActionToast();
+		}else{
+
+		if(option=="copy"){
+			$scope.copyText(message);
+		}
+		if(option=="twitter")
+		{$cordovaSocialSharing
+		    .shareViaTwitter(message, image, link)
+		    .then(function(result) {
+		      // Success!
+		     
+		    }, function(err) {
+		      // An error occurred. Show a message to the user
+		    });
+		}
+		if(option=="facebook")
+		{$cordovaSocialSharing
+		    .shareViaFacebook(message, image, link)
+		    .then(function(result) {
+		    	$scope.copyText(message);
+		      // Success!
+		    }, function(err) {
+		      // An error occurred. Show a message to the user
+		    });
+		}
+
+		  // $cordovaSocialSharing
+		  //   .shareViaWhatsApp(message, image, link)
+		  //   .then(function(result) {
+		  //     // Success!
+		  //   }, function(err) {
+		  //     // An error occurred. Show a message to the user
+		  //   });
+		  }
 	}
 
 
@@ -87,32 +277,32 @@ app.controller('ReaderCtrl', function($scope, $sce, $http, $mdDialog, $filter, A
   	}
 
 	//Drive
-	var api_key = 'AIzaSyCfhsJxJ5Hp3wb-Mv9QCAxYecyUp0I_bCo';
-    var folderId = '0B0nnaryMMk8tWHRyaFJUOFNWVnc';
-    var fileID='0B0nnaryMMk8tdk1KQXZMeVJUN1E';
-    //var url = "https://www.googleapis.com/drive/v3/files?q='" + folderId + "'+in+parents&key=" + api_key;
-    //var url = "https://www.googleapis.com/drive/v3/files?q='" + folderId + "'+in+parents&key=" + api_key;
-    var url = "https://www.googleapis.com/drive/v2/files/"+fileID+"?fields=embedLink&key="+api_key+"&embedded=true"
+	// var api_key = 'AIzaSyCfhsJxJ5Hp3wb-Mv9QCAxYecyUp0I_bCo';
+ //    var folderId = '0B0nnaryMMk8tWHRyaFJUOFNWVnc';
+ //    var fileID='0B0nnaryMMk8tdk1KQXZMeVJUN1E';
+ //    //var url = "https://www.googleapis.com/drive/v3/files?q='" + folderId + "'+in+parents&key=" + api_key;
+ //    //var url = "https://www.googleapis.com/drive/v3/files?q='" + folderId + "'+in+parents&key=" + api_key;
+ //    var url = "https://www.googleapis.com/drive/v2/files/"+fileID+"?fields=embedLink&key="+api_key+"&embedded=true"
 
-    //0B0nnaryMMk8tdk1KQXZMeVJUN1E
-    var driveParam = {
-            //method: 'GET',
-            url: url
-        }
+ //    //0B0nnaryMMk8tdk1KQXZMeVJUN1E
+ //    var driveParam = {
+ //            //method: 'GET',
+ //            url: url
+ //        }
 
-        $http(driveParam).success(function(res) {
-            console.log(res);
-            $scope.fileRead=res['embedLink'];
+ //        $http(driveParam).success(function(res) {
+ //            console.log(res);
+ //            $scope.fileRead=res['embedLink'];
 
-        }).error(function(err){
-            console.log('Err',err)            
-        })
-    ;
+ //        }).error(function(err){
+ //            console.log('Err',err)            
+ //        })
+ //    ;
 
-    $scope.access = function() {
-   		var iframe = document.getElementById("iframe").contentDocument;
-   		console.log(iframe);
-	}
+ //    $scope.access = function() {
+ //   		var iframe = document.getElementById("iframe").contentDocument;
+ //   		console.log(iframe);
+	// }
 
 
 	//$scope.onListBook();

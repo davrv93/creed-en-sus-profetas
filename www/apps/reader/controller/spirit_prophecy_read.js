@@ -6,6 +6,7 @@ app.controller('SpiritProphecyReadCtrl', function($scope, $http,$filter, $mdDial
     $rootScope.change_language = function(locale){
             $translate.use(locale);
             localStorage.language = locale;
+            //console.log('locale ', locale)
             $scope.onListReading();
 
         }    

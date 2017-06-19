@@ -165,7 +165,18 @@ a:hover, a:visited, a:link, a:active
   .verse{
     font-size:16px; 
     font-color:white; 
-    color:white
+    color:white;
+    text-align: justify; text-justify: inter-word;
+  }
+
+  .verse-underline{
+    font-size:16px; 
+    font-color:white; 
+    color:white;
+    text-decoration: underline;
+    text-decoration-color: orange;
+    text-align: justify; text-justify: inter-word;
+
   }
 
 
@@ -293,7 +304,18 @@ a:hover, a:visited, a:link, a:active
   .verse{
     font-size:13px; 
     font-color:white; 
-    color:white
+    color:white;
+    text-align: justify; text-justify: inter-word;
+  }
+
+  .verse-underline{
+    font-size:13px; 
+    font-color:white; 
+    color:white;
+    text-decoration: underline;
+    text-decoration-color: orange;
+    text-align: justify; text-justify: inter-word;
+
   }
 
   .main-logo {
@@ -369,7 +391,17 @@ a:hover, a:visited, a:link, a:active
 .verse{
     font-size:22px; 
     font-color:white; 
-    color:white
+    color:white;
+    text-align: justify; text-justify: inter-word;
+  }
+
+  .verse-underline{
+    font-size:22px; 
+    font-color:white; 
+    color:white;
+    text-decoration: underline;
+    text-decoration-color: orange;
+text-align: justify; text-justify: inter-word;
   }
 
 
@@ -447,7 +479,18 @@ a:hover, a:visited, a:link, a:active
   .verse{
     font-size:22px; 
     font-color:white; 
-    color:white
+    color:white;
+    text-align: justify; text-justify: inter-word;
+  }
+
+    .verse-underline{
+    font-size:22px; 
+    font-color:white; 
+    color:white;
+    text-decoration: underline;
+    text-decoration-color: orange;
+    text-align: justify; text-justify: inter-word;
+
   }
 
 
@@ -604,7 +647,17 @@ a:hover, a:visited, a:link, a:active
   .verse{
     font-size:15px; 
     font-color:white; 
-    color:white
+    color:white;
+    text-align: justify; text-justify: inter-word;
+  }
+
+    .verse-underline{
+    font-size:15px; 
+    font-color:white; 
+    color:white;
+    text-decoration: underline;
+    text-decoration-color: orange;
+text-align: justify; text-justify: inter-word;
   }
 
 
@@ -672,7 +725,18 @@ a:hover, a:visited, a:link, a:active
   .verse{
     font-size:16px; 
     font-color:white; 
-    color:white
+    color:white;
+    text-align: justify; text-justify: inter-word;
+  }
+
+    .verse-underline{
+    font-size:16px; 
+    font-color:white; 
+    color:white;
+    text-decoration: underline;
+    text-decoration-color: orange;
+    text-align: justify; text-justify: inter-word;
+
   }
 
 
@@ -782,7 +846,18 @@ a:hover, a:visited, a:link, a:active
   .verse{
     font-size:18px; 
     font-color:white; 
-    color:white
+    color:white;
+    text-align: justify; text-justify: inter-word;
+  }
+
+  .verse-underline{
+    font-size:18px; 
+    font-color:white; 
+    color:white;
+    text-decoration: underline;
+    text-decoration-color: orange;
+    text-align: justify; text-justify: inter-word;
+
   }
 
 
@@ -826,7 +901,18 @@ a:hover, a:visited, a:link, a:active
   .verse{
     font-size:20px; 
     font-color:white; 
-    color:white
+    color:white;
+    text-align: justify; text-justify: inter-word;
+  }
+
+  .verse-underline{
+    font-size:20px; 
+    font-color:white; 
+    color:white;
+    text-decoration: underline;
+    text-decoration-color: orange;
+    text-align: justify; text-justify: inter-word;
+
   }
 
 

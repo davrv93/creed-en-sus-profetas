@@ -9,7 +9,9 @@ app
             "home":"Menú principal",
             "menu": "Menú",
             "cerrar":"Cerrar",
+            "hashtag": "#rpsp",
             "home_msg": "Clic en el botón de la esquina superior izquierda para ver las opciones.",
+            "reader_msg": "Seleccione por lo menos un versículo para poder compartirlo.",
             "errors":{
                 "404":"Hubo un problema al obtener la lectura de hoy, verifique su conexión a internet. Si usted tiene conexión a internet activada entonces la lectura para hoy no ha sido actualizada por el programador, sirvase notificar en Google Play del caso. Gracias"
             },
@@ -117,10 +119,12 @@ app
             "home":"Home",
             "cerrar":"Close",
             "home_msg": "Click the button in the upper left corner to see the options.",
+            "reader_msg": "Select at least one verse to share it.",
             "reavivados":"Revived by his Word",
             "espiritu_profecia":"Spirit of prophecy",
             "configuracion":"Settings",
             "calendario":"Calendar",
+            "hashtag": "#bhp",
             "config":{
                 "idioma": "App language",
                 "tema": "Theme of app (Color)",
