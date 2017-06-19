@@ -275,38 +275,6 @@ app.controller('ReaderCtrl', function($scope, $sce, $http, $mdToast, $cordovaCli
 	$scope.trustSrc = function(src) {
     	return $sce.trustAsResourceUrl(src);
   	}
-
-	//Drive
-	// var api_key = 'AIzaSyCfhsJxJ5Hp3wb-Mv9QCAxYecyUp0I_bCo';
- //    var folderId = '0B0nnaryMMk8tWHRyaFJUOFNWVnc';
- //    var fileID='0B0nnaryMMk8tdk1KQXZMeVJUN1E';
- //    //var url = "https://www.googleapis.com/drive/v3/files?q='" + folderId + "'+in+parents&key=" + api_key;
- //    //var url = "https://www.googleapis.com/drive/v3/files?q='" + folderId + "'+in+parents&key=" + api_key;
- //    var url = "https://www.googleapis.com/drive/v2/files/"+fileID+"?fields=embedLink&key="+api_key+"&embedded=true"
-
- //    //0B0nnaryMMk8tdk1KQXZMeVJUN1E
- //    var driveParam = {
- //            //method: 'GET',
- //            url: url
- //        }
-
- //        $http(driveParam).success(function(res) {
- //            console.log(res);
- //            $scope.fileRead=res['embedLink'];
-
- //        }).error(function(err){
- //            console.log('Err',err)            
- //        })
- //    ;
-
- //    $scope.access = function() {
- //   		var iframe = document.getElementById("iframe").contentDocument;
- //   		console.log(iframe);
-	// }
-
-
-	//$scope.onListBook();
-	//$scope.onListTestament();
 	$scope.onListReading();		
-})
+});
 
