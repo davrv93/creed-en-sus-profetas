@@ -205,6 +205,18 @@ app.controller('ReaderCtrl', function($scope, $sce, $http, $mdToast, $cordovaCli
 		    });
 		}
 
+		if(option=="whatsapp")
+		{$cordovaSocialSharing
+		    .shareViaWhatsApp(message, image, link)
+		    .then(function(result) {
+		    	$scope.copyText(message);
+		      // Success!
+		    }, function(err) {
+		      // An error occurred. Show a message to the user
+		    });
+		}
+
+
 		  // $cordovaSocialSharing
 		  //   .shareViaWhatsApp(message, image, link)
 		  //   .then(function(result) {
