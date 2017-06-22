@@ -1,5 +1,7 @@
 app.controller('HomeCtrl', function($scope, $http, $rootScope, $filter, $translate, $mdDialog, $stateParams,$cordovaSQLite, $mdMedia, $mdToast) {
-
+    if (localStorage.appVersion != undefined) {
+      $rootScope.appVersion=localStorage.appVersion
+    }
     var $translateFilter = $filter('translate');
     var last = {
       bottom: true,
@@ -84,8 +86,24 @@ app.controller('HomeCtrl', function($scope, $http, $rootScope, $filter, $transla
             console.log('locale',locale)
             $translate.use(locale);
             localStorage.language = locale;
-        }   
+        }
+        $scope.onListUpdate = function(){
 
+        var req = {
+                method: 'GET',
+                url: "https://davrv93.pythonanywhere.com/api/believe/application/status/",
+                params:{language: $translate.use(), version:$rootScope.appVersion}
+            }
 
+            $http(req).success(function(res) {
+                $scope.content=res;
+
+            }).error(function(err){
+                console.log('Err',err)
+                $scope.obj_reading =  [{'data':$translateFilter('errors.404')}];
+                $scope.pageTitle="Error";
+            })
+        }
+        $scope.onListUpdate();
 
 })
