@@ -24,6 +24,11 @@ var app = angular.module('starter', ['ionic','ngResource',               // inje
             StatusBar.styleDefault();
         }
 
+        cordova.getAppVersion(function(version) {
+                $rootScope.appVersion = version;
+                console.log(version);
+            });
+
         // var db = $rootScope.db = $cordovaSQLite.openDB({ name: "my.db", location: "default" });
 
         // $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS people (id integer primary key, firstname text, lastname text)");
