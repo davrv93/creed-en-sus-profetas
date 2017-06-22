@@ -19,3 +19,24 @@ ngServices.directive('coreProgress', function()
            }
         }
 });
+
+ngServices.directive('notify', function() {
+  return {
+    restrict: 'A',
+    template: "<div class='notification notify-dir show-count' data-count='{{value}}'>  </div>",
+    controller: function($scope, $timeout) {
+
+      $scope.value = 1;
+      var el = angular.element(document.querySelector('.notify-dir'));
+      // el.toggleClass('notify');
+      var poll = function() {
+        $timeout(function() {
+          el.toggleClass('notify');
+          poll();
+        }, 1000);
+      };
+      poll();
+
+    }
+  };
+});

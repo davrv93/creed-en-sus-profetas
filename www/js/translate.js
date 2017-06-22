@@ -1,5 +1,5 @@
 app
-    .config(["$translateProvider",function($translateProvider, $translate){     
+    .config(["$translateProvider",function($translateProvider, $translate){
         $translateProvider.translations("ES",{
 			"app": "Creed en sus profetas",
             "reavivados":"Reavivados por su Palabra",
@@ -12,6 +12,8 @@ app
             "hashtag": "#rpsp",
             "home_msg": "Clic en el botón de la esquina superior izquierda para ver las opciones.",
             "reader_msg": "Seleccione por lo menos un versículo para poder compartirlo.",
+            "update_msg": "Actualización disponible en Google Play Store!.",
+            "updated_msg": "Su aplicación se encuentra ya actualizada!.",
             "errors":{
                 "404":"Hubo un problema al obtener la lectura de hoy, verifique su conexión a internet. Si usted tiene conexión a internet activada entonces la lectura para hoy no ha sido actualizada por el programador, sirvase notificar en Google Play del caso. Gracias"
             },
@@ -38,7 +40,7 @@ app
             "translate":
             {
                 "español": "Español",
-                "ingles": "Inglés",  
+                "ingles": "Inglés",
                 "elegido":"Usted ha seleccionado ",
                 "confirmar":", haga click en la flecha para continuar",
                 "elegir": "Seleccione un idioma para continuar (click en bandera)"
@@ -111,7 +113,7 @@ app
                 "judas":"Judas",
                 "apocalipsis":"Apocalipsis"
             }
-            
+
         });
         $translateProvider.translations("EN",{
             "app": "Believe his prophets",
@@ -120,6 +122,8 @@ app
             "cerrar":"Close",
             "home_msg": "Click the button in the upper left corner to see the options.",
             "reader_msg": "Select at least one verse to share it.",
+            "update_msg": "Update available in the Google Play Store!.",
+            "updated_msg": "Your application is up to date!.",
             "reavivados":"Revived by his Word",
             "espiritu_profecia":"Spirit of prophecy",
             "configuracion":"Settings",
@@ -155,7 +159,7 @@ app
                     }
                 }
 
-            },            
+            },
             "book":{
                 "genesis":"Genesis",
                 "exodo":"Exodus",
@@ -224,8 +228,8 @@ app
                 "judas":"Jude",
                 "apocalipsis":"Revelation"
             }
-            
-        });       
+
+        });
         if (localStorage.language != undefined) {
             $translateProvider.preferredLanguage(localStorage.language);
         } else{
@@ -233,5 +237,5 @@ app
         }
         $translateProvider.useSanitizeValueStrategy('sanitize');
         $translateProvider.useSanitizeValueStrategy('escape');
-        
+
     }]);

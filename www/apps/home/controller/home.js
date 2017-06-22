@@ -2,6 +2,8 @@ app.controller('HomeCtrl', function($scope, $http, $rootScope, $filter, $transla
     if (localStorage.appVersion != undefined) {
       $rootScope.appVersion=localStorage.appVersion
     }
+
+
     var $translateFilter = $filter('translate');
     var last = {
       bottom: true,
@@ -87,23 +89,44 @@ app.controller('HomeCtrl', function($scope, $http, $rootScope, $filter, $transla
             $translate.use(locale);
             localStorage.language = locale;
         }
-        $scope.onListUpdate = function(){
 
-        var req = {
-                method: 'GET',
-                url: "https://davrv93.pythonanywhere.com/api/believe/application/status/",
-                params:{language: $translate.use(), version:$rootScope.appVersion}
-            }
-
-            $http(req).success(function(res) {
-                $scope.content=res;
-
-            }).error(function(err){
-                console.log('Err',err)
-                $scope.obj_reading =  [{'data':$translateFilter('errors.404')}];
-                $scope.pageTitle="Error";
-            })
+    $scope.verifyUpdate = function(content){
+      var actual=$rootScope.appVersion;
+      var servidor=content['version'];
+      if(actual<servidor){
+          $rootScope.need_update={
+            'condition':true,
+            'version':content['version'],
+            'content':content['content'],
+            'title':$translateFilter('update_msg')
+          }
         }
-        $scope.onListUpdate();
+      else{
+        $rootScope.need_update={
+          'condition':false,
+          'title':$translateFilter('updated_msg')
+          }
+        }
+      }
 
+
+    $scope.onListUpdate = function(){
+      var req = {
+              method: 'GET',
+              url: "https://davrv93.pythonanywhere.com/api/believe/application/status/",
+              params:{language: $translate.use(), version:$rootScope.appVersion}
+          }
+
+          $http(req).success(function(res) {
+              $scope.content=res;
+              $scope.verifyUpdate($scope.content);
+
+          }).error(function(err){
+              console.log('Err',err)
+              $scope.obj_reading =  [{'data':$translateFilter('errors.404')}];
+              $scope.pageTitle="Error";
+          })
+    }
+
+           console.log(document.getElementById("test"))
 })
