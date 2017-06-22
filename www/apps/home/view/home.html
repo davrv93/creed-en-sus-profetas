@@ -1,4 +1,4 @@
-<ion-view title="{{'app' | translate}}" ng-controller="HomeCtrl">
+<ion-view title="{{'app' | translate}}" ng-controller="HomeCtrl" ng-init="onListUpdate();">
   <ion-nav-buttons side="left">
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
@@ -13,7 +13,7 @@
 	 </md-button>
 	 <md-menu-content>
 	   <md-menu-item>
-	   		<md-button ng-click="change_language('ES')">	   
+	   		<md-button ng-click="change_language('ES')">
 	   			<div class="locale_icon" >
 	   				<ng-include src="'resources/apps/home/es.svg'" ></ng-include>
 	   				<p class="locale_word">&emsp;{{'translate.español' | translate}}&emsp;&emsp;</p>
@@ -21,7 +21,7 @@
 	   		</md-button>
 	   </md-menu-item>
 		<md-menu-item>
-	   		<md-button ng-click="change_language('EN')">	   
+	   		<md-button ng-click="change_language('EN')">
 	   			<div class="locale_icon" >
 	   				<ng-include src="'resources/apps/home/en.svg'" ></ng-include>
 	   				<p class="locale_word">&emsp;{{'translate.ingles' | translate}}&emsp;&emsp;</p>
@@ -31,7 +31,7 @@
 	 </md-menu-content>
 	</md-menu>
   </ion-nav-buttons>
- 
+
 
 <ion-content ng-init="showConfirm()" class="has-header background  home-container responsive-sm" style="height:100%" align="center">
 <div layout-gt-md="column" layout="column" align="center" flex-gt-md="100">
@@ -41,33 +41,33 @@
     margin: 0 auto;" src="resources/apps/home/creed-logo.png" align="center">
   	</div>
   	<!-- Sección de botones -->
-  	
+
   	<div layout-gt-md="column" flex-gt-md="100"  flex="100"  style="height: 40%" ng-init="showActionToast();"  >
 		<div layout="row" layout-sm="row" layout-gt-md="row" flex-gt-md="100">
-			<div layout-gt-md="column" layout-xs="row" class = "col" flex="20" flex-gt-md="40"  layout-sm="column" align="center" style=""> 
-			
+			<div layout-gt-md="column" layout-xs="row" class = "col" flex="20" flex-gt-md="40"  layout-sm="column" align="center" style="">
+
 			</div>
-			<div layout-gt-md="column" layout-sm="column" layout-xs="row" flex="30" flex-gt-md="10" flex-sm="20"   flex-gt-xs="50" flex-gt-lg="30"   align="center" class = "col responsive"  > 
+			<div layout-gt-md="column" layout-sm="column" layout-xs="row" flex="30" flex-gt-md="10" flex-sm="20"   flex-gt-xs="50" flex-gt-lg="30"   align="center" class = "col responsive"  >
 				<div  class = "menu-icons" flex-gt-md="30" flex-gt-lg="30">
 					<button style="background-color: Transparent;     border: none;
-						" href="#/app/reader_bible" ng-click="closeToast();" onclick="window.location.href='#/app/reader_bible'" ><img src="resources/apps/home/bible.png"/> </button>				   	
+						" href="#/app/reader_bible" ng-click="closeToast();" onclick="window.location.href='#/app/reader_bible'" ><img src="resources/apps/home/bible.png"/> </button>
 				   	<h5 >{{'reavivados' | translate}}</h5>
 			   	</div>
 			</div>
-			<div layout-gt-md="column" layout-sm="column" layout-xs="row"  flex="30" flex-gt-md="10" flex-sm="20"  align="center" class = " col responsive" > 
+			<div layout-gt-md="column" layout-sm="column" layout-xs="row"  flex="30" flex-gt-md="10" flex-sm="20"  align="center" class = " col responsive" >
 				<div  class = "menu-icons" flex-gt-md="30">
 					<button style="background-color: Transparent;     border: none;
-						" href="#/app/reader_spirit_prophecy" ng-click="closeToast();" onclick="window.location.href='#/app/reader_spirit_prophecy'" ><img src="resources/apps/home/egw.png"/> </button>				   	
+						" href="#/app/reader_spirit_prophecy" ng-click="closeToast();" onclick="window.location.href='#/app/reader_spirit_prophecy'" ><img src="resources/apps/home/egw.png"/> </button>
 				   	<h5>{{'espiritu_profecia' | translate}}</h5>
 			   	</div>
 			</div>
-			
-			<div layout-gt-md="column" layout-xs="row" class = "col" flex="20"  flex-gt-md="40"  layout-sm="column" align="center" style=""> 
-			
+
+			<div layout-gt-md="column" layout-xs="row" class = "col" flex="20"  flex-gt-md="40"  layout-sm="column" align="center" style="">
+
 			</div>
 		</div>
 		<div ng-if="$mdMedia('xs')">
-			
+
 		</div>
 		<div ng-if="$mdMedia('gt-md')">
 			<br><br><br>
@@ -80,32 +80,32 @@
 		<!-- 2da fila -->
 		<!-- <div layout-gt-md="row" flex-gt-md="100" class="padding-top-home">
 				<div layout="row" layout-sm="row" layout-gt-md="row" flex-gt-md="100">
-			<div layout-gt-md="column" layout-xs="row" class = "col" flex="20" flex-gt-md="40"  layout-sm="column" align="center" style=""> 
-			
+			<div layout-gt-md="column" layout-xs="row" class = "col" flex="20" flex-gt-md="40"  layout-sm="column" align="center" style="">
+
 			</div>
-			<div layout-gt-md="column" layout-sm="column" layout-xs="row" flex="30" flex-gt-md="10" flex-sm="20"   flex-gt-xs="50"   align="center" class = "col responsive" > 
+			<div layout-gt-md="column" layout-sm="column" layout-xs="row" flex="30" flex-gt-md="10" flex-sm="20"   flex-gt-xs="50"   align="center" class = "col responsive" >
 				<div  class = "menu-icons" flex-gt-md="30">
 					<a  href="#/app/settings">
-				   		<img src="resources/apps/home/settings.png"/> 
+				   		<img src="resources/apps/home/settings.png"/>
 				   		<h5>{{'configuracion' | translate}}</h5>
 				   	</a>
 			   	</div>
 			</div>
-			<div layout-gt-md="column" layout-sm="column" layout-xs="row"  flex="30" flex-gt-md="10" flex-sm="20"  align="center" class = " col responsive" > 
+			<div layout-gt-md="column" layout-sm="column" layout-xs="row"  flex="30" flex-gt-md="10" flex-sm="20"  align="center" class = " col responsive" >
 				<div  class = "menu-icons" flex-gt-md="30">
 					<a  href="#/app/reader_bible">
-				   		<img src="resources/apps/home/calendar.png"/> 
+				   		<img src="resources/apps/home/calendar.png"/>
 				   		<h5>{{'calendario' | translate}}</h5>
 				   	</a>
 			   	</div>
 			</div>
-			
-			<div layout-gt-md="column" layout-xs="row" class = "col" flex="20"  flex-gt-md="40"  layout-sm="column" align="center" style=""> 
-			
+
+			<div layout-gt-md="column" layout-xs="row" class = "col" flex="20"  flex-gt-md="40"  layout-sm="column" align="center" style="">
+
 			</div>
 		</div> -->
 		</div>
-	</div>  	
+	</div>
 </div>
 </ion-content>
 <!-- <div class="bar bar-footer bar-positive">

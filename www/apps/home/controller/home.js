@@ -40,7 +40,7 @@ app.controller('HomeCtrl', function($scope, $http, $rootScope, $filter, $transla
 
         $mdToast.show(toast).then(function(response) {
             if ( response == 'ok' ) {
-        
+
             }
         });
     };
@@ -48,7 +48,7 @@ app.controller('HomeCtrl', function($scope, $http, $rootScope, $filter, $transla
     $scope.closeToast = function() {
         $mdToast.hide();
     };
-  
+
 
     $scope.showConfirm = function() {
         if (localStorage.language === undefined) {
@@ -63,18 +63,18 @@ app.controller('HomeCtrl', function($scope, $http, $rootScope, $filter, $transla
                      localStorage.language = "EN";
                      $translate.use(localStorage.language);
                      console.log(localStorage.language);
-                    
+
                      }, function() {
-                        localStorage.language = "ES";                        
+                        localStorage.language = "ES";
                         $translate.use(localStorage.language);
                         console.log(localStorage.language);
 
-                  });            
+                  });
         } else{
             $translate.use(localStorage.language);
             console.log(localStorage.language);
         }
-               
+
     };
 
     $scope.$mdMedia= $mdMedia;
@@ -84,27 +84,8 @@ app.controller('HomeCtrl', function($scope, $http, $rootScope, $filter, $transla
             console.log('locale',locale)
             $translate.use(locale);
             localStorage.language = locale;
-        }
+        }   
 
-    $scope.onListUpdate = function(){
-    
-    var req = {
-            method: 'GET',
-            url: "https://davrv93.pythonanywhere.com/api/believe/application/status/",
-            params:{language: $translate.use(), version:$rootScope.appVersion}
-        }
-
-        $http(req).success(function(res) {
-            $scope.content=res;
-            
-        }).error(function(err){
-            console.log('Err',err)
-            $scope.obj_reading =  [{'data':$translateFilter('errors.404')}];
-            $scope.pageTitle="Error";            
-        })
-    }
-    $scope.onListUpdate();
 
 
 })
-
