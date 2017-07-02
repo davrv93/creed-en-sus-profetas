@@ -1,4 +1,3 @@
-
 app.controller('LocaleCtrl', function($scope, $stateParams,$translate) {
 
 	$scope.checkLanguage = function()
@@ -25,4 +24,3 @@ app.controller('LocaleCtrl', function($scope, $stateParams,$translate) {
 
 
 })
-

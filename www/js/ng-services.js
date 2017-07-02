@@ -20,23 +20,58 @@ ngServices.directive('coreProgress', function()
         }
 });
 
-ngServices.directive('notify', function() {
-  return {
-    restrict: 'A',
-    template: "<div class='notification notify-dir show-count' data-count='{{value}}'>  </div>",
-    controller: function($scope, $timeout) {
 
-      $scope.value = 1;
-      var el = angular.element(document.querySelector('.notify-dir'));
-      // el.toggleClass('notify');
-      var poll = function() {
-        $timeout(function() {
-          el.toggleClass('notify');
-          poll();
-        }, 1000);
-      };
-      poll();
+ngServices.directive('fastRepeat', function($compile){
+      return{
+          restrict: 'E',
+          scope:{
+              data: '=',
+              event: '=',
+              datas: '='
 
-    }
-  };
-});
+          },
+          link:function(scope, el, attrs){
+              scope.$watchCollection('data.data', function(newValue, oldValue){
+                var template = document.getElementById('table-template').text;
+                var rendered = Handlebars.compile(template);
+                var context = scope.data;
+                var html = rendered(context);
+                el.children().remove();
+                el.append(html);
+                $compile(el.contents())(scope);
+
+            
+                console.log(scope)
+
+                
+              })
+          }
+      }
+  })
+
+ngServices.directive('mainTemplate', function($compile){
+      return{
+          restrict: 'E',
+          scope:{
+              data: '=',
+              event: '=',
+              status:'=',
+              labels: '='
+
+          },
+          link:function(scope, el, attrs){
+            scope.$watchCollection('labels', function(newValue, oldValue){
+              console.log(newValue)
+              console.log(scope.labels)
+              var template = document.getElementById('main-template').text;
+                var rendered = Handlebars.compile(template);
+                var context = scope.labels;
+                var html = rendered(context);
+                el.children().remove();                
+                html=$compile(html)(scope);            
+                el.append(html);
+                console.log(scope)                
+              });
+          }
+      }
+  })

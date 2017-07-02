@@ -1,43 +1,52 @@
 <ion-view title="{{'app' | translate}}" ng-controller="HomeCtrl" ng-init="onListUpdate();">
-  <ion-nav-buttons side="left">
-    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
-  </ion-nav-buttons>
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <md-button ng-click="showActionToast();" class="md-icon-button" aria-label="Open sample menu">
+            <ng-md-icon icon="live_help"></ng-md-icon>
+        </md-button>
+        <md-menu>
+            <!-- Trigger element is a md-button with an icon -->
+            <md-button ng-click="$mdMenu.open($event)" class="md-icon-button" aria-label="Open sample menu">
+                <ng-md-icon icon="language"></ng-md-icon>
+            </md-button>
+            <md-menu-content>
+                <md-menu-item>
+                    <md-button ng-click="change_language('ES')">
+                        <div class="locale_icon">
+                            <ng-include src="'resources/apps/home/es.svg'"></ng-include>
+                            <p class="locale_word">&emsp;{{'translate.español' | translate}}&emsp;&emsp;</p>
+                        </div>
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button ng-click="change_language('EN')">
+                        <div class="locale_icon">
+                            <ng-include src="'resources/apps/home/en.svg'"></ng-include>
+                            <p class="locale_word">&emsp;{{'translate.ingles' | translate}}&emsp;&emsp;</p>
+                        </div>
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+    </ion-nav-buttons>
+    <script id="table-template" type="text/x-handlebars-template">
+        <table>
+            {{#data}}
+            <tr>
+                <td>{{0}}</td>
+                <td>{{1}}</td>
+                <td>
+                    <md-button ng-click="$parent.testing()">test</md-button>
+                </td>
+            </tr>
+            {{/data}}
+        </table>
+    </script>
 
- <ion-nav-buttons side="right">
-    <md-button ng-click="showActionToast();" class="md-icon-button" aria-label="Open sample menu">
-	   <ng-md-icon icon="live_help"></ng-md-icon>
-	 </md-button>
-   <div id="test" notify style="margin-top:7px"value="value" ng-click="onListUpdate();"></div>
 
-
-   <md-menu >
-	 <!-- Trigger element is a md-button with an icon -->
-	 <md-button ng-click="$mdMenu.open($event)" class="md-icon-button" aria-label="Open sample menu">
-	   <ng-md-icon icon="language"></ng-md-icon>
-	 </md-button>
-	 <md-menu-content>
-	   <md-menu-item>
-	   		<md-button ng-click="change_language('ES')">
-	   			<div class="locale_icon" >
-	   				<ng-include src="'resources/apps/home/es.svg'" ></ng-include>
-	   				<p class="locale_word">&emsp;{{'translate.español' | translate}}&emsp;&emsp;</p>
-	   			</div>
-	   		</md-button>
-	   </md-menu-item>
-		<md-menu-item>
-	   		<md-button ng-click="change_language('EN')">
-	   			<div class="locale_icon" >
-	   				<ng-include src="'resources/apps/home/en.svg'" ></ng-include>
-	   				<p class="locale_word">&emsp;{{'translate.ingles' | translate}}&emsp;&emsp;</p>
-	   			</div>
-	   		</md-button>
-	   </md-menu-item>
-	 </md-menu-content>
-	</md-menu>
-  </ion-nav-buttons>
-
-
-  <ion-content ng-init="showConfirm()" class="has-header background  home-container responsive-sm" style="height:100%" align="center">
+    <ion-content ng-init="showConfirm()" class="has-header background  home-container responsive-sm" style="height:100%" align="center">
   <div layout-gt-md="column" layout="column" align="center" flex-gt-md="100">
     	<!-- Cabecera de Logo -->
     	<div layout-gt-md="column"  flex-gt-md="100" class="main-logo"  align="center" >
@@ -79,12 +88,32 @@
   		<div ng-if="$mdMedia('md')">
   			<br><br><br><br>
   		</div>
-  		{{appVersion}}
-  		{{need_update}}
+  		<div layout="row" layout-sm="row" layout-gt-md="row" flex-gt-md="100">
+  			<div layout-gt-md="column" layout-xs="row" class = "col" flex="20" flex-gt-md="40"  layout-sm="column" align="center" style="">
 
+        </div>
+        <div layout-gt-md="column" layout-sm="column" layout-xs="row" flex="30" flex-gt-md="10" flex-sm="20"   flex-gt-xs="50" flex-gt-lg="30"   align="center" class = "col responsive"  >
+          <div  class = "menu-icons" flex-gt-md="30" flex-gt-lg="30">
+            <button style="background-color: Transparent;     border: none;
+              " href="#/app/reader_bible" ng-click="closeToast();" onclick="window.location.href='#/app/bible'" ><img src="resources/apps/home/bible.png"/> </button>
+              <h5 >{{'biblia' | translate}}</h5>
+            </div>
+        </div>
+  			<div layout-gt-md="column" layout-sm="column" layout-xs="row" flex="30" flex-gt-md="10" flex-sm="20"   flex-gt-xs="50" flex-gt-lg="30"   align="center" class = "col responsive"   >
+  				<div  class = "menu-icons" flex-gt-md="30" flex-gt-lg="30" style="position:relative">
+  					<button style="background-color: Transparent;     border: none;
+  						" href="#/app/reader_spirit_prophecy" ng-click="closeToast(); onListUpdate($event);"  ><img ng-src="{{!need_update['condition'] && 'resources/apps/home/bell.png' || 'resources/apps/home/notify.png'}}"/> </button>
+  				   	<h5 ng-show="!need_update['condition']">{{'labels.actualizacion'|translate}}</h5>
+  				   	<h5 ng-show="need_update['condition']">{{'labels.actualizar'|translate}}</h5>
+  			   	</div>  			   	
+        </div>
+  			<div layout-gt-md="column" layout-xs="row" class = "col" flex="20"  flex-gt-md="40"  layout-sm="column" align="center" style="">
+
+  			</div>
+  		</div>
   		</div>
   	</div>
   </div>
   </ion-content>
 
- </ion-view>
+</ion-view>
