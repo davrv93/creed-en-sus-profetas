@@ -1,5 +1,5 @@
 
-app.controller('SpiritProphecyReadCtrl', function($scope, $http,$filter, $mdDialog, API_READER, $stateParams,$translate,$cordovaSQLite, $rootScope, $state) {
+app.controller('SpiritProphecyReadCtrl', function($scope, $http,$filter, API_READER, $stateParams,$translate,$cordovaSQLite, $rootScope, $state) {
 	
 	var $translateFilter = $filter('translate');
 

@@ -4,9 +4,9 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 
-var app = angular.module('starter', ['ionic', 'ngResource', // inject the Ionic framework
+var app = angular.module('starter', ['ionic', 'ionic-toast','ngResource', // inject the Ionic framework
     'pascalprecht.translate', 'ngCordova', 'ngAria', 'ngServices',
-    'ngMdIcons'
+    'ngMdIcons', 'ngModal'
 ])
 
 .run(function($rootScope, $ionicPlatform, $cordovaSQLite, $http) {
@@ -29,14 +29,8 @@ var app = angular.module('starter', ['ionic', 'ngResource', // inject the Ionic 
                 localStorage.appVersion = version;
             } else {
                 localStorage.appVersion = version;
-
             }
         });
-
-        // var db = $rootScope.db = $cordovaSQLite.openDB({ name: "my.db", location: "default" });
-
-        // $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS people (id integer primary key, firstname text, lastname text)");
-
     });
 })
 
@@ -45,6 +39,7 @@ var app = angular.module('starter', ['ionic', 'ngResource', // inject the Ionic 
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
     $httpProvider.defaults.useXDomain = true;
 })
+
 
 .config(function($httpProvider) {
     $httpProvider.useApplyAsync(true);

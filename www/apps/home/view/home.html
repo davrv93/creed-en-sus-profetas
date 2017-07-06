@@ -3,35 +3,45 @@
         <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
-        <md-button ng-click="showActionToast();" class="md-icon-button" aria-label="Open sample menu">
-            <ng-md-icon icon="live_help"></ng-md-icon>
-        </md-button>
-        <md-menu>
-            <!-- Trigger element is a md-button with an icon -->
-            <md-button ng-click="$mdMenu.open($event)" class="md-icon-button" aria-label="Open sample menu">
-                <ng-md-icon icon="language"></ng-md-icon>
-            </md-button>
-            <md-menu-content>
-                <md-menu-item>
-                    <md-button ng-click="change_language('ES')">
-                        <div class="locale_icon">
-                            <ng-include src="'resources/apps/home/es.svg'"></ng-include>
-                            <p class="locale_word">&emsp;{{'translate.español' | translate}}&emsp;&emsp;</p>
-                        </div>
-                    </md-button>
-                </md-menu-item>
-                <md-menu-item>
-                    <md-button ng-click="change_language('EN')">
-                        <div class="locale_icon">
-                            <ng-include src="'resources/apps/home/en.svg'"></ng-include>
-                            <p class="locale_word">&emsp;{{'translate.ingles' | translate}}&emsp;&emsp;</p>
-                        </div>
-                    </md-button>
-                </md-menu-item>
-            </md-menu-content>
-        </md-menu>
+        <a ng-click="showActionToast();" class="button button-icon icon ion-help-circled" aria-label="Open language menu"></a>
+        <a class="button button-icon icon ion-earth" aria-label="Open language menu" menu-toggle="right"></a>
     </ion-nav-buttons>
-    <script id="table-template" type="text/x-handlebars-template">
+    <modal-dialog show='dialogShown' dialog-title="{{'titles.dialog_update_title' | translate}}" height='50%' width='75%'>
+        <div class="md-dialog-content">
+            <div style=" text-justify: inter-word; margin-left:15px;margin-right:15px; margin-bottom:2px">
+                <h3 ng-bind-html="$root.need_update.title"></h3>
+                <h4 ng-bind-html="$root.need_update.content"></h4>
+                <br>
+                <br>
+            </div>
+        </div>
+        <ion-footer-bar class="bar-dark" keyboard-attach align="right">
+            <div class="md-dialog-actions" layout="row">
+                <button class="md-button" ng-show="$root.need_update['condition']" href="https://play.google.com/store/apps/details?id=com.davsoftw.creedasusprofetas" target="_blank" md-autofocus>
+                    {{'btn.btn_update' | translate}}
+                </button>
+                <span flex></span>
+                <button class="md-button" ng-click="closeModal()">
+                    {{'btn.btn_close' | translate}}
+                </button>
+            </div>
+        </ion-footer-bar>
+    </modal-dialog>
+    <modal-dialog show='dialogLangShown' dialog-title="Idioma / Language" height='70%' width='90%'>
+        <div style=" text-justify: inter-word; margin-left:15px;margin-right:15px; margin-bottom:2px">
+            <h3>Elija el idioma que desea para la aplicación / Choose the desired app language.</h3>
+        </div>
+        <div class="md-dialog-actions" layout="row" align="center">
+            <button class="md-button " style="background-color:#444444;color:white" md-autofocus>
+                Español
+            </button>
+            <span flex></span>
+            <button class="md-button" style="background-color:#444444;color:white" ng-click="closeModal()">
+                English
+            </button>
+        </div>
+    </modal-dialog>
+    <!--     <script id="table-template" type="text/x-handlebars-template">
         <table>
             {{#data}}
             <tr>
@@ -43,77 +53,30 @@
             </tr>
             {{/data}}
         </table>
-    </script>
-
-
-    <ion-content ng-init="showConfirm()" class="has-header background  home-container responsive-sm" style="height:100%" align="center">
-  <div layout-gt-md="column" layout="column" align="center" flex-gt-md="100">
-    	<!-- Cabecera de Logo -->
-    	<div layout-gt-md="column"  flex-gt-md="100" class="main-logo"  align="center" >
-    			<img  style="display: block;
-      margin: 0 auto;" src="resources/apps/home/creed-logo.png" align="center">
-    	</div>
-    	<!-- Sección de botones -->
-
-    	<div layout-gt-md="column" flex-gt-md="100"  flex="100"  style="height: 40%" ng-init="showActionToast();"  >
-  		<div layout="row" layout-sm="row" layout-gt-md="row" flex-gt-md="100">
-  			<div layout-gt-md="column" layout-xs="row" class = "col" flex="20" flex-gt-md="40"  layout-sm="column" align="center" style="">
-
-  			</div>
-  			<div layout-gt-md="column" layout-sm="column" layout-xs="row" flex="30" flex-gt-md="10" flex-sm="20"   flex-gt-xs="50" flex-gt-lg="30"   align="center" class = "col responsive"  >
-  				<div  class = "menu-icons" flex-gt-md="30" flex-gt-lg="30">
-  					<button style="background-color: Transparent;     border: none;
-  						" href="#/app/reader_bible" ng-click="closeToast();" onclick="window.location.href='#/app/reader_bible'" ><img src="resources/apps/home/bible.png"/> </button>
-  				   	<h5 >{{'reavivados' | translate}}</h5>
-  			   	</div>
-  			</div>
-  			<div layout-gt-md="column" layout-sm="column" layout-xs="row"  flex="30" flex-gt-md="10" flex-sm="20"  align="center" class = " col responsive" >
-  				<div  class = "menu-icons" flex-gt-md="30">
-  					<button style="background-color: Transparent;     border: none;
-  						" href="#/app/reader_spirit_prophecy" ng-click="closeToast();" onclick="window.location.href='#/app/reader_spirit_prophecy'" ><img src="resources/apps/home/egw.png"/> </button>
-  				   	<h5>{{'espiritu_profecia' | translate}}</h5>
-  			   	</div>
-  			</div>
-
-  			<div layout-gt-md="column" layout-xs="row" class = "col" flex="20"  flex-gt-md="40"  layout-sm="column" align="center" style="">
-
-  			</div>
-  		</div>
-  		<div ng-if="$mdMedia('xs')">
-
-  		</div>
-  		<div ng-if="$mdMedia('gt-md')">
-  			<br><br><br>
-  		</div>
-  		<div ng-if="$mdMedia('md')">
-  			<br><br><br><br>
-  		</div>
-  		<div layout="row" layout-sm="row" layout-gt-md="row" flex-gt-md="100">
-  			<div layout-gt-md="column" layout-xs="row" class = "col" flex="20" flex-gt-md="40"  layout-sm="column" align="center" style="">
-
-        </div>
-        <div layout-gt-md="column" layout-sm="column" layout-xs="row" flex="30" flex-gt-md="10" flex-sm="20"   flex-gt-xs="50" flex-gt-lg="30"   align="center" class = "col responsive"  >
-          <div  class = "menu-icons" flex-gt-md="30" flex-gt-lg="30">
-            <button style="background-color: Transparent;     border: none;
-              " href="#/app/reader_bible" ng-click="closeToast();" onclick="window.location.href='#/app/bible'" ><img src="resources/apps/home/bible.png"/> </button>
-              <h5 >{{'biblia' | translate}}</h5>
+    </script> -->
+    <ion-content ng-init="showConfirm()" class="has-header background  home-container responsive-sm" style="height:100%" overflow-scroll="false" align="center">
+        <div layout-gt-md="column" layout="column" align="center" flex-gt-md="100" >
+            <!-- Cabecera de Logo -->
+            <div layout-gt-md="column" flex-gt-md="100" align="center">
+                <img style="display: block; width: 300px; height: 85px; padding-top:2%;
+                    margin: 0 auto;" src="resources/apps/home/creed-logo.png" align="center">
+            </div>
+            <!-- Sección de botones -->
+            <div class="list" ng-init="showActionToast();" style="padding-top:5%; padding-bottom:10%">
+                <a class="item item item-thumbnail-left " href="#/app/reader_bible" ng-click="closeToast();" onclick="window.location.href='#/app/reader_bible'">
+                    <img src="resources/apps/home/bible.png">
+                    <h2 style="color:white"><b>{{'reavivados' | translate}}</b></h2>
+                </a>
+                <a class="item item item-thumbnail-left" href="#/app/reader_spirit_prophecy" ng-click="closeToast();" onclick="window.location.href='#/app/reader_spirit_prophecy'">
+                    <img src="resources/apps/home/egw.png">
+                    <h2 style="color:white"><b>{{'espiritu_profecia' | translate}}</b></h2>
+                </a>
+                <a class="item item item-thumbnail-left" href="#" href="#/app/reader_spirit_prophecy" ng-click="closeToast(); onListUpdate($event);">
+                    <img ng-src="{{!need_update['condition'] && 'resources/apps/home/bell.png' || 'resources/apps/home/notify.png'}}">
+                    <h2 style="color:white" ng-show="!need_update['condition']"><b>{{'labels.actualizacion'|translate}}</b></h2>
+                    <h2 style="color:white" ng-show="need_update['condition']"><b>{{'labels.actualizar'|translate}}</b></h2>
+                </a>
             </div>
         </div>
-  			<div layout-gt-md="column" layout-sm="column" layout-xs="row" flex="30" flex-gt-md="10" flex-sm="20"   flex-gt-xs="50" flex-gt-lg="30"   align="center" class = "col responsive"   >
-  				<div  class = "menu-icons" flex-gt-md="30" flex-gt-lg="30" style="position:relative">
-  					<button style="background-color: Transparent;     border: none;
-  						" href="#/app/reader_spirit_prophecy" ng-click="closeToast(); onListUpdate($event);"  ><img ng-src="{{!need_update['condition'] && 'resources/apps/home/bell.png' || 'resources/apps/home/notify.png'}}"/> </button>
-  				   	<h5 ng-show="!need_update['condition']">{{'labels.actualizacion'|translate}}</h5>
-  				   	<h5 ng-show="need_update['condition']">{{'labels.actualizar'|translate}}</h5>
-  			   	</div>  			   	
-        </div>
-  			<div layout-gt-md="column" layout-xs="row" class = "col" flex="20"  flex-gt-md="40"  layout-sm="column" align="center" style="">
-
-  			</div>
-  		</div>
-  		</div>
-  	</div>
-  </div>
-  </ion-content>
-
+    </ion-content>
 </ion-view>

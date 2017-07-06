@@ -1,4 +1,4 @@
-app.controller('ReaderCtrl', function($scope, $sce, $state, $ionicScrollDelegate, $http, $mdToast, $cordovaClipboard, $mdDialog, $filter, API_READER, $stateParams, $translate, $rootScope, $cordovaSocialSharing) {
+app.controller('ReaderCtrl', function($scope, $sce, $state, $ionicScrollDelegate, $http, ionicToast, $cordovaClipboard, $filter, API_READER, $stateParams, $translate, $rootScope, $cordovaSocialSharing) {
     var $translateFilter = $filter('translate');
     $scope.conditionPlayer = false;
     $scope.searchMode = false;
@@ -19,8 +19,8 @@ app.controller('ReaderCtrl', function($scope, $sce, $state, $ionicScrollDelegate
         $ionicScrollDelegate.scrollTop();
         $scope.query = '';
     }
-    $scope.searchFunction = function() {        
-            $scope.searchMode = true;      
+    $scope.searchFunction = function() {
+        $scope.searchMode = true;
 
     }
 
@@ -48,55 +48,13 @@ app.controller('ReaderCtrl', function($scope, $sce, $state, $ionicScrollDelegate
     }
 
     $scope.list_underline = [];
-
-    var last = {
-        bottom: false,
-        top: true,
-        left: false,
-        right: false
-    };
-
-    $scope.toastPosition = angular.extend({}, last);
-
-    $scope.getToastPosition = function() {
-        sanitizePosition();
-
-        return Object.keys($scope.toastPosition)
-            .filter(function(pos) {
-                return $scope.toastPosition[pos];
-            })
-            .join(' ');
-    };
-
-    function sanitizePosition() {
-        var current = $scope.toastPosition;
-
-        if (current.bottom && last.top) current.top = false;
-        if (current.top && last.bottom) current.bottom = false;
-        if (current.right && last.left) current.left = false;
-        if (current.left && last.right) current.right = false;
-
-        last = angular.extend({}, current);
-    }
-
-    $scope.showActionToast = function() {
-        var pinTo = $scope.getToastPosition();
-        var toast = $mdToast.simple()
-            .textContent($translateFilter('reader_msg'))
-            .action($translateFilter('cerrar'))
-            .highlightAction(true)
-            .highlightClass('md-accent')
-            .position('top right').hideDelay(2000);
-
-        $mdToast.show(toast).then(function(response) {
-            if (response == 'ok') {
-
-            }
-        });
+    
+    $scope.showActionToast = function() {        
+        ionicToast.show($translateFilter('reader_msg'), 'bottom', false,2000);    
     };
 
     $scope.closeToast = function() {
-        $mdToast.hide();
+        ionicToast.hide();
     };
 
     function dynamicSort(property) {

@@ -2,6 +2,7 @@ app
     .config(["$translateProvider", function($translateProvider, $translate) {
         $translateProvider.translations("ES", {
             "app": "Creed en sus profetas",
+            "volver": "Volver",
             "reavivados": "Reavivados por su Palabra",
             "biblia": "Biblia",
             "espiritu_profecia": "Espíritu de profecía",
@@ -9,6 +10,7 @@ app
             "calendario": "Calendario",
             "home": "Menú principal",
             "menu": "Menú",
+            "idioma_titulo": "Seleccione el idioma",
             "cerrar": "Cerrar",
             "hashtag": "#rpsp",
             "buscador":{
@@ -133,6 +135,7 @@ app
         });
         $translateProvider.translations("EN", {
             "app": "Believe his prophets",
+            "volver": "Back",
             "biblia": "Bible",
             "menu": "Menu",
             "home": "Home",
@@ -149,6 +152,7 @@ app
             "espiritu_profecia": "Spirit of prophecy",
             "configuracion": "Settings",
             "calendario": "Calendar",
+            "idioma_titulo": "Choose language for the app",
             "hashtag": "#bhp",
             "buscador":{
                 "btn_buscar": "Search",
