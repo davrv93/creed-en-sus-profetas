@@ -27,6 +27,12 @@ audio {
     filter: alpha(opacity=100);
 
 }
+.has-tabs-top-header{
+  top:90px;
+}
+.has-header-subheader-and-tabs {
+  top: $bar-height + $bar-subheader-height + $tabs-height;
+}
 
 /* Make it a marquee */
 .marquee {

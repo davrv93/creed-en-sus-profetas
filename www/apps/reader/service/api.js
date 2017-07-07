@@ -1,11 +1,11 @@
-app.factory('API_READER', function ($resource) {
+app.factory('API_READER', function($resource) {
     // var data = $resource('http://davrv93.pythonanywhere.com/api/believe/book/:id', {id: '@id'}, {
-    // 		update:{ method:'PUT'},
-    // 		get:{ method:'GET', isArray:true}
+    //      update:{ method:'PUT'},
+    //      get:{ method:'GET', isArray:true}
     // });
     // return data;
-	//}) 
-	var url="http://davrv93.pythonanywhere.com/api/believe/";
+    //}) 
+    var url = "http://davrv93.pythonanywhere.com/api/believe/";
     // var headers = {
     //             'Access-Control-Allow-Origin' : '*',
     //             "Access-Control-Allow-Credentials":'false',
@@ -22,39 +22,35 @@ app.factory('API_READER', function ($resource) {
 
 
     // }
-	return {
-		Book: $resource(url + 'book/:id/:microrecurso/', { 'id': '@id', 'microrecurso': '@microrecurso' },
-            {   
-                    'list': { method: 'GET', isArray: true},
-                    "save": { method: 'POST' },
-                    "update": { method: 'PUT' },
-                    'get': { method: 'GET', isArray:true},
-                    'post': { method: 'GET'},
-					'destroy': { method: 'POST'}
-			}),
-        Testament: $resource(url + 'testament/:id/:microrecurso/', { 'id': '@id', 'microrecurso': '@microrecurso' },
-            {   
-                    'list': { method: 'GET', isArray: true},
-                    "save": { method: 'POST' },
-                    "update": { method: 'PUT' },
-                    'get': { method: 'GET', isArray:true},
-                    'post': { method: 'GET'},
-                    'destroy': { method: 'POST'}
-            }),
+    return {
+        Book: $resource(url + 'book/:id/:microrecurso/', { 'id': '@id', 'microrecurso': '@microrecurso' }, {
+            'list': { method: 'GET', isArray: true },
+            "save": { method: 'POST' },
+            "update": { method: 'PUT' },
+            'get': { method: 'GET', isArray: true },
+            'post': { method: 'GET' },
+            'destroy': { method: 'POST' }
+        }),
+        Testament: $resource(url + 'testament/:id/:microrecurso/', { 'id': '@id', 'microrecurso': '@microrecurso' }, {
+            'list': { method: 'GET', isArray: true },
+            "save": { method: 'POST' },
+            "update": { method: 'PUT' },
+            'get': { method: 'GET', isArray: true },
+            'post': { method: 'GET' },
+            'destroy': { method: 'POST' }
+        }),
 
-        Reading: $resource(url + 'verse/:id/:microrecurso/', { 'id': '@id', 'microrecurso': '@microrecurso' },
-            {   
-                    'list': { method: 'GET', isArray: true},
-                    'select': { method: 'GET', isArray: true,
-                     },
-                    "save": { method: 'POST' },
-                    "update": { method: 'PUT' },
-                    'get': { method: 'GET', isArray:true},
-                    'post': { method: 'GET'},
-                    'destroy': { method: 'POST'}
-            }),
-	};
-  });
-
-
-
+        Reading: $resource(url + 'verse/:id/:microrecurso/', { 'id': '@id', 'microrecurso': '@microrecurso' }, {
+            'list': { method: 'GET', isArray: true },
+            'select': {
+                method: 'GET',
+                isArray: true,
+            },
+            "save": { method: 'POST' },
+            "update": { method: 'PUT' },
+            'get': { method: 'GET', isArray: true },
+            'post': { method: 'GET' },
+            'destroy': { method: 'POST' }
+        }),
+    };
+});

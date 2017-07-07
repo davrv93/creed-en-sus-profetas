@@ -9,10 +9,12 @@ app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     $stateProvider
 
         .state('app', {
-        url: "/app",
-        abstract: true,
-        templateUrl: "apps/home/view/menu.html"
-    })
+            url: "/app",
+            abstract: true,
+            cache: false,
+            templateUrl: "apps/home/view/menu.html"
+        })
+       
 
     .state('app.home', {
             url: "/home",
@@ -55,12 +57,30 @@ app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
                     templateUrl: "apps/reader/view/bible.html"
                 }
             }
-        })        
+        })
         .state('app.reader_bible', {
             url: "/reader_bible",
+
             views: {
                 'menuContent': {
                     templateUrl: "apps/reader/view/reader_bible.html"
+                }
+            }
+        }).state('app.reader_bible.tab_bible', {
+            url: "/tab_bible", 
+            cache: false,
+            views: {
+                'tabBible': {
+                    templateUrl: "apps/reader/view/tab-bible.html",
+                    controller: "ReaderCtrl"
+                }
+            }
+        }).state('app.reader_bible.tab_commentary', {
+            url: "/tab_commentary", 
+            views: {
+                'tabCommentary': {
+                    templateUrl: "apps/reader/view/tab-commentary.html",
+                    // controller: "ReaderCtrl"
                 }
             }
         });

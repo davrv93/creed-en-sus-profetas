@@ -34,6 +34,11 @@ var app = angular.module('starter', ['ionic', 'ionic-toast','ngResource', // inj
     });
 })
 
+.config(function($ionicConfigProvider){
+    $ionicConfigProvider.tabs.position("top"); //Places them at the bottom for all OS
+
+})
+
 .config(function($httpProvider) {
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
