@@ -1,4 +1,4 @@
-app.controller('CommentaryVerseCtrl', function($scope, $sce, $state, $ionicScrollDelegate, $http, ionicToast, $cordovaClipboard, $filter, API_READER, $stateParams, $translate, $rootScope, $cordovaSocialSharing, $location) {
+app.controller('CommentaryVerseCtrl', function($scope, $sce, $state, $ionicModal, $ionicScrollDelegate, $http, ionicToast, $cordovaClipboard, $filter, API_READER, $stateParams, $translate, $rootScope, $cordovaSocialSharing, $location) {
     var $translateFilter = $filter('translate');
 
     $scope.conditionPlayer = false;
@@ -298,7 +298,7 @@ app.controller('CommentaryVerseCtrl', function($scope, $sce, $state, $ionicScrol
 
     $scope.goContent = function(param) {
         $state.transitionTo('app.reader_bible.content', { verse: param });
-        
+
         //$location.path('#/app/reader_bible/tab_commentary/').search({verse: param})
     }
 
@@ -349,7 +349,68 @@ app.controller('CommentaryVerseCtrl', function($scope, $sce, $state, $ionicScrol
     }
 
     $scope.getVersesFromChapter();
-    //$rootScope.progress = false;
+
+    $scope.loadTemplate = function() {
+        $ionicModal.fromTemplateUrl('my-modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.modal = modal;
+        });
+    }
+
+    $scope.openModal = function(param, pageTitle, chapter) {
+        var dict_verse = {
+            id: param['id'],
+            verse: param['verse'],
+            pageTitle: pageTitle,
+            chapter: chapter
+        }
+        $scope.param = dict_verse;
+        $scope.getCommentary(param['id']);
+        $scope.modal.show();
+    };
+    $scope.closeModal = function() {
+        $scope.modal.hide();
+    };
+    // Cleanup the modal when we're done with it!
+    $scope.$on('$destroy', function() {
+        $scope.modal.remove();
+    });
+    // Execute action on hide modal
+    $scope.$on('modal.hidden', function() {
+        // Execute action
+    });
+    // Execute action on remove modal
+    $scope.$on('modal.removed', function() {
+        // Execute action
+    });
+
+    $scope.getCommentary = function(id) {
+        $rootScope.progress = true;
+
+        var req = {
+            method: 'GET',
+            url: "https://davrv93.pythonanywhere.com/api/believe/verse/get_commentary_from_verse/",
+            params: {
+                id: id,
+            }
+        }
+
+        $http(req).success(function(res) {
+            $scope.obj_commentary=res;
+            console.log('Res', res)
+            $rootScope.progress = false;
+        }).error(function(err) {
+            console.log('Err', err)
+            $scope.obj_commentary = [{
+                'data': $translateFilter('errors.404')
+            }];
+            $scope.pageTitle = "Error";
+            $rootScope.progress = false;
+        })
+
+    }
 
     $scope.onListReading = function() {
         $rootScope.progress = true;

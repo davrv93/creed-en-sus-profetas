@@ -1,4 +1,30 @@
-<ion-view title="{{headerTitle}}" align="left" ng-controller="CommentaryVerseCtrl" style="background-color:#8082C6">
+<script id="my-modal.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar align-title="center" class="bar-positive">
+            <div class="button button-clear" ng-click="modal.hide()">
+                <a class="button button-icon icon ion-android-share-alt" aria-label="Share in social networks"></a>
+            </div>
+            <h1 class="title">{{param.pageTitle}} {{param.chapter}}:{{param.verse}}</h1>
+            <div class="button button-clear" ng-click="modal.hide()">
+                <span class="icon ion-close"></span>
+            </div>
+        </ion-header-bar>
+        <ion-content class=" responsive-sm" style="background-color:#F5F5F5" overflow-scroll="false" >
+            <md-content style="height:100%; overflow-y: hidden; overflow-x: hidden; ">
+                <div  ng-repeat="x in obj_commentary">
+                    <div class="item bar bar-positive ">
+                        {{x.word}}
+                    </div>
+                    <div style="text-align: justify; text-justify: inter-word; margin-left:15px;margin-right:15px; background-color:#F5F5F5">
+                        <span>{{x.data}}</span>
+                    </div>                 
+                </div>
+               
+            </md-content>
+        </ion-content>
+    </ion-modal-view>
+</script>
+<ion-view title="{{headerTitle}}" ng-init="loadTemplate()" align="left" ng-controller="CommentaryVerseCtrl" style="background-color:#8082C6">
     <ion-nav-buttons side="left">
         <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
     </ion-nav-buttons>
@@ -26,14 +52,12 @@
         </button>
     </div>
     <ion-content class="background home-container responsive-sm " align="center" style=" padding-bottom:40px" overflow-scroll="false">
-
         <md-content style="height:100%; overflow-y: hidden; overflow-x: hidden;" class="has-header has-footer">
-            <div  ng-repeat="x in obj_verses" >
-                <div class="item" ng-click="goContent(x.id)">
-                <b><span class="verse">Versículo {{x.verse}}. </span></b>
+            <div ng-repeat="x in obj_verses">
+                <div class="item" ng-click="openModal(x,pageTitle,obj_header.chapter)">
+                    <b><span class="verse">Versículo {{x.verse}}. </span></b>
                 </div>
             </div>
-
         </md-content>
     </ion-content>
     <ion-footer-bar class="bar-dark" keyboard-attach>

@@ -55,28 +55,30 @@
         </table>
     </script> -->
     <ion-content ng-init="showConfirm()" class="has-header background  home-container responsive-sm" style="height:100%" overflow-scroll="false" align="center">
-        <div layout-gt-md="column" layout="column" align="center" flex-gt-md="100" >
+        <div layout-gt-md="column" layout="column" align="center" flex-gt-md="100">
             <!-- Cabecera de Logo -->
             <div layout-gt-md="column" flex-gt-md="100" align="center">
-                <img style="display: block; width: 300px; height: 85px; padding-top:2%;
+                <img style="display: block; width: 300px; height: 18%; padding-top:2%;
                     margin: 0 auto;" src="resources/apps/home/creed-logo.png" align="center">
             </div>
             <!-- Sección de botones -->
-            <div class="list" ng-init="showActionToast();" style="padding-top:5%; padding-bottom:10%">
-                <a class="item item item-thumbnail-left " href="#/app/reader_bible" ng-click="closeToast();" onclick="window.location.href='#/app/reader_bible'">
-                    <img src="resources/apps/home/bible.png">
-                    <h2 style="color:white"><b>{{'reavivados' | translate}}</b></h2>
-                </a>
-                <a class="item item item-thumbnail-left" href="#/app/reader_spirit_prophecy" ng-click="closeToast();" onclick="window.location.href='#/app/reader_spirit_prophecy'">
-                    <img src="resources/apps/home/egw.png">
-                    <h2 style="color:white"><b>{{'espiritu_profecia' | translate}}</b></h2>
-                </a>
-                <a class="item item item-thumbnail-left" href="#" href="#/app/reader_spirit_prophecy" ng-click="closeToast(); onListUpdate($event);">
-                    <img ng-src="{{!need_update['condition'] && 'resources/apps/home/bell.png' || 'resources/apps/home/notify.png'}}">
-                    <h2 style="color:white" ng-show="!need_update['condition']"><b>{{'labels.actualizacion'|translate}}</b></h2>
-                    <h2 style="color:white" ng-show="need_update['condition']"><b>{{'labels.actualizar'|translate}}</b></h2>
-                </a>
-            </div>
+            <md-content style="height:100%; ">
+                <div class="list" ng-init="showActionToast();" style="padding-top:5%; padding-bottom:10%">
+                    <a class="item item item-thumbnail-left " href="#/app/reader_bible" ng-click="closeToast();" onclick="window.location.href='#/app/reader_bible'">
+                        <img src="resources/apps/home/bible.png">
+                        <h2 style="color:white"><b>{{'reavivados' | translate}}</b></h2>
+                    </a>
+                    <a class="item item item-thumbnail-left" href="#/app/reader_spirit_prophecy" ng-click="closeToast();" onclick="window.location.href='#/app/reader_spirit_prophecy'">
+                        <img src="resources/apps/home/egw.png">
+                        <h2 style="color:white"><b>{{'espiritu_profecia' | translate}}</b></h2>
+                    </a>
+                    <a class="item item item-thumbnail-left" href="#" href="#/app/reader_spirit_prophecy" ng-click="closeToast(); onListUpdate($event);">
+                        <img ng-src="{{!need_update['condition'] && 'resources/apps/home/bell.png' || 'resources/apps/home/notify.png'}}">
+                        <h2 style="color:white" ng-show="!need_update['condition']"><b>{{'labels.actualizacion'|translate}}</b></h2>
+                        <h2 style="color:white" ng-show="need_update['condition']"><b>{{'labels.actualizar'|translate}}</b></h2>
+                    </a>
+                </div>
+            </md-content>
         </div>
     </ion-content>
 </ion-view>
