@@ -24,7 +24,7 @@
         </button>
     </div>
     <ion-content class="home-container responsive-sm " align="center" style=" padding-bottom:40px" overflow-scroll="false">
-        <md-content style="height:100%;" class="background has-header has-footer">
+        <md-content style="height:100%; " class="has-header has-footer">
             <div ng-attr-id="{{'title'+$index}}" style="text-align: justify; text-justify: inter-word; margin-left:15px;margin-right:15px;" ng-repeat="x in obj_reading | filter:filter" ng-click="setClass($index,x);">
                 <b><span class="verse">{{x.verse}}. </span></b> <span class="verse">{{x.data}}</span>
                 <br>

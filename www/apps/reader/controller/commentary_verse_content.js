@@ -1,5 +1,7 @@
-app.controller('CommentaryVerseCtrl', function($scope, $sce, $state, $ionicScrollDelegate, $http, ionicToast, $cordovaClipboard, $filter, API_READER, $stateParams, $translate, $rootScope, $cordovaSocialSharing, $location) {
+app.controller('CommentaryVerseContentCtrl', function($scope, $sce, $state, $ionicScrollDelegate, $http, ionicToast, $cordovaClipboard, $filter, API_READER, $stateParams, $translate, $rootScope, $cordovaSocialSharing) {
     var $translateFilter = $filter('translate');
+    console.log($state.params);
+
 
     $scope.conditionPlayer = false;
     $scope.searchMode = false;
@@ -294,12 +296,20 @@ app.controller('CommentaryVerseCtrl', function($scope, $sce, $state, $ionicScrol
         });
     }
 
+    $scope.$watch(function() {
+        return $state.$current.name
+    }, function(newVal, oldVal) {
+        console.log(newVal);
+        // if(newVal=="app.reader_bible.tab_commentary"){
+        //     $state.reload();
+        // }
+        //if(oldVal=="")
+        
 
+    })
 
     $scope.goContent = function(param) {
-        $state.transitionTo('app.reader_bible.content', { verse: param });
-        
-        //$location.path('#/app/reader_bible/tab_commentary/').search({verse: param})
+        $state.go('app.reader_bible.tab_commentary.content', { verse: param });
     }
 
     $scope.getVersesFromChapter = function() {
