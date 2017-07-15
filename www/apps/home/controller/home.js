@@ -6,15 +6,29 @@
         if (localStorage.appVersion != undefined) {
             $rootScope.appVersion = localStorage.appVersion
         }
+        $rootScope.notifyImg = "resources/apps/home/bell.png";
 
-        // $scope.wrapper = ['testing'];
         $scope.labels = [];
         var $translateFilter = $filter('translate');
 
-        // $scope.label_reavivados = $translateFilter('reavivados');
-        // $scope.label_espiritu_profecia = $translateFilter('espiritu_profecia');
-        // $scope.labels.push($scope.label_reavivados);
-        // $scope.labels.push($scope.label_espiritu_profecia);
+        $scope.$watchCollection('need_update', function(newValue, oldValue) {
+            //!$root.need_update['condition'] && 'resources/apps/home/bell.png' || 'resources/apps/home/notify.png'
+            if (oldValue) {
+                //console.log(oldValue)
+            }
+            if (newValue) {
+                if (newValue['condition'] == false) {
+                    //console.log(newValue)
+                    $rootScope.notifyImg = "resources/apps/home/bell.png";
+                } else {
+                    //console.log(newValue)
+                    $rootScope.notifyImg = "resources/apps/home/notify.png";
+                }
+
+            }
+        })
+
+
 
         $scope.showActionToast = function() {
             ionicToast.show($translateFilter('home_msg'), 'bottom', false, 4000);
@@ -23,8 +37,6 @@
         $scope.closeToast = function() {
             ionicToast.hide();
         };
-
-
 
         $scope.setLang = function(lang) {
             if (lang == "ES") {

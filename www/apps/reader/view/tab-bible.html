@@ -25,7 +25,7 @@
     </div>
     <ion-content class="home-container responsive-sm " align="center" style=" padding-bottom:40px" overflow-scroll="false">
         <md-content style="height:100%; " class="has-header has-footer">
-            <div ng-attr-id="{{'title'+$index}}" style="text-align: justify; text-justify: inter-word; margin-left:15px;margin-right:15px;" ng-repeat="x in obj_reading | filter:filter" ng-click="setClass($index,x);">
+            <div ng-attr-id="{{'title'+$index}}" class="text-content-show" ng-repeat="x in obj_reading | filter:filter" ng-click="setClass($index,x);">
                 <b><span class="verse">{{x.verse}}. </span></b> <span class="verse">{{x.data}}</span>
                 <br>
                 <br>
@@ -42,30 +42,22 @@
                 <ng-md-icon icon="search"></ng-md-icon>
             </button>
         </div>
-        <div ng-show="!conditionPlayer" layout="row" style="display: inline-block;
-              vertical-align: middle;
-              line-height: normal; text-align: right; ">
+        <div ng-show="!conditionPlayer" layout="row" class="footer-button">
             <button class="md-icon-button md-button" aria-label="Open sample menu" ng-click="shareSocial('copy')">
                 <ng-md-icon icon="content_copy"></ng-md-icon>
             </button>
         </div>
-        <div layout="row" ng-show="!conditionPlayer" style="display: inline-block;
-              vertical-align: middle;
-              line-height: normal; text-align: right; ">
+        <div layout="row" ng-show="!conditionPlayer" class="footer-button">
             <button class="md-icon-button md-button" aria-label="Open sample menu" ng-click="shareSocial('twitter')">
                 <ng-include src="'resources/apps/home/twitter.svg'"></ng-include>
             </button>
         </div>
-        <div layout="row" ng-show="!conditionPlayer" style="display: inline-block;
-              vertical-align: middle;
-              line-height: normal; text-align: right; ">
+        <div layout="row" ng-show="!conditionPlayer" class="footer-button">
             <button class="md-icon-button md-button" aria-label="Open sample menu" ng-click="shareSocial('facebook')">
                 <ng-include src="'resources/apps/home/facebook.svg'"></ng-include>
             </button>
         </div>
-        <div layout="row" ng-show="!conditionPlayer" style="display: inline-block;
-              vertical-align: middle;
-              line-height: normal; text-align: right; ">
+        <div layout="row" ng-show="!conditionPlayer" class="footer-button">
             <button class="md-icon-button md-button" aria-label="Open sample menu" ng-click="shareSocial('whatsapp')">
                 <ng-include src="'resources/apps/home/whatsapp.svg'"></ng-include>
             </button>

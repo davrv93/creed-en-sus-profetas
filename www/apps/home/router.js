@@ -60,7 +60,6 @@ app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         })
         .state('app.reader_bible', {
             url: "/reader_bible",
-
             views: {
                 'menuContent': {
                     templateUrl: "apps/reader/view/reader_bible.html"

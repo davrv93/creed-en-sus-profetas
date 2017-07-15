@@ -54,6 +54,10 @@ app.controller('CommentaryVerseCtrl', function($scope, $sce, $state, $ionicModal
         ionicToast.show($translateFilter('reader_msg'), 'bottom', false, 2000);
     };
 
+    $scope.showParamToast = function(param) {
+        ionicToast.show($translateFilter(param), 'bottom', false, 2000);
+    };
+
     $scope.closeToast = function() {
         ionicToast.hide();
     };
@@ -79,184 +83,49 @@ app.controller('CommentaryVerseCtrl', function($scope, $sce, $state, $ionicModal
     }
 
     $scope.buildVerse = function() {
-        $scope.list_underline = $scope.list_underline.sort(dynamicSort("id"));
-        var hashtag = $translateFilter('hashtag');
+        console.log('obj_commentary',$scope.obj_commentary)
+        $scope.obj_commentary = $scope.obj_commentary.sort(dynamicSort("order"));
+        var hashtag = $translateFilter('hashtag_commentary');
         var book = $scope.pageTitle + ': ' + $scope.obj_header.chapter + '\n'
         var verse = "";
-        for (key in $scope.list_underline) {
-            verse += $scope.list_underline[key]['verse'] + '. ' + $scope.list_underline[key]['data'] + '\n';
+        for (key in $scope.obj_commentary) {
+            verse += $scope.obj_commentary[key]['word'] + ': ' + $scope.obj_commentary[key]['data'] +'.'+ '\n';
 
         }
         var text = hashtag + ' ' + book + verse;
-        console.log($scope.list_underline);
+        console.log(text);
         return text
     }
 
-    $scope.inObject = function(target, data) {
+    
 
-        var condition = true;
-        for (key in data) {
-            if (data[key]['id'] == target['id']) {
-                condition = true;
-                $scope.list_underline.splice(key, 1);
-
-            } else {
-                condition = false;
-            }
-
-        }
-        if (condition === false) {
-            var obj_underline = {
-                'id': target['id'],
-                'verse': target['verse'],
-                'data': target['data']
-            };
-            $scope.list_underline.push(obj_underline);
-        }
-        //console.log($scope.list_underline)
-    }
-
-    $scope.fillObjUnderline = function(x) {
-        //x['id']       
-        if ($scope.list_underline.length === 0) {
-            //console.log('true')
-            var obj_underline = {
-                'id': x['id'],
-                'verse': x['verse'],
-                'data': x['data']
-            }
-            $scope.list_underline.push(obj_underline)
-        } else {
-            $scope.inObject(x, $scope.list_underline);
-        }
-    };
-
-    $scope.setClass = function(i, x) {
-        var title = document.getElementById('title' + i);
-        var BackgroundColorHighlight = "#337BDF";
-        var BackgroundColor = "#8082C6";
-        var HexBackgroundColor = "rgb(51, 123, 223)";
-        $scope.fillObjUnderline(x);
-
-        if (title.style.backgroundColor === HexBackgroundColor) {
-            title.style.backgroundColor = BackgroundColor;
-        } else {
-            title.style.backgroundColor = BackgroundColorHighlight;
-        }
-    }
-
+    
+    
     $rootScope.change_language = function(locale) {
         $scope.list_underline = [];
         $translate.use(locale);
         localStorage.language = locale;
-        $scope.onListReading();
-        if ($scope.conditionPlayer) {
-            $scope.dropPlayer();
-            $scope.conditionPlayer = true;
-            $scope.handlePlayer();
-        }
-
-        $scope.conditionPlayer = false;
     };
 
-
-
-    $scope.renderPlayer = function() {
-        var audio = ''
-        if ($scope.content.audio) {
-            audio = 'http://davrv93.pythonanywhere.com/' + $scope.content.audio
-        } else {
-            audio = ''
-        }
-        var playlist = [{
-            url: audio,
-            displayText: 'Isaías 34'
-        }, ];
-        var player =
-            React.createElement(AudioPlayer, {
-                playlist: playlist,
-                autoplay: true,
-                cycle: false,
-                hideForwardSkip: true,
-                hideBackSkip: true,
-                autoplayDelayInSeconds: 2.1,
-                style: {
-                    position: 'fixed',
-                    bottom: 0
-                }
-            });
-
-        ReactDOM.render(player,
-            document.getElementById('audio_player_container')
-        );
-        console.log(player)
-    };
-
-    $scope.dropPlayer = function() {
-        if (document.getElementById('audio_player_container')) {
-            ReactDOM.unmountComponentAtNode(document.getElementById('audio_player_container'));
-        }
-    };
-
-    $scope.handlePlayer = function() {
-        if ($scope.conditionPlayer) {
-            $scope.dropPlayer();
-            $scope.conditionPlayer = false;
-        } else {
-            $scope.renderPlayer();
-            $scope.conditionPlayer = true;
-        }
-    };
-
-    console.log($state.$current);
-
-    $scope.$watch(function() {
-        return $state.$current.name
-    }, function(newVal, oldVal) {
-        //do something with values
-        $scope.dropPlayer();
-        $scope.conditionPlayer = false;
-    })
-
-    $scope.HighLight = function() {
-        var elementId = event.srcElement.id;
-        var elementHtml = document.getElementById(elementId)
-        var BackgroundColorHighlight = "#337BDF";
-        var BackgroundColor = "#8082C6";
-        var HexBackgroundColor = "rgb(51, 123, 223)";
-
-        if (elementHtml.style.backgroundColor === HexBackgroundColor) {
-            elementHtml.style.backgroundColor = BackgroundColor;
-        } else {
-            elementHtml.style.backgroundColor = BackgroundColorHighlight;
-        }
-    }
+    
 
     $scope.shareSocial = function(option) {
         var message = $scope.buildVerse()
         var image = ''
         var link = ''
-        if ($scope.list_underline.length == 0) {
+        if ($scope.obj_commentary.length == 0) {
             $scope.showActionToast();
         } else {
 
             if (option == "copy") {
+                $scope.showParamToast("share_copy");
                 $scope.copyText(message);
-            }
-            if (option == "twitter") {
-                $cordovaSocialSharing
-                    .shareViaTwitter(message, image, link)
-                    .then(function(result) {
-                        // Success!
-
-                    }, function(err) {
-                        // An error occurred. Show a message to the user
-                    });
             }
             if (option == "facebook") {
                 $cordovaSocialSharing
                     .shareViaFacebook(message, image, link)
                     .then(function(result) {
+                        $scope.showParamToast("share_facebook");
                         $scope.copyText(message);
                         // Success!
                     }, function(err) {
@@ -268,6 +137,7 @@ app.controller('CommentaryVerseCtrl', function($scope, $sce, $state, $ionicModal
                 $cordovaSocialSharing
                     .shareViaWhatsApp(message, image, link)
                     .then(function(result) {
+                        $scope.showParamToast("share_whatsapp");
                         $scope.copyText(message);
                         // Success!
                     }, function(err) {
@@ -276,25 +146,6 @@ app.controller('CommentaryVerseCtrl', function($scope, $sce, $state, $ionicModal
             }
         }
     }
-
-
-    $scope.onListBook = function() {
-        //var query = Book.query();
-        API_READER.Book.list().$promise.then(function(data) {
-            $scope.book = data;
-            // Do whatever when the request is finished
-        });
-    }
-
-    $scope.onListTestament = function() {
-        //var query = Book.query();
-        API_READER.Testament.list().$promise.then(function(data) {
-            $scope.testament = data;
-            // Do whatever when the request is finished
-        });
-    }
-
-
 
     $scope.goContent = function(param) {
         $state.transitionTo('app.reader_bible.content', { verse: param });
@@ -336,7 +187,7 @@ app.controller('CommentaryVerseCtrl', function($scope, $sce, $state, $ionicModal
             $scope.obj_verses = res.obj_verses;
             $scope.pageTitle = $translateFilter(res.book_name);
             console.log('Res', res)
-
+            //if(res.obj_verses.length)
             $rootScope.progress = false;
         }).error(function(err) {
             console.log('Err', err)
@@ -358,6 +209,9 @@ app.controller('CommentaryVerseCtrl', function($scope, $sce, $state, $ionicModal
             $scope.modal = modal;
         });
     }
+    $scope.refreshCommentary = function (id){
+        $scope.getCommentary(id);
+    }
 
     $scope.openModal = function(param, pageTitle, chapter) {
         var dict_verse = {
@@ -367,7 +221,7 @@ app.controller('CommentaryVerseCtrl', function($scope, $sce, $state, $ionicModal
             chapter: chapter
         }
         $scope.param = dict_verse;
-        $scope.getCommentary(param['id']);
+        $scope.getCommentary($scope.param['id']);
         $scope.modal.show();
     };
     $scope.closeModal = function() {
@@ -398,7 +252,7 @@ app.controller('CommentaryVerseCtrl', function($scope, $sce, $state, $ionicModal
         }
 
         $http(req).success(function(res) {
-            $scope.obj_commentary=res;
+            $scope.obj_commentary = res;
             console.log('Res', res)
             $rootScope.progress = false;
         }).error(function(err) {
@@ -411,6 +265,14 @@ app.controller('CommentaryVerseCtrl', function($scope, $sce, $state, $ionicModal
         })
 
     }
+
+    $rootScope.change_language = function(locale) {
+        $scope.list_underline = [];
+        $translate.use(locale);
+        localStorage.language = locale;
+        $scope.onListReading();
+        $scope.getVersesFromChapter();
+    };
 
     $scope.onListReading = function() {
         $rootScope.progress = true;
@@ -443,6 +305,11 @@ app.controller('CommentaryVerseCtrl', function($scope, $sce, $state, $ionicModal
 
         $http(req).success(function(res) {
             $scope.content = res;
+            $rootScope.chapter = res['commentary'];
+            if (res['commentary'] == undefined) {
+                $rootScope.chapter = false;
+            }
+            console.log(res);
             $scope.obj_header = res.obj_header;
             $scope.obj_reading = res.obj_reading;
             $scope.pageTitle = $translateFilter(res.obj_header.book_name);
@@ -457,8 +324,10 @@ app.controller('CommentaryVerseCtrl', function($scope, $sce, $state, $ionicModal
         })
     }
 
+
+
     $scope.trustSrc = function(src) {
-            return $sce.trustAsResourceUrl(src);
-        }
-        //$scope.onListReading();
+        return $sce.trustAsResourceUrl(src);
+    }
+
 });

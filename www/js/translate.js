@@ -3,8 +3,12 @@ app
         $translateProvider.translations("ES", {
             "app": "Creed en sus profetas",
             "volver": "Volver",
+            "share_copy": "Texto copiado, presione alguna caja de texto y pegue el contenido.",
+            "share_facebook": "Texto copiado, presione la caja de texto y pegue el contenido.",
+            "share_whatsapp": "Seleccione el contacto para compartir.",
             "reavivados": "Reavivados por su Palabra",
             "biblia": "Biblia",
+            "comentario_biblico": "Comentario bíblico",
             "espiritu_profecia": "Espíritu de profecía",
             "configuracion": "Configuración",
             "calendario": "Calendario",
@@ -13,7 +17,9 @@ app
             "idioma_titulo": "Seleccione el idioma",
             "cerrar": "Cerrar",
             "hashtag": "#rpsp",
-            "buscador":{
+            "hashtag_commentary": "#rpsp #cba",
+            "versiculo": "Versículo",
+            "buscador": {
                 "btn_buscar": "Buscar",
                 "label": "Click y escriba aquí",
                 "btn_cancelar": "Cancelar",
@@ -29,10 +35,12 @@ app
                 "btn_update": "Actualizar",
                 "btn_close": "Cerrar"
             },
+            "commentary_msg": "El comentario bíblico no está disponible para este capítulo.",
             "home_msg": "Clic en el botón de la esquina superior izquierda para ver las opciones.",
             "reader_msg": "Seleccione por lo menos un versículo para poder compartirlo.",
             "update_msg": "Actualización disponible en Google Play Store!.",
             "updated_msg": "Usted ya cuenta con la última versión actualizada.",
+            "no_commentary_msg": "Verifique su conexión a Internet, si usted tiene conexión a internet, entonces no existe comentario configurado para este capítulo en el servidor.",
             "errors": {
                 "404": "Hubo un problema al obtener la lectura de hoy, verifique su conexión a internet. Si usted tiene conexión a internet activada entonces la lectura para hoy no ha sido actualizada por el programador, sirvase notificar en Google Play del caso. Gracias"
             },
@@ -137,6 +145,10 @@ app
             "app": "Believe his prophets",
             "volver": "Back",
             "biblia": "Bible",
+            "comentario_biblico": "Adventist Biblical Commentary",
+            "share_copy": "The text has been copied, paste the content in a text box.",
+            "share_facebook": "The text has been copied, paste the content in the facebook text box.",
+            "share_whatsapp": "Choose the contact to share the text.",
             "menu": "Menu",
             "home": "Home",
             "cerrar": "Close",
@@ -144,17 +156,21 @@ app
                 "btn_update": "Update",
                 "btn_close": "Close"
             },
+            "commentary_msg": "The Biblical commentary is not available for this chapter.",
             "home_msg": "Click the button in the upper left corner to see the options.",
             "reader_msg": "Select at least one verse to share it.",
             "update_msg": "Update available in the Google Play Store!.",
             "updated_msg": "Your application is up to date!.",
+            "no_commentary_msg": "Please verify your internet connection, if you've internet connection it means that there isn't a commentary configured on server for this chapter.",
             "reavivados": "Revived by his Word",
             "espiritu_profecia": "Spirit of prophecy",
             "configuracion": "Settings",
             "calendario": "Calendar",
+            "versiculo": "Verse",
             "idioma_titulo": "Choose language for the app",
             "hashtag": "#bhp",
-            "buscador":{
+            "hashtag_commentary": "#bhp #abc",
+            "buscador": {
                 "btn_buscar": "Search",
                 "label": "Click and write here",
                 "btn_cancelar": "Cancel",

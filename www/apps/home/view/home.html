@@ -6,9 +6,32 @@
         <a ng-click="showActionToast();" class="button button-icon icon ion-help-circled" aria-label="Open language menu"></a>
         <a class="button button-icon icon ion-earth" aria-label="Open language menu" menu-toggle="right"></a>
     </ion-nav-buttons>
-    <modal-dialog show='dialogShown' dialog-title="{{'titles.dialog_update_title' | translate}}" height='50%' width='75%'>
+    <!-- Templates -->
+    <script id="main-templates" type="text/x-handlebars-template">
+        <div class="list item-body">
+            <img style="width:300px" src="resources/apps/home/creed-logo.png">
+        </a>        
+    </script>
+    <script id="main-buttons" type="text/x-handlebars-template">
+        <div class="list padding-for-content" ng-init="$parent.$parent.showActionToast();">
+            <a class="item item item-thumbnail-left " href="#/app/reader_bible" ng-click="$parent.$parent.closeToast();" onclick="window.location.href='#/app/reader_bible'">
+                <img src="resources/apps/home/bible.png">
+                <h2 class="white-text"><b><ANY translate="reavivados"></ANY></b></h2>
+            </a>
+            <a class="item item item-thumbnail-left" href="#/app/reader_spirit_prophecy" ng-click="$parent.$parent.closeToast();" onclick="window.location.href='#/app/reader_spirit_prophecy'">
+                <img src="resources/apps/home/egw.png">
+                <h2 class="white-text"><b><ANY translate="espiritu_profecia"></ANY></b></h2>
+            </a>
+            <a class="item item item-thumbnail-left" href="#" href="#/app/reader_spirit_prophecy" ng-click="$parent.$parent.closeToast(); $parent.$parent.onListUpdate($event);">
+                <img ng-src="\{{$root.notifyImg}}">
+                <h2 ng-show="!$root.need_update['condition']" class="white-text"><b><ANY translate="labels.actualizacion"></ANY></b></h2>
+                <h2 ng-show="$root.need_update['condition']" class="white-text"><b><ANY translate="labels.actualizacion"></ANY></b></h2>
+            </a>
+        </div>
+    </script>
+    <script id="modal-update" type="text/x-handlebars-template">
         <div class="md-dialog-content">
-            <div style=" text-justify: inter-word; margin-left:15px;margin-right:15px; margin-bottom:2px">
+            <div class="text-shown">
                 <h3 ng-bind-html="$root.need_update.title"></h3>
                 <h4 ng-bind-html="$root.need_update.content"></h4>
                 <br>
@@ -18,66 +41,44 @@
         <ion-footer-bar class="bar-dark" keyboard-attach align="right">
             <div class="md-dialog-actions" layout="row">
                 <button class="md-button" ng-show="$root.need_update['condition']" href="https://play.google.com/store/apps/details?id=com.davsoftw.creedasusprofetas" target="_blank" md-autofocus>
-                    {{'btn.btn_update' | translate}}
+                    <ANY translate="btn.btn_update"></ANY>
                 </button>
                 <span flex></span>
-                <button class="md-button" ng-click="closeModal()">
-                    {{'btn.btn_close' | translate}}
+                <button class="md-button" ng-click="$parent.$parent.$parent.closeModal()">
+                    <ANY translate="btn.btn_close"></ANY>
                 </button>
             </div>
         </ion-footer-bar>
-    </modal-dialog>
-    <modal-dialog show='dialogLangShown' dialog-title="Idioma / Language" height='70%' width='90%'>
-        <div style=" text-justify: inter-word; margin-left:15px;margin-right:15px; margin-bottom:2px">
+    </script>
+    <script id="modal-language" type="text/x-handlebars-template">
+        <div class="text-shown">
             <h3>Elija el idioma que desea para la aplicación / Choose the desired app language.</h3>
         </div>
         <div class="md-dialog-actions" layout="row" align="center">
-            <button class="md-button " style="background-color:#444444;color:white" md-autofocus>
+            <button class="md-button menu-button" md-autofocus>
                 Español
             </button>
             <span flex></span>
-            <button class="md-button" style="background-color:#444444;color:white" ng-click="closeModal()">
+            <button class="md-button menu-button" ng-click="closeModal()">
                 English
             </button>
         </div>
+    </script>
+    <!-- Modals -->
+    <modal-dialog show='dialogShown' dialog-title="{{'titles.dialog_update_title' | translate}}" height='50%' width='75%'>
+        <modal-update></modal-update>
     </modal-dialog>
-    <!--     <script id="table-template" type="text/x-handlebars-template">
-        <table>
-            {{#data}}
-            <tr>
-                <td>{{0}}</td>
-                <td>{{1}}</td>
-                <td>
-                    <md-button ng-click="$parent.testing()">test</md-button>
-                </td>
-            </tr>
-            {{/data}}
-        </table>
-    </script> -->
-    <ion-content ng-init="showConfirm()" class="has-header background  home-container responsive-sm" style="height:100%" overflow-scroll="false" align="center">
+    <modal-dialog show='dialogLangShown' dialog-title="Idioma / Language" height='70%' width='90%'>
+        <modal-language></modal-language>
+    </modal-dialog>
+    <!-- HTML -->
+    <ion-content ng-init="showConfirm()" class="has-header background  home-container responsive-sm full-height" overflow-scroll="false" align="center">
         <div layout-gt-md="column" layout="column" align="center" flex-gt-md="100">
             <!-- Cabecera de Logo -->
-            <div layout-gt-md="column" flex-gt-md="100" align="center">
-                <img style="display: block; width: 300px; height: 18%; padding-top:2%;
-                    margin: 0 auto;" src="resources/apps/home/creed-logo.png" align="center">
-            </div>
+            <main-template></main-template>
             <!-- Sección de botones -->
-            <md-content style="height:100%; ">
-                <div class="list" ng-init="showActionToast();" style="padding-top:5%; padding-bottom:10%">
-                    <a class="item item item-thumbnail-left " href="#/app/reader_bible" ng-click="closeToast();" onclick="window.location.href='#/app/reader_bible'">
-                        <img src="resources/apps/home/bible.png">
-                        <h2 style="color:white"><b>{{'reavivados' | translate}}</b></h2>
-                    </a>
-                    <a class="item item item-thumbnail-left" href="#/app/reader_spirit_prophecy" ng-click="closeToast();" onclick="window.location.href='#/app/reader_spirit_prophecy'">
-                        <img src="resources/apps/home/egw.png">
-                        <h2 style="color:white"><b>{{'espiritu_profecia' | translate}}</b></h2>
-                    </a>
-                    <a class="item item item-thumbnail-left" href="#" href="#/app/reader_spirit_prophecy" ng-click="closeToast(); onListUpdate($event);">
-                        <img ng-src="{{!need_update['condition'] && 'resources/apps/home/bell.png' || 'resources/apps/home/notify.png'}}">
-                        <h2 style="color:white" ng-show="!need_update['condition']"><b>{{'labels.actualizacion'|translate}}</b></h2>
-                        <h2 style="color:white" ng-show="need_update['condition']"><b>{{'labels.actualizar'|translate}}</b></h2>
-                    </a>
-                </div>
+            <md-content class="container-home-buttons">
+                <main-buttons></main-buttons>
             </md-content>
         </div>
     </ion-content>

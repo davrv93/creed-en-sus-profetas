@@ -4,6 +4,8 @@ app.controller('ReaderCtrl', function($scope, $sce, $state, $ionicScrollDelegate
     $scope.searchMode = false;
     $scope.headerTitle = $translateFilter('hashtag');
     $scope.filter = { "data_clean": '' };
+    // var tab_commentary = document.getElementById('tab_commentary')
+    // console.log(tab_commentary)
 
     $scope.$watch('searchMode', function(newValue, oldValue) {
         if (newValue == true) {
@@ -48,9 +50,9 @@ app.controller('ReaderCtrl', function($scope, $sce, $state, $ionicScrollDelegate
     }
 
     $scope.list_underline = [];
-    
-    $scope.showActionToast = function() {        
-        ionicToast.show($translateFilter('reader_msg'), 'bottom', false,2000);    
+
+    $scope.showActionToast = function() {
+        ionicToast.show($translateFilter('reader_msg'), 'bottom', false, 2000);
     };
 
     $scope.closeToast = function() {
@@ -169,7 +171,7 @@ app.controller('ReaderCtrl', function($scope, $sce, $state, $ionicScrollDelegate
         }
         var playlist = [{
             url: audio,
-            displayText: 'Isaías 34'
+            displayText: 'Audio'
         }, ];
         var player =
             React.createElement(AudioPlayer, {
@@ -324,6 +326,11 @@ app.controller('ReaderCtrl', function($scope, $sce, $state, $ionicScrollDelegate
 
         $http(req).success(function(res) {
             $scope.content = res;
+            $rootScope.chapter = res['commentary'];
+            if(res['commentary']==undefined){
+                $rootScope.chapter = false;
+            }
+            //console.log(res);
             $scope.obj_header = res.obj_header;
             $scope.obj_reading = res.obj_reading;
             $scope.pageTitle = $translateFilter(res.obj_header.book_name);
@@ -342,4 +349,5 @@ app.controller('ReaderCtrl', function($scope, $sce, $state, $ionicScrollDelegate
         return $sce.trustAsResourceUrl(src);
     }
     $scope.onListReading();
+
 });
