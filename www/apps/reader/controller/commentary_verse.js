@@ -199,15 +199,15 @@ app.controller('CommentaryVerseCtrl', function($scope, $sce, $state, $ionicModal
         })
     }
 
-    $scope.getVersesFromChapter();
+    //$scope.getVersesFromChapter();
 
     $scope.loadTemplate = function() {
-        $ionicModal.fromTemplateUrl('my-modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.modal = modal;
-        });
+        // $ionicModal.fromTemplateUrl('my-modal.html', {
+        //     scope: $scope,
+        //     animation: 'slide-in-up'
+        // }).then(function(modal) {
+        //     $scope.modal = modal;
+        // });
     }
     $scope.refreshCommentary = function (id){
         $scope.getCommentary(id);
@@ -271,7 +271,7 @@ app.controller('CommentaryVerseCtrl', function($scope, $sce, $state, $ionicModal
         $translate.use(locale);
         localStorage.language = locale;
         $scope.onListReading();
-        $scope.getVersesFromChapter();
+        //$scope.getVersesFromChapter();
     };
 
     $scope.onListReading = function() {
@@ -306,10 +306,12 @@ app.controller('CommentaryVerseCtrl', function($scope, $sce, $state, $ionicModal
         $http(req).success(function(res) {
             $scope.content = res;
             $rootScope.chapter = res['commentary'];
+            $rootScope.commentary = res['commentary'];
             if (res['commentary'] == undefined) {
                 $rootScope.chapter = false;
             }
-            console.log(res);
+            console.log($rootScope.commentary);
+
             $scope.obj_header = res.obj_header;
             $scope.obj_reading = res.obj_reading;
             $scope.pageTitle = $translateFilter(res.obj_header.book_name);
@@ -324,7 +326,7 @@ app.controller('CommentaryVerseCtrl', function($scope, $sce, $state, $ionicModal
         })
     }
 
-
+    $scope.onListReading();
 
     $scope.trustSrc = function(src) {
         return $sce.trustAsResourceUrl(src);

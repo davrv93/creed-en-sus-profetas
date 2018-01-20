@@ -1,0 +1,30 @@
+<ion-view title="{{'app' | translate}}" ng-controller="AboutCtrl">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <a class="button button-icon icon ion-earth" aria-label="Open language menu" menu-toggle="right"></a>
+  </ion-nav-buttons>
+  <!-- Templates -->
+  <script id="main-templates" type="text/x-handlebars-template">
+    <div class="list item-body">
+      <img style="width:300px" src="resources/apps/home/creed-logo.png">
+      </a>
+  </script>
+  <!-- HTML -->
+  <ion-content ng-init="showConfirm()" class="has-header background  home-container responsive-sm full-height" overflow-scroll="false" align="center">
+    <div layout-gt-md="column" layout="column" align="center" flex-gt-md="100">
+      <!-- Cabecera de Logo -->
+      <main-template></main-template>
+      <!-- Sección de botones -->
+      <md-content class="container-home-buttons">
+        <div class="list padding-for-content">
+          <h2 class="white-about-text"><b><ANY translate="about.msg"></ANY></b></h2>
+          <h2 class="white-about-text"><b><ANY translate="about.msg2"></ANY></b></h2>
+          <h2 class="white-about-text"><b><ANY translate="about.msg3"></ANY></b></h2>
+          <h2 class="white-about-text"><b><ANY translate="about.msg4"></ANY></b></h2>
+        </div>
+      </md-content>
+    </div>
+  </ion-content>
+</ion-view>

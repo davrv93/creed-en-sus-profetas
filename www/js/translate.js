@@ -12,6 +12,7 @@ app
             "espiritu_profecia": "Espíritu de profecía",
             "configuracion": "Configuración",
             "calendario": "Calendario",
+            "sobre_aplicacion":"Acerca de la aplicación",
             "home": "Menú principal",
             "menu": "Menú",
             "idioma_titulo": "Seleccione el idioma",
@@ -55,13 +56,26 @@ app
                         "titulo": "He ahí a vuestro Dios",
                         "abreviatura": ""
                     }
-                }
+                },
+                "dtg":{
+                    "titulo": "El deseado de todas las gentes",
+                    "capitulo4":{
+                        
+                    }
+                },
 
             },
             "config": {
                 "idioma": "Idioma de aplicación",
                 "tema": "Color de tema",
                 "version": "Versión de Biblia"
+
+            },
+            "about":{
+                "msg":"Esta aplicación móvil es una forma de agradecer a Dios por su infinita misericordia, en la actualidad esta aplicación ha llegado a más de 10 mil personas en 150 países.",
+                "msg2":"Este proyecto de apoyo va dedicado a Dios en primer lugar, y a mi familia, quienes son mi inspiración día a día.",
+                "msg3":"Si tiene alguna sugerencia, idea o desea contribuir al mantenimiento de este aplicativo móvil comuniquese al siguiente corre electrónico: davrv93@gmail.com",
+                "msg4":"Dios le bendiga grandemente, llevemos el mensaje a todas las naciones."
 
             },
             "translate": {
@@ -156,6 +170,7 @@ app
                 "btn_update": "Update",
                 "btn_close": "Close"
             },
+            "sobre_aplicacion":"About",
             "commentary_msg": "The Biblical commentary is not available for this chapter.",
             "home_msg": "Click the button in the upper left corner to see the options.",
             "reader_msg": "Select at least one verse to share it.",

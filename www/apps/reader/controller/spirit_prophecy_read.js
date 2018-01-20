@@ -17,7 +17,7 @@ app.controller('SpiritProphecyReadCtrl', function($scope, $http,$filter, API_REA
 		var elementId = event.srcElement.id;
 		var elementHtml= document.getElementById(elementId)
 		var BackgroundColorHighlight="#337BDF";
-		var BackgroundColor="#8082C6";
+		var BackgroundColor="#93B499";
 		var HexBackgroundColor="rgb(51, 123, 223)";
 		
 		if(elementHtml.style.backgroundColor===HexBackgroundColor){
@@ -74,8 +74,8 @@ app.controller('SpiritProphecyReadCtrl', function($scope, $http,$filter, API_REA
 			$scope.obj_header=res.obj_header;
 			$scope.obj_reading=res.obj_reading;			
 			$scope.obj_chapter=res.obj_chapter;
-			$scope.pageTitle =  $translateFilter(res.obj_header.book_name);
-			$scope.footerTitle =  $translateFilter(res.obj_chapter.translate_name);
+			$scope.pageTitle =  res.obj_header.book_name;
+			$scope.footerTitle =  res.obj_chapter.name;
 
 			$rootScope.progress = false;
 		}).error(function(err){

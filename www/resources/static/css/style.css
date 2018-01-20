@@ -1,3 +1,4 @@
+
 footer {
     background-color: #ccc;
 }
@@ -26,6 +27,23 @@ audio {
 .white-text {
     color: white;
 }
+
+.white-menu-text{
+ color:white;
+ font:"arial";
+ font-size: 23px !important;
+}
+
+.white-about-text{
+ color:white;
+ font:"arial";
+ font-size: 23px !important;
+     text-align: justify;
+    text-justify: inter-word;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
 
 .full-height {
     height: 100%;
@@ -193,29 +211,32 @@ a:active {
 #bg-locale-color {
     background-color: #9EC0D6;
 }
+/*8082C6*/
 
 .background,
 .background .pane,
 .background .item,
 .background .item-complex .item-content {
-    background-color: #8082C6;
+    background-color: #93B499;
+
 }
 
+
 #bg-menu {
-    background-color: #8082C6;
+    background-color: #93B499;
 }
 
 #bg-items-menu {
-    background-color: #8082C6;
+    background-color: #93B499;
 }
 
 .item .item-content {
-    background-color: #8082C6;
+    background-color: #93B499;
 }
-
+/*6F72C8 */
 .item,
 .item-divider {
-    border-color: #6F72C8;
+    border-color: #248135;
 }
 
 .home-container {

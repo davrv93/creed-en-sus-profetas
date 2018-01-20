@@ -1,4 +1,4 @@
-<ion-view title="{{headerTitle}}" ng-init="loadTemplate()" align="left" ng-controller="CommentaryVerseCtrl" style="background-color:#8082C6">
+<ion-view title="{{headerTitle}}" ng-init="loadTemplate()" align="left" ng-controller="CommentaryVerseCtrl" style="background-color:gray">
     <ion-nav-buttons side="left">
         <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
     </ion-nav-buttons>
@@ -21,7 +21,7 @@
             {{'buscador.btn_cancelar' | translate}}
         </button>
     </div>
-    <script id="my-modal.html" type="text/ng-template">
+    <!-- <script id="my-modal.html" type="text/ng-template">
         <ion-modal-view>
             <ion-header-bar align-title="center" class="bar-positive">
                 <h1 class="title">{{param.pageTitle}} {{param.chapter}}:{{param.verse}}</h1>
@@ -64,21 +64,28 @@
                 </div>
             </ion-footer-bar>
         </ion-modal-view>
-    </script>
-    <ion-content class="background home-container responsive-sm " align="center" style=" padding-bottom:40px" overflow-scroll="false">
-        <md-content class="has-header has-footer container-home-buttons">
-            <div ng-repeat="x in obj_verses">
-                <div class="item" ng-click="openModal(x,pageTitle,obj_header.chapter)">
-                    <b><span class="verse"><ANY translate="versiculo"></ANY> {{x.verse}}. </span></b>
-                </div>
-            </div>
-            <div ng-if="obj_verses.length<1">
-                <b><span class="verse"><ANY translate="no_commentary_msg"></ANY></span></b>
-            </div>
-        </md-content>
-    </ion-content>
+    </script> -->
+
+    <div class="has-header has-footer has-tabs-top-header" style="height:70% !important; margin-top:85px">
+
+    <iframe  src="{{trustSrc(commentary)}}" ></iframe>
+
+    </div>
+            
+
+<!--     <ion-content class="background home-container responsive-sm " align="center" style=" padding-bottom:40px" overflow-scroll="false">
+    </ion-content> -->
     <ion-footer-bar class="bar-dark" keyboard-attach>
     </ion-footer-bar>
     <core-progress state="progress"></core-progress>
 </ion-view>
-+
+
+<style>
+iframe {
+    display: block;       /* iframes are inline by default */
+    background: #000;
+    border: none;         /* Reset default border */
+    width: 100%;
+    height: 100%;
+}
+</style>

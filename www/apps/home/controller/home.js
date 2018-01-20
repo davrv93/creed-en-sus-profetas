@@ -120,8 +120,17 @@
             })
         };
 
+
+        $scope.closeModalLang = function(locale) {
+            $scope.dialogLangShown = false;
+            $scope.setLang(locale)
+
+        }
+
+
         $scope.closeModal = function() {
             $scope.dialogShown = false;
+
         }
 
         $scope.showAdvanced = function(ev) {

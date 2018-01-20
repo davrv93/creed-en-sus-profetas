@@ -185,7 +185,7 @@ app.controller('BibleCtrl', function($scope, $sce, $state, $ionicScrollDelegate,
     $scope.setClass = function(i, x) {
         var title = document.getElementById('title' + i);
         var BackgroundColorHighlight = "#337BDF";
-        var BackgroundColor = "#8082C6";
+        var BackgroundColor = "#93B499";
         var HexBackgroundColor = "rgb(51, 123, 223)";
         $scope.fillObjUnderline(x);
 
