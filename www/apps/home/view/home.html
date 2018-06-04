@@ -11,12 +11,14 @@
     <div class="list " ng-init="$parent.$parent.showActionToast();">
       <a class="item item item-thumbnail-center " href="#/app/reader_bible" ng-click="$parent.$parent.closeToast();" onclick="window.location.href='#/app/reader_bible'">
         <h2 class="white-menu-text"><b><ANY translate="reavivados"></ANY></b>
-          <ion-icon name="checkmark-circle" style="color:green"></ion-icon>
+          <ion-icon ng-if="$parent.$parent.status_spirit_prophecy>0" name="checkmark-circle" style="color:green"></ion-icon>
+          <ion-icon ng-if="$parent.$parent.status_spirit_prophecy<1 || !$parent.$parent.status_spirit_prophecy " name="close-circle" style="color:indianred"></ion-icon>
         </h2>
       </a>
       <a class="item item item-thumbnail-center" href="#/app/reader_spirit_prophecy" ng-click="$parent.$parent.closeToast();" onclick="window.location.href='#/app/reader_spirit_prophecy'">
         <h2 class="white-menu-text"><b><ANY translate="espiritu_profecia"></ANY></b>
-          <ion-icon name="close-circle" style="color:indianred"></ion-icon>
+          <ion-icon ng-if="$parent.$parent.status_bible>0" name="checkmark-circle" style="color:green"></ion-icon>
+          <ion-icon ng-if="$parent.$parent.status_bible<1 || !$parent.$parent.status_bible " name="close-circle" style="color:indianred"></ion-icon>
         </h2>
       </a>
       <a class="item item item-thumbnail-center" href="#" href="#/app/reader_spirit_prophecy" ng-click="$parent.$parent.closeToast(); $parent.$parent.onListUpdate($event);">

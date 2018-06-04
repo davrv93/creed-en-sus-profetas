@@ -30,22 +30,7 @@ app.controller('SpiritProphecyReadCtrl', function($scope, $http,$filter, API_REA
 	}
 
 
-	$scope.onListBook = function(){
-	//var query = Book.query();
-		API_READER.Book.list().$promise.then(function(data) {
-     		$scope.book = data;
-     		// Do whatever when the request is finished
-		});
-	}
-
-	$scope.onListTestament = function(){
-	//var query = Book.query();
-		API_READER.Testament.list().$promise.then(function(data) {
-     		$scope.testament = data;
-     		// Do whatever when the request is finished
-		});
-	}
-
+	
 	$scope.onListReading = function(){
 	$rootScope.progress = true	;
 	var currentDate = new Date()
@@ -75,7 +60,7 @@ app.controller('SpiritProphecyReadCtrl', function($scope, $http,$filter, API_REA
 			$scope.obj_reading=res.obj_reading;			
 			$scope.obj_chapter=res.obj_chapter;
 			$scope.pageTitle =  res.obj_header.book_name;
-			$scope.footerTitle =  res.obj_chapter.name;
+			$scope.footerTitle = res.obj_chapter? res.obj_chapter.name: res.obj_reading.chapter_title;
 
 			$rootScope.progress = false;
 		}).error(function(err){
@@ -83,7 +68,6 @@ app.controller('SpiritProphecyReadCtrl', function($scope, $http,$filter, API_REA
 			$scope.obj_reading =  [{'data':$translateFilter('errors.404')}];
 			$scope.pageTitle="Error";
 			$rootScope.progress = false;
-
 		})
 	}
 

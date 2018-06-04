@@ -11,6 +11,8 @@
         $scope.labels = [];
         var $translateFilter = $filter('translate');
 
+        
+
         $scope.$watchCollection('need_update', function(newValue, oldValue) {
             //!$root.need_update['condition'] && 'resources/apps/home/bell.png' || 'resources/apps/home/notify.png'
             if (oldValue) {
@@ -96,6 +98,70 @@
             }
         }
 
+        $scope.getStatusReading = function(){
+            $rootScope.progress = true	;
+            var currentDate = new Date()
+            var day = currentDate.getDate();
+            var month = currentDate.getMonth() + 1;
+            var year = currentDate.getFullYear();
+        
+        
+            if(day<10) {
+                day='0'+day
+            } 
+        
+            if(month<10) {
+                month='0'+month
+            } 
+        
+            var param_date=year+'-'+month+'-'+day;
+            var req = {
+                    method: 'GET',
+                    url: "https://davrv93.pythonanywhere.com/api/believe/spirit_prophecy_read/status/",
+                    params:{language: $translate.use(), date:param_date}
+                }
+                $http(req).success(function(res) {
+                    $scope.status_bible=res.count;
+                }).error(function(err){
+                    console.log('Err',err)
+                })
+            }
+
+            $scope.getStatusSpiritProphecyReading = function(){
+                $rootScope.progress = true	;
+                var currentDate = new Date()
+                var day = currentDate.getDate();
+                var month = currentDate.getMonth() + 1;
+                var year = currentDate.getFullYear();
+            
+            
+                if(day<10) {
+                    day='0'+day
+                } 
+            
+                if(month<10) {
+                    month='0'+month
+                } 
+            
+                var param_date=year+'-'+month+'-'+day;
+                var req = {
+                        method: 'GET',
+                        url: "https://davrv93.pythonanywhere.com/api/believe/verse/status/",
+                        params:{language: $translate.use(), date:param_date}
+                    }
+                    $http(req).success(function(res) {
+                        $scope.status_spirit_prophecy=res.count;
+                    }).error(function(err){
+                        console.log('Err',err)
+                    })
+                }
+                
+            $scope.getStatusReading();
+        
+            $scope.getStatusSpiritProphecyReading();
+            
+    
+
 
         $scope.onListUpdate = function(ev) {
             var req = {
@@ -138,5 +204,6 @@
         };
 
     });
+            
 
 }());
