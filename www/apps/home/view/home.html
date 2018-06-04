@@ -7,18 +7,17 @@
     <a class="button button-icon icon ion-earth" aria-label="Open language menu" menu-toggle="right"></a>
   </ion-nav-buttons>
   <!-- Templates -->
-  <script id="main-templates" type="text/x-handlebars-template">
-    <div class="list item-body">
-      <img style="width:300px" src="resources/apps/home/creed-logo.png">
-      </a>
-  </script>
   <script id="main-buttons" type="text/x-handlebars-template">
-    <div class="list padding-for-content" ng-init="$parent.$parent.showActionToast();">
+    <div class="list " ng-init="$parent.$parent.showActionToast();">
       <a class="item item item-thumbnail-center " href="#/app/reader_bible" ng-click="$parent.$parent.closeToast();" onclick="window.location.href='#/app/reader_bible'">
-        <h2 class="white-menu-text"><b><ANY translate="reavivados"></ANY></b></h2>
+        <h2 class="white-menu-text"><b><ANY translate="reavivados"></ANY></b>
+          <ion-icon name="checkmark-circle" style="color:green"></ion-icon>
+        </h2>
       </a>
       <a class="item item item-thumbnail-center" href="#/app/reader_spirit_prophecy" ng-click="$parent.$parent.closeToast();" onclick="window.location.href='#/app/reader_spirit_prophecy'">
-        <h2 class="white-menu-text"><b><ANY translate="espiritu_profecia"></ANY></b></h2>
+        <h2 class="white-menu-text"><b><ANY translate="espiritu_profecia"></ANY></b>
+          <ion-icon name="close-circle" style="color:indianred"></ion-icon>
+        </h2>
       </a>
       <a class="item item item-thumbnail-center" href="#" href="#/app/reader_spirit_prophecy" ng-click="$parent.$parent.closeToast(); $parent.$parent.onListUpdate($event);">
         <h2 ng-show="!$root.need_update['condition']" class="white-menu-text"><b><ANY translate="labels.actualizacion"></ANY></b></h2>
@@ -75,7 +74,9 @@
   <ion-content ng-init="showConfirm()" class="has-header background  home-container responsive-sm full-height" overflow-scroll="false" align="center">
     <div layout-gt-md="column" layout="column" align="center" flex-gt-md="100">
       <!-- Cabecera de Logo -->
-      <main-template></main-template>
+      <div>
+        <button class="button button-icon icon ion-ios-book-outline" style="color:black;fill:white"></button>
+      </div>
       <!-- Sección de botones -->
       <md-content class="container-home-buttons">
         <main-buttons></main-buttons>
