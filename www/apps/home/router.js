@@ -50,6 +50,14 @@ app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
                 }
             }
         })
+        .state('app.help', {
+            url: "/help",
+            views: {
+                'menuContent': {
+                    templateUrl: "apps/home/view/help.html"
+                }
+            }
+        })
         .state('app.reader_spirit_prophecy', {
             url: "/reader_spirit_prophecy",
             views: {

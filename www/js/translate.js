@@ -18,6 +18,7 @@ app
             "idioma_titulo": "Seleccione el idioma",
             "cerrar": "Cerrar",
             "hashtag": "#rpsp",
+            "ayuda":"Ayuda",
             "hashtag_commentary": "#rpsp #cba",
             "versiculo": "Versículo",
             "buscador": {
@@ -152,8 +153,17 @@ app
                 "3juan": "III Juan",
                 "judas": "Judas",
                 "apocalipsis": "Apocalipsis"
+            },
+            "ventana_ayuda":{
+                "sh1" : "¿Cómo cambiar el idioma de la aplicación?",
+                "ch1" : "Para cambiar el idioma de la aplicación debe tocar el botón",
+                "sh2": "¿Cómo puedo ver las opciones de la aplicación?",
+                "ch2": "Para ver las opciones disponibles de la aplicación debe tocar el botón",
+                "ch3": "Las opciones disponibles son: Reavivados por su palabra y Espíritu de profecía",
+                "ch4": "El ícono",
+                "ch5": "significa que la lectura está disponible, cuando vea un ícono",
+                "ch6": "quiere decir que la lectura no está disponible, en ese caso puede notificar al desarrollador de la aplicación por el Play Store o App Store"
             }
-
         });
         $translateProvider.translations("EN", {
             "app": "Believe his prophets",
@@ -165,6 +175,7 @@ app
             "share_whatsapp": "Choose the contact to share the text.",
             "menu": "Menu",
             "home": "Home",
+            "ayuda":"Help",
             "cerrar": "Close",
             "btn": {
                 "btn_update": "Update",
@@ -294,6 +305,16 @@ app
                 "3juan": "3 John",
                 "judas": "Jude",
                 "apocalipsis": "Revelation"
+            },
+            "ventana_ayuda":{
+                "sh1" : "How to change the language of the application?",
+                "ch1" : "To change the language of the application you must touch the button",
+                "sh2": "How can I see the options of the application?",
+                "ch2": "To see the available options of the application you must touch the button",
+                "ch3": "The available options are: Revived by his word and Spirit of prophecy",
+                "ch4": "The icon",
+                "ch5": "means that the reading is available, when you see an icon",
+                "ch6": "means that the reading is not available, in which case you can notify the developer of the application through the Play Store or App Store"
             }
 
         });

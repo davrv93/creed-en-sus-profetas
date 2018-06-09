@@ -9,7 +9,7 @@
         <a class="button button-icon icon ion-earth" aria-label="Open language menu" menu-toggle="right"></a>
     </ion-nav-buttons>
     <div ng-show="!searchMode" class="bar bar-subheader bar-dark has-tabs-top-header">
-        <h2 class="title">{{pageTitle}}: {{obj_header.chapter}}</h2>
+        <h2 class="title">{{obj_header.title | translate}}: {{obj_header.chapter}}</h2>
     </div>
     <div ng-show="searchMode" class="bar bar-subheader bar-dark item-input-inset">
         <button class="button button-royal" style="margin-right:15px" ng-click="search()">

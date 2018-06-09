@@ -28,6 +28,10 @@
       <a class="item item item-thumbnail-center" href="#/app/about" ng-click="$parent.$parent.closeToast();" onclick="window.location.href='#/app/about'">
         <h2 class="white-menu-text"><b><ANY translate="sobre_aplicacion"></ANY></b></h2>
       </a>
+      <a class="item item item-thumbnail-center" href="#/app/help" ng-click="$parent.$parent.closeToast();" onclick="window.location.href='#/app/about'">
+        <h2 class="white-menu-text"><b><ANY translate="ayuda"></ANY></b></h2>
+      </a>
+
     </div>
   </script>
   <script id="modal-update" type="text/x-handlebars-template">
@@ -75,10 +79,6 @@
   <!-- HTML -->
   <ion-content ng-init="showConfirm()" class="has-header background  home-container responsive-sm full-height" overflow-scroll="false" align="center">
     <div layout-gt-md="column" layout="column" align="center" flex-gt-md="100">
-      <!-- Cabecera de Logo -->
-      <div>
-        <button class="button button-icon icon ion-ios-book-outline" style="color:black;fill:white"></button>
-      </div>
       <!-- Sección de botones -->
       <md-content class="container-home-buttons">
         <main-buttons></main-buttons>
