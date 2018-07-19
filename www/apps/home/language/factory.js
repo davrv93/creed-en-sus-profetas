@@ -31,18 +31,10 @@ function LanguageModal($ionicModal, $rootScope, $translate) {
 
 
       $scope.setLanguage = function (lang) {
-        if (lang == "ES") {
-          localStorage.language = "ES";
-          $translate.use(localStorage.language);
-          console.log(localStorage.language);
-
-        } else {
-          localStorage.language = "EN";
-          $translate.use(localStorage.language);
-          console.log(localStorage.language);
-        }
+        localStorage.language = lang;
+        $translate.use(localStorage.language);
+        $scope.close();
       }
-
 
       $scope.close = function () {
         closeAndRemove(modalInstance);
