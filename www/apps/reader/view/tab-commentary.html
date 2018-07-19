@@ -21,54 +21,20 @@
             {{'buscador.btn_cancelar' | translate}}
         </button>
     </div>
-    <!-- <script id="my-modal.html" type="text/ng-template">
-        <ion-modal-view>
-            <ion-header-bar align-title="center" class="bar-positive">
-                <h1 class="title">{{param.pageTitle}} {{param.chapter}}:{{param.verse}}</h1>
-                <div class="button button-icon" ng-click="refreshCommentary(param['id'])">
-                    <a class="button button-icon icon ion-refresh" aria-label="Refresh"></a>
-                </div>
-                <div class="button button-clear" ng-click="modal.hide()">
-                    <span class="icon ion-close"></span>
-                </div>
-            </ion-header-bar>
-            <ion-content class=" responsive-sm" style="background-color:#F5F5F5" overflow-scroll="false">
-                <md-content class="container-home-buttons">
-                    <div ng-repeat="x in obj_commentary">
-                        <div class="item bar bar-positive">
-                            <span>{{x.word}}</span>
-                        </div>
-                        <div class="text-gray-content-show">
-                            <span>{{x.data}}</span>
-                        </div>
-                    </div>
-                </md-content>
-            </ion-content>
-            <ion-footer-bar class="bar-dark" keyboard-attach align="right">
-                <div style="display: inline-block;
-              vertical-align: middle;
-              line-height: normal; text-align: right; width:90%; " layout="row" class="footer-button">
-                    <button class="md-icon-button md-button" aria-label="Open sample menu" ng-click="shareSocial('copy')">
-                        <ng-md-icon icon="content_copy"></ng-md-icon>
-                    </button>
-                </div>
-                <div layout="row" class="footer-button">
-                    <button class="md-icon-button md-button" aria-label="Open sample menu" ng-click="shareSocial('facebook')">
-                        <ng-include src="'resources/apps/home/facebook.svg'"></ng-include>
-                    </button>
-                </div>
-                <div layout="row" class="footer-button">
-                    <button class="md-icon-button md-button" aria-label="Open sample menu" ng-click="shareSocial('whatsapp')">
-                        <ng-include src="'resources/apps/home/whatsapp.svg'"></ng-include>
-                    </button>
-                </div>
-            </ion-footer-bar>
-        </ion-modal-view>
-    </script> -->
-
+    
     <div class="has-header has-footer has-tabs-top-header" style="height:70% !important; margin-top:85px">
-
+        <ion-content class="background home-container responsive-sm " align="center" style="height:85%; padding-bottom:40px">
+            <md-content style="height:100%;" class="background has-header has-footer">
+                <div style="text-align: justify; text-justify: inter-word; margin-left:15px;margin-right:15px; margin-bottom:2px">
+                    <span class="verse" ng-bind-html="commentary"></span>
+                    <br>
+                    <br>
+                </div>
+            </md-content>
+        </ion-content>
+    <!--
     <iframe  src="{{trustSrc(commentary)}}" ></iframe>
+    -->
 
     </div>
             

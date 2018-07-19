@@ -134,9 +134,9 @@ app.controller('ReaderCtrl', function($scope, $sce, $state, $ionicScrollDelegate
 
     $scope.setClass = function(i, x) {
         var title = document.getElementById('title' + i);
-        var BackgroundColorHighlight = "#337BDF";
-        var BackgroundColor = "#93B499";
-        var HexBackgroundColor = "rgb(51, 123, 223)";
+        var BackgroundColorHighlight = "#757575";
+        var BackgroundColor = "#00796B";
+        var HexBackgroundColor = "rgb(117, 117, 117)";
         $scope.fillObjUnderline(x);
 
         if (title.style.backgroundColor === HexBackgroundColor) {
@@ -222,9 +222,9 @@ app.controller('ReaderCtrl', function($scope, $sce, $state, $ionicScrollDelegate
     $scope.HighLight = function() {
         var elementId = event.srcElement.id;
         var elementHtml = document.getElementById(elementId)
-        var BackgroundColorHighlight = "#337BDF";
-        var BackgroundColor = "#8082C6";
-        var HexBackgroundColor = "rgb(51, 123, 223)";
+        var BackgroundColorHighlight = "#757575";
+        var BackgroundColor = "#00796B";
+        var HexBackgroundColor = "rgb(0, 121, 107)";
 
         if (elementHtml.style.backgroundColor === HexBackgroundColor) {
             elementHtml.style.backgroundColor = BackgroundColor;
@@ -326,10 +326,7 @@ app.controller('ReaderCtrl', function($scope, $sce, $state, $ionicScrollDelegate
 
         $http(req).success(function(res) {
             $scope.content = res;
-            $rootScope.chapter = res['commentary'];
-            if(res['commentary']==undefined){
-                $rootScope.chapter = false;
-            }
+            $rootScope.commentary=res.commentary?res.commentary:res.commentary_html?res.commentary_html:null;
             //console.log(res);
             $scope.obj_header = res.obj_header;
             $scope.obj_reading = res.obj_reading;

@@ -1,209 +1,108 @@
 "use strict"; // <-- add it here
-(function() {
-    "use strict";
+(function () {
 
-    app.controller('HomeCtrl', function($scope, $http, $rootScope, ionicToast, $filter, $translate, $stateParams) {
-        if (localStorage.appVersion != undefined) {
-            $rootScope.appVersion = localStorage.appVersion
+  app.controller('HomeCtrl', function ($scope, $http, $rootScope, ionicToast, $filter, $translate, $stateParams, LanguageModal) {
+
+    if (localStorage.appVersion != undefined) {
+      $rootScope.appVersion = localStorage.appVersion
+    }
+    $rootScope.notifyImg = "resources/apps/home/bell.png";
+    var $translateFilter = $filter('translate');
+
+    $scope.openLanguageModal = function () {
+      LanguageModal.open();
+    };
+
+    $scope.showActionToast = function () {
+      ionicToast.show($translateFilter('home_msg'), 'bottom', false, 4000);
+    };
+
+    $scope.closeToast = function () {
+      ionicToast.hide();
+    };
+
+
+    $scope.showConfirm = function () {
+      if (localStorage.language === undefined) {
+        $translate.use(navigator.language.substr(0, 2).toUpperCase());
+        $scope.openLanguageModal();
+
+      } else {
+        $translate.use(localStorage.language);
+      }
+
+    };
+
+    $rootScope.change_language = function (locale) {
+      console.log('locale', locale)
+      $translate.use(locale);
+      localStorage.language = locale;
+    }
+
+    $scope.get_date = function(){
+      var currentDate = new Date()
+      var day = currentDate.getDate();
+      var month = currentDate.getMonth() + 1;
+      var year = currentDate.getFullYear();
+
+
+      if (day < 10) {
+        day = '0' + day
+      }
+
+      if (month < 10) {
+        month = '0' + month
+      }
+
+      var param_date = year + '-' + month + '-' + day;
+      return param_date
+    }
+
+    $scope.getStatusReading = function () {
+      var param_date=$scope.get_date();
+      $rootScope.progress = true;
+      
+      var req = {
+        method: 'GET',
+        url: "https://davrv93.pythonanywhere.com/api/believe/spirit_prophecy_read/status/",
+        params: {
+          language: $translate.use(),
+          date: param_date
         }
-        $rootScope.notifyImg = "resources/apps/home/bell.png";
+      }
+      $http(req).success(function (res) {
+        $scope.status_spirit_prophecy = res.count;
+      }).error(function (err) {
+        console.log('Err', err)
+      })
+    }
 
-        $scope.labels = [];
-        var $translateFilter = $filter('translate');
+    $scope.getStatusSpiritProphecyReading = function () {
+      $rootScope.progress = true;
+      var param_date=$scope.get_date();
 
-        
-
-        $scope.$watchCollection('need_update', function(newValue, oldValue) {
-            //!$root.need_update['condition'] && 'resources/apps/home/bell.png' || 'resources/apps/home/notify.png'
-            if (oldValue) {
-                //console.log(oldValue)
-            }
-            if (newValue) {
-                if (newValue['condition'] == false) {
-                    //console.log(newValue)
-                    $rootScope.notifyImg = "resources/apps/home/bell.png";
-                } else {
-                    //console.log(newValue)
-                    $rootScope.notifyImg = "resources/apps/home/notify.png";
-                }
-
-            }
-        })
-
-
-
-        $scope.showActionToast = function() {
-            ionicToast.show($translateFilter('home_msg'), 'bottom', false, 4000);
-        };
-
-        $scope.closeToast = function() {
-            ionicToast.hide();
-        };
-
-        $scope.setLang = function(lang) {
-            if (lang == "ES") {
-                localStorage.language = "ES";
-                $translate.use(localStorage.language);
-                console.log(localStorage.language);
-
-            } else {
-                localStorage.language = "EN";
-                $translate.use(localStorage.language);
-                console.log(localStorage.language);
-            }
+      var req = {
+        method: 'GET',
+        url: "https://davrv93.pythonanywhere.com/api/believe/verse/status/",
+        params: {
+          language: $translate.use(),
+          date: param_date
         }
-        $scope.showConfirm = function() {
-            if (localStorage.language === undefined) {
-                $scope.dialogLangShown = !$scope.dialogLangShown;
-
-            } else {
-                $translate.use(localStorage.language);
-                console.log(localStorage.language);
-            }
-
-        };
-
-        $rootScope.change_language = function(locale) {
-            console.log('locale', locale)
-            $translate.use(locale);
-            localStorage.language = locale;
-        }
-
-        $scope.verifyUpdate = function(content, ev) {
-            var actual = $rootScope.appVersion;
-            var servidor = content['version'];
-            if (actual < servidor) {
-                $rootScope.need_update = {
-                    'condition': true,
-                    'version': content['version'],
-                    'content': content['content'],
-                    'actual': actual,
-                    'servidor': servidor,
-                    'title': $translateFilter('update_msg')
-                }
-                $scope.showAdvanced(ev);
-
-            } else {
-                console.log(ev)
-                $rootScope.need_update = {
-                    'condition': false,
-                    'actual': actual,
-                    'servidor': servidor,
-                    'title': $translateFilter('updated_msg')
-                }
-                if (ev != undefined) {
-                    $scope.showAdvanced(ev);
-
-                }
-            }
-        }
-
-        $scope.getStatusReading = function(){
-            $rootScope.progress = true	;
-            var currentDate = new Date()
-            var day = currentDate.getDate();
-            var month = currentDate.getMonth() + 1;
-            var year = currentDate.getFullYear();
+      }
+      $http(req).success(function (res) {
+        $scope.status_bible = res.count;
         
-        
-            if(day<10) {
-                day='0'+day
-            } 
-        
-            if(month<10) {
-                month='0'+month
-            } 
-        
-            var param_date=year+'-'+month+'-'+day;
-            var req = {
-                    method: 'GET',
-                    url: "https://davrv93.pythonanywhere.com/api/believe/spirit_prophecy_read/status/",
-                    params:{language: $translate.use(), date:param_date}
-                }
-                $http(req).success(function(res) {
-                    $scope.status_bible=res.count;
-                }).error(function(err){
-                    console.log('Err',err)
-                })
-            }
+      }).error(function (err) {
+        console.log('Err', err)
+      })
+    }
 
-            $scope.getStatusSpiritProphecyReading = function(){
-                $rootScope.progress = true	;
-                var currentDate = new Date()
-                var day = currentDate.getDate();
-                var month = currentDate.getMonth() + 1;
-                var year = currentDate.getFullYear();
-            
-            
-                if(day<10) {
-                    day='0'+day
-                } 
-            
-                if(month<10) {
-                    month='0'+month
-                } 
-            
-                var param_date=year+'-'+month+'-'+day;
-                var req = {
-                        method: 'GET',
-                        url: "https://davrv93.pythonanywhere.com/api/believe/verse/status/",
-                        params:{language: $translate.use(), date:param_date}
-                    }
-                    $http(req).success(function(res) {
-                        $scope.status_spirit_prophecy=res.count;
-                    }).error(function(err){
-                        console.log('Err',err)
-                    })
-                }
-                
-            $scope.getStatusReading();
-        
-            $scope.getStatusSpiritProphecyReading();
-            
+    $scope.getStatusReading();
+
+    $scope.getStatusSpiritProphecyReading();
+
     
+  });
 
-
-        $scope.onListUpdate = function(ev) {
-            var req = {
-                method: 'GET',
-                url: "https://davrv93.pythonanywhere.com/api/believe/application/status/",
-                params: {
-                    language: $translate.use(),
-                    version: $rootScope.appVersion
-                }
-            }
-
-            $http(req).success(function(res) {
-                $scope.content = res;
-                $scope.verifyUpdate($scope.content, ev);
-
-            }).error(function(err) {
-                console.log('Err', err)
-                $scope.obj_reading = [{
-                    'data': $translateFilter('errors.404')
-                }];
-                $scope.pageTitle = "Error";
-            })
-        };
-
-
-        $scope.closeModalLang = function(locale) {
-            $scope.dialogLangShown = false;
-            $scope.setLang(locale)
-
-        }
-
-
-        $scope.closeModal = function() {
-            $scope.dialogShown = false;
-
-        }
-
-        $scope.showAdvanced = function(ev) {
-            $scope.dialogShown = !$scope.dialogShown;
-        };
-
-    });
-            
 
 }());

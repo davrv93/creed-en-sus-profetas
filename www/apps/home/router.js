@@ -33,15 +33,6 @@ app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
                 }
             }
         })
-        .state('app.settings_locale', {
-            url: "/settings_locale",
-            views: {
-                'menuContent': {
-                    templateUrl: "apps/home/view/locale.html",
-                    controller: 'LocaleCtrl'
-                }
-            }
-        })
         .state('app.about', {
             url: "/about",
             views: {

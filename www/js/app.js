@@ -24,13 +24,16 @@ var app = angular.module('starter', ['ionic', 'ionic-toast', 'ngResource', // in
             StatusBar.styleDefault();
         }
 
+
         cordova.getAppVersion(function(version) {
+            
             if (localStorage.appVersion === undefined) {
                 localStorage.appVersion = version;
             } else {
                 localStorage.appVersion = version;
             }
         });
+
     });
 })
 

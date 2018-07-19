@@ -5,17 +5,13 @@
   <ion-nav-buttons side="right">
     <a class="button button-icon icon ion-earth" aria-label="Open language menu" menu-toggle="right"></a>
   </ion-nav-buttons>
-  <!-- Templates -->
-  <script id="main-templates" type="text/x-handlebars-template">
-    <div class="list item-body">
-      <img style="width:300px" src="resources/apps/home/creed-logo.png">
-      </a>
-  </script>
   <!-- HTML -->
   <ion-content ng-init="showConfirm()" class="has-header background  home-container responsive-sm full-height" overflow-scroll="false" align="center">
     <div layout-gt-md="column" layout="column" align="center" flex-gt-md="100">
       <!-- Cabecera de Logo -->
-      <main-template></main-template>
+      <div class="list item-body">
+        <img style="width:300px" src="resources/apps/home/creed-logo.png">
+        </div>
       <!-- Sección de botones -->
       <md-content class="container-home-buttons">
         <div class="list padding-for-content">

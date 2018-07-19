@@ -32,8 +32,14 @@ audio {
  color:white;
  font:"arial";
  font-size: 23px !important;
+ 
 }
 
+.menu-sidenav{
+color:white;
+font:"arial";
+font-size: 1em	 !important;
+}
 .white-about-text{
  color:white;
  font:"arial";
@@ -217,26 +223,29 @@ a:active {
 .background .pane,
 .background .item,
 .background .item-complex .item-content {
-    background-color: #93B499;
+    background-color:#00796B;
 
 }
 
+.bg-reader {
+    background-color:#00796B !important;
+}
 
 #bg-menu {
-    background-color: #93B499;
+    background-color:#00796B;
 }
 
 #bg-items-menu {
-    background-color: #93B499;
+    background-color:#00796B;
 }
 
 .item .item-content {
-    background-color: #93B499;
+    background-color:#00796B;
 }
 /*6F72C8 */
 .item,
 .item-divider {
-    border-color: #248135;
+    border-color: #C5CAE9;
 }
 
 .home-container {
@@ -312,22 +321,7 @@ a:active {
         width: 100%;
         height: auto;
     }
-    #spanish-button {
-        width: 130px;
-        height: 130px;
-        background-image: url(/resources/apps/home/spanish.jpg);
-        background-repeat: no-repeat;
-        border-radius: 100px;
-        background-size: cover;
-    }
-    #english-button {
-        width: 130px;
-        height: 130px;
-        background-image: url(/resources/apps/home/english.png);
-        background-repeat: no-repeat;
-        border-radius: 100px;
-        background-size: cover;
-    }
+
     #next-button {
         width: 60px;
         height: 60px;
@@ -337,7 +331,7 @@ a:active {
         background-size: cover;
     }
     #text-menu {
-        color: white;
+        color: white !important;
         text-shadow: 1px 1px #000000;
     }
     .item-settings .item-content {
