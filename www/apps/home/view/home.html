@@ -1,39 +1,18 @@
-<ion-view  ng-controller="HomeCtrl" >
-  <ion-nav-buttons side="left">
-    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
-  </ion-nav-buttons>
-  <ion-nav-buttons side="right">
-    
-    <a ng-click="showActionToast();" class="button button-icon icon ion-help-circled" aria-label="Open language menu"></a>
-    <a  class="button button-icon icon ion-earth" aria-label="Open language menu" menu-toggle="right"></a>
-  </ion-nav-buttons>
-  <!-- Templates -->
-  
-  <ion-content ng-init="showConfirm()" class="has-header background  home-container responsive-sm full-height" overflow-scroll="false" align="center">
-    <div layout-gt-md="column" layout="column" align="center" flex-gt-md="100">
-      <!-- Sección de botones -->
-      <md-content class="container-home-buttons">
-        <div class="list " ng-init="showActionToast();">
-          <a class="item item item-thumbnail-center " href="#/app/reader_bible" ng-click="$parent.$parent.closeToast();" onclick="window.location.href='#/app/reader_bible'">
-            <h2 class="white-menu-text"><b><ANY translate="reavivados"></ANY></b>
-              <ion-icon ng-if="$parent.$parent.status_bible>0" name="checkmark-circle" style="color:green"></ion-icon>
-              <ion-icon ng-if="$parent.$parent.status_bible<1 || !$parent.$parent.status_bible " name="close-circle" style="color:indianred"></ion-icon>
-            </h2>
-          </a>
-          <a class="item item item-thumbnail-center" href="#/app/reader_spirit_prophecy" ng-click="$parent.$parent.closeToast();" onclick="window.location.href='#/app/reader_spirit_prophecy'">
-            <h2 class="white-menu-text"><b><ANY translate="espiritu_profecia"></ANY></b>
-              <ion-icon ng-if="$parent.$parent.status_spirit_prophecy>0" name="checkmark-circle" style="color:green"></ion-icon>
-              <ion-icon ng-if="$parent.$parent.status_spirit_prophecy<1 || !$parent.$parent.status_spirit_prophecy " name="close-circle" style="color:indianred"></ion-icon>
-            </h2>
-          </a>
-          <a class="item item item-thumbnail-center" href="#/app/about" ng-click="$parent.$parent.closeToast();" onclick="window.location.href='#/app/about'">
-            <h2 class="white-menu-text"><b><ANY translate="sobre_aplicacion"></ANY></b></h2>
-          </a>
-          <a class="item item item-thumbnail-center" href="#/app/help" ng-click="$parent.$parent.closeToast();" onclick="window.location.href='#/app/about'">
-            <h2 class="white-menu-text"><b><ANY translate="ayuda"></ANY></b></h2>
-          </a>
-        </div>
-      </md-content>
+<ion-view>
+  <ion-content ng-init="showConfirm()" class="has-header " overflow-scroll="false" align="center">
+    <div class="list " ng-init="showActionToast();">
+      <a class="item item item-thumbnail-center " href="#/app/reader_bible" ng-click="$parent.$parent.closeToast();" onclick="window.location.href='#/app/reader_bible'">
+        <h2 translate="reavivados"></h2>
+      </a>
+      <a class="item item item-thumbnail-center" href="#/app/reader_spirit_prophecy" ng-click="$parent.$parent.closeToast();" onclick="window.location.href='#/app/reader_spirit_prophecy'">
+        <h2 translate="espiritu_profecia"></h2>
+      </a>
+      <a class="item item item-thumbnail-center" href="#/app/about" ng-click="$parent.$parent.closeToast();" onclick="window.location.href='#/app/about'">
+        <h2 translate="sobre_aplicacion"></h2>
+      </a>
+      <a class="item item item-thumbnail-center" href="#/app/help" ng-click="$parent.$parent.closeToast();" onclick="window.location.href='#/app/about'">
+        <h2 translate="ayuda"></h2>
+      </a>
     </div>
   </ion-content>
 </ion-view>

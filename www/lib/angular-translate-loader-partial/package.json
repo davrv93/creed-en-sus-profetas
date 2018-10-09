@@ -1,0 +1,87 @@
+{
+  "_args": [
+    [
+      "angular-translate-loader-partial",
+      "/home/david/dev/proyectos/creed-en-sus-profetas"
+    ]
+  ],
+  "_from": "angular-translate-loader-partial@latest",
+  "_id": "angular-translate-loader-partial@2.18.1",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/angular-translate-loader-partial",
+  "_nodeVersion": "8.11.1",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/angular-translate-loader-partial_2.18.1_1526765705236_0.3477595455963425"
+  },
+  "_npmUser": {
+    "email": "knallisworld@googlemail.com",
+    "name": "knalli"
+  },
+  "_npmVersion": "5.6.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "angular-translate-loader-partial",
+    "raw": "angular-translate-loader-partial",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/angular-translate-loader-partial/-/angular-translate-loader-partial-2.18.1.tgz",
+  "_shasum": "1f4ec31c32c3d7b4371e39682444f6a6b84f1f88",
+  "_shrinkwrap": null,
+  "_spec": "angular-translate-loader-partial",
+  "_where": "/home/david/dev/proyectos/creed-en-sus-profetas",
+  "author": {
+    "name": "Pascal Precht"
+  },
+  "bugs": {
+    "url": "https://github.com/angular-translate/angular-translate/issues"
+  },
+  "dependencies": {
+    "angular-translate": "~2.18.1"
+  },
+  "description": "angular-translate-loader-partial",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "fileCount": 5,
+    "integrity": "sha512-+bPzY3+F2I1tb+X5bscvZq0OGoVEVkHwPGZvaY4nhbktpshArYpvIEV+RQFUa/QNj8vQc3iQ/pruJDb8w3zIdw==",
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbAJiJCRA9TVsSAnZWagAASaQP/A6kAfVPO8LNtmsgzyH3\nH5hpPAD8O6FF20CWMScyxVu/P9EARnIgrBNpyNl9zBFV/2T6W3sqos+Al26o\nVVG1jCCJI/b0swxaGE/EG5JH2Y9NbLyyPJQ3CHH2Lr86ZxBhpPLxFibGZeqO\nvWAoyjNKk2YR8J49qkwprAh8HdYz9pOzJDM/hKTYbCOHpUcK+iGGRiWdluXO\nYku3+QqcHGqdqv2attLS4BoJR9DncvIDPknm5PBKxmRyGpWDlqtFIyKT2mZ4\nH+M7e21yr7/POv7nQgf6TcZAjDnr3+VL/IPSzM0Q4HGEz8yrQl/c9K236ty6\nw+rD9NlpF0Y/CLmvhrtNaQmdHdJfK8ZWRavbLacdtiDP0IZIB5jhidisatI8\nisARlicwQRl3BtvseWIVv21eYaR3l0p3XU/eCAVB5CSSPcJ0YHmxQkRf7v5D\nloNbmajlpYV75IErSCIIR6KcxpWKwCMV8LCp1OozC4DS/HtrrQG5qnQt1hGz\nBVI0aVaCbxo3cKm/xDJdreW84YSRn+0jAlTZKakEsFwZtE10SsP6Er1tcIlY\nq5swZzkNbBs7lRgYpEB58Jpgy5EcsQplpeb64hfmwiRosc7/R0Uxh5L7OODd\nNeooQdZyjO8UXkal2TzYQYBScevgYeJPOfA4Rg9X1/qYYyNqXu+8pxzpT8wK\npmFw\r\n=BIh8\r\n-----END PGP SIGNATURE-----\r\n",
+    "shasum": "1f4ec31c32c3d7b4371e39682444f6a6b84f1f88",
+    "tarball": "https://registry.npmjs.org/angular-translate-loader-partial/-/angular-translate-loader-partial-2.18.1.tgz",
+    "unpackedSize": 28780
+  },
+  "gitHead": "0f1a5f65df62da4d23ed97535265a0a8217ac833",
+  "homepage": "https://angular-translate.github.io",
+  "keywords": [
+    "angular",
+    "loader",
+    "translate"
+  ],
+  "license": "MIT",
+  "main": "angular-translate-loader-partial.js",
+  "maintainers": [
+    {
+      "name": "knalli",
+      "email": "knallisworld@googlemail.com"
+    },
+    {
+      "name": "mchambaud",
+      "email": "mchambaud@gmail.com"
+    }
+  ],
+  "name": "angular-translate-loader-partial",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angular-translate/bower-angular-translate-loader-partial.git"
+  },
+  "version": "2.18.1"
+}

@@ -1,0 +1,19 @@
+{
+  "app": "Creed en sus profetas",
+  "volver": "Volver",
+  "reavivados": "Reavivados por su Palabra",
+  "espiritu_profecia": "Espíritu de profecía",
+  "configuracion": "Configuración",
+  "calendario": "Calendario",
+  "sobre_aplicacion": "Acerca de la aplicación",
+  "home": "Menú principal",
+  "menu": "Menú",
+  "idioma_titulo": "Seleccione el idioma",
+  "cerrar": "Cerrar",
+  "ayuda": "Ayuda",
+  "versiculo": "Versículo",
+  "home_msg": "Clic en el botón de la esquina superior izquierda para ver las opciones.",
+  "errors": {
+    "404": "Hubo un problema al obtener la lectura de hoy, verifique su conexión a internet. Si usted tiene conexión a internet activada entonces la lectura para hoy no ha sido actualizada por el programador, sirvase notificar en Google Play del caso. Gracias"
+  }
+}

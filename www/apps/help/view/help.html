@@ -1,0 +1,26 @@
+<ion-view cache-view="false" title="{{headerTitle}}" align="left">
+
+  <ion-content align="center" style=" padding-bottom:40px" overflow-scroll="false">
+    <div class="list">
+      <div class="item item-divider item-text-wrap">
+        {{'ventana_ayuda.sh1' | translate }}
+      </div>
+      <a class="item item-text-wrap">
+        {{'ventana_ayuda.ch1' | translate }}
+        <p style="margin-top:-12px" class="button button-icon icon ion-earth" aria-label="Open language menu" menu-toggle="right"></p>
+      </a>
+      <div class="item item-divider">
+        {{'ventana_ayuda.sh2' | translate }}
+      </div>
+      <a class="item item-text-wrap">
+        {{'ventana_ayuda.ch2' | translate }}
+        <button style="margin-top:-12px" menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+        <br/> {{'ventana_ayuda.ch3' | translate}}
+        <br/> {{'ventana_ayuda.ch4' | translate}}
+        <ion-icon name="checkmark-circle" style="color:green"></ion-icon> {{'ventana_ayuda.ch5' | translate}}
+        <ion-icon ng-if="$parent.$parent.status_bible<1 || !$parent.$parent.status_bible " name="close-circle" style="color:indianred"></ion-icon>
+        {{'ventana_ayuda.ch6' | translate}}
+      </a>
+    </div>
+  </ion-content>
+</ion-view>

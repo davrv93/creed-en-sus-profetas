@@ -1,0 +1,163 @@
+{
+  "_args": [
+    [
+      "ionicons@4.1.2",
+      "/home/david/dev/proyectos/creed-en-sus-profetas"
+    ]
+  ],
+  "_from": "ionicons@4.1.2",
+  "_id": "ionicons@4.1.2",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/ionicons",
+  "_nodeVersion": "8.9.4",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/ionicons_4.1.2_1526919609023_0.05297871350550154"
+  },
+  "_npmUser": {
+    "email": "hi+adam@ionicframework.com",
+    "name": "adamdbradley"
+  },
+  "_npmVersion": "6.0.1",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "ionicons",
+    "raw": "ionicons@4.1.2",
+    "rawSpec": "4.1.2",
+    "scope": null,
+    "spec": "4.1.2",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/ionicons/-/ionicons-4.1.2.tgz",
+  "_shasum": "686898252d4ffac6c0877c7c0d2d1fa91a0f8288",
+  "_shrinkwrap": null,
+  "_spec": "ionicons@4.1.2",
+  "_where": "/home/david/dev/proyectos/creed-en-sus-profetas",
+  "author": {
+    "name": "Ben Sperry",
+    "url": "https://twitter.com/benjsperry"
+  },
+  "bugs": {
+    "url": "https://github.com/ionic-team/ionicons/issues"
+  },
+  "collection": "dist/collection/collection-manifest.json",
+  "contributors": [
+    {
+      "name": "Adam Bradley",
+      "url": "http://twitter.com/adamdbradley"
+    }
+  ],
+  "dependencies": {},
+  "description": "Premium icons for Ionic.",
+  "devDependencies": {
+    "@stencil/core": "^0.9.2",
+    "@stencil/dev-server": "latest",
+    "@stencil/router": "^0.1.6",
+    "@stencil/sass": "0.0.4",
+    "@stencil/utils": "latest",
+    "@types/jest": "^22.2.3",
+    "archiver": "^2.1.1",
+    "fs-extra": "4.0.2",
+    "highlight.js": "^9.12.0",
+    "jest": "^22.4.3",
+    "node-sass": "4.7.2",
+    "np": "2.17.0",
+    "svgo": "1.0.3"
+  },
+  "directories": {},
+  "dist": {
+    "fileCount": 1437,
+    "integrity": "sha512-BbuKehkCfF3VuthugKLntpRfwRMEls5zvL96FQUJFSy/5GutOnW+uvbyy4OaHtQ0QhuvRYbWIQa16Lok8svhZQ==",
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbAvG5CRA9TVsSAnZWagAAZcAQAJC6jfgnXrkzocjwdBhS\nu6AOM7IrRFivHMbrx+8BYjc5X40gQM3s0u1e1c88fZFpsBem0xIDKgJXahjb\niEWmWTypBuqXbOekopVrTWCwObVE/BixEWFNJITjBd1ax8YhuT65+kUTPyyx\n7DZZoROQPtb92fyEFukkYgTg7jcSdL13l439pbz7OsONT8D+wnWmeej9IN7p\nCOll6RXx1Gda1sYl/zD3ALXaU9RAEWmlgTpl68jgUjPnNSi1ik1tzXQMqIx1\nNAwG0N2SO7gIHvn+r/7IVWur58wSwYK84chBeNpQk3BWQS3wnYV3A8d8FzVm\noSeH86dRRxmefl4lhG3Xh7z269DFLU1GiuwalaLPOC8ekckRSD4SR3zaI9df\n4EN6GkKadVrQV6LWvqPkgLSsVJxfK1w+sW6fzw5nGG06qYhQ7O4CKKniQnp5\nvjjw3GtMtPKUCVCAZ37sv1C65oMR7QXt8QeXbLzG+ReNZ8pOqXUlcFyXf12m\nmeCsySGBfFw/o1RaKgr90Z1CnbLvh5Tllxk3tNUx3yFUQrLrRKOTrGmzCtc5\naYW+hm0+ugtL5zc/i/sg/VNIvDCuDX+lt09dJh3iBzwjOXear46/F27o/0iy\nKRVHQeWRViVPKb6ra40r5srMbIDzuPiaAe5jUzaw7CauEEjUJCksTjxyVq4P\nRw+n\r\n=O6Zl\r\n-----END PGP SIGNATURE-----\r\n",
+    "shasum": "686898252d4ffac6c0877c7c0d2d1fa91a0f8288",
+    "tarball": "https://registry.npmjs.org/ionicons/-/ionicons-4.1.2.tgz",
+    "unpackedSize": 1969078
+  },
+  "files": [
+    "dist/"
+  ],
+  "gitHead": "bd1f3c3ac6b1af9f2d419adf0b25e1973d129564",
+  "homepage": "http://ionicons.com/",
+  "jest": {
+    "moduleFileExtensions": [
+      "d.ts",
+      "js",
+      "jsx",
+      "ts",
+      "tsx"
+    ],
+    "testRegex": "src/.*\\.spec\\.(ts|tsx|js)$",
+    "transform": {
+      "^.+\\.(js|ts|tsx)$": "<rootDir>/node_modules/@stencil/core/testing/jest.preprocessor.js"
+    }
+  },
+  "keywords": [
+    "component",
+    "custom element",
+    "font",
+    "icon",
+    "ionic",
+    "ionicons",
+    "mobile",
+    "svg",
+    "web component"
+  ],
+  "license": "MIT",
+  "main": "dist/index.js",
+  "maintainers": [
+    {
+      "name": "adamdbradley",
+      "email": "hi+adam@ionicframework.com"
+    },
+    {
+      "name": "brandyscarney",
+      "email": "brandy@ionic.io"
+    },
+    {
+      "name": "camwiegert",
+      "email": "cam@camwiegert.com"
+    },
+    {
+      "name": "drifty",
+      "email": "max@drifty.com"
+    },
+    {
+      "name": "jthoms1",
+      "email": "jthoms1@gmail.com"
+    },
+    {
+      "name": "tlancina",
+      "email": "tim@ionic.io"
+    }
+  ],
+  "module": "dist/esm/index.js",
+  "name": "ionicons",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ionic-team/ionicons.git"
+  },
+  "scripts": {
+    "build": "npm run clean && npm run build.icon && npm run generate && npm run build.data && npm run build.css && npm run build.docs && npm run copy.tasks && npm run test",
+    "build.css": "node scripts/build-css.js",
+    "build.data": "node scripts/data.js",
+    "build.docs": "stencil build --config src/docs/stencil.config.js",
+    "build.icon": "stencil build",
+    "clean": "node scripts/clean.js",
+    "copy.tasks": "node scripts/copy-tasks.js",
+    "dev": "npm run build && sd concurrent \"stencil build --dev --es5 --config src/docs/stencil.config.js --watch\" \"stencil-dev-server\" ",
+    "generate": "python scripts/generate.py",
+    "mode.comparison": "node scripts/mode-comparison.js",
+    "release": "npm run build && np --any-branch",
+    "test": "jest",
+    "test.watch": "jest --watch"
+  },
+  "types": "dist/types/components.d.ts",
+  "unpkg": "dist/ionicons.js",
+  "version": "4.1.2"
+}

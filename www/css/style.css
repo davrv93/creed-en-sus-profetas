@@ -1,5 +1,22 @@
 /* Empty. Add your own CSS if you like */
 
-.bg-color{
-	background-color:  #210B61;
+.bg-color {
+  background-color: #210B61;
+}
+
+.footer-icon {
+  font-size: 2.0em !important;
+  cursor: pointer;
+}
+
+.container-player {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+  text-align: right;
+  width: 80%;
+}
+
+#over:hover {
+  background-color: #cce0ff !important;
 }

@@ -1,0 +1,16 @@
+{
+  "app": "Creed en sus profetas",
+  "volver": "Volver",
+  "home": "Inicio",
+  "home_msg": "Clic en el botón de la esquina superior izquierda para ver las opciones.",
+  "reavivados": "Reavivados por su Palabra",
+  "espiritu_profecia": "Espíritu de profecía",
+  "menu": "Menú",
+  "idioma_titulo": "Seleccione el idioma",
+  "cerrar": "Cerrar",
+  "ayuda": "Ayuda",
+  "translate": {
+    "español": "Español",
+    "ingles": "Inglés"
+  }
+}

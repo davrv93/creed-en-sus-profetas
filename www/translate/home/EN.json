@@ -1,0 +1,22 @@
+{
+  "app": "Believe in your prophets",
+  "volver": "Return",
+  "reavivados": "Revived by his Word",
+  "espiritu_profecia": "Spirit of prophecy",
+  "configuracion": "Configuration",
+  "calendario": "Calendar",
+  "sobre_aplicacion": "About the application",
+  "home": "Main menu",
+  "menu": "Menu",
+  "idioma_titulo": "Select the language",
+  "cerrar": "Close",
+  "ayuda": "Help",
+  "versiculo": "Verse",
+  "home_msg": "Click on the button in the upper left corner to see the options.",
+  "errors": {
+    "404": "There was a problem to get the reading today, check your internet connection, if you have an internet connection activated, then the reading for today has not been updated by the programmer, it was notified on Google Play of the case. Thank you "
+  },
+  "translate": {
+    "ingles": "English"
+  }
+}

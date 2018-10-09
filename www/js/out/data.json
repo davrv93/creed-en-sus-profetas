@@ -1,0 +1,87 @@
+{
+    "project": {},
+    "files": {
+        "app.js": {
+            "name": "app.js",
+            "modules": {
+                "starter": 1,
+                "run": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "starter": {
+            "name": "starter",
+            "submodules": {
+                "run": 1
+            },
+            "elements": {
+                "x-foo": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "file": "app.js",
+            "line": 1,
+            "description": "Provides more features for the widget module...",
+            "tag": "main",
+            "itemtype": "main"
+        },
+        "run": {
+            "name": "run",
+            "submodules": {},
+            "elements": {
+                "x-foo": 1
+            },
+            "classes": {},
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "starter",
+            "namespace": "",
+            "file": "app.js",
+            "line": 1,
+            "description": "Provides more features for the widget module...",
+            "tag": "main",
+            "itemtype": "main"
+        }
+    },
+    "classes": {},
+    "elements": {
+        "x-foo": {
+            "name": "x-foo",
+            "attributes": [],
+            "module": "starter",
+            "submodule": "run",
+            "file": "app.js",
+            "line": 98,
+            "description": "This is the foo element description..."
+        }
+    },
+    "classitems": [
+        {
+            "file": "app.js",
+            "line": 49,
+            "itemtype": "config",
+            "name": "$ionicConfigProvider",
+            "type": "String",
+            "class": "",
+            "module": "starter",
+            "submodule": "run"
+        },
+        {
+            "file": "app.js",
+            "line": 104,
+            "itemtype": "config",
+            "name": "$ionicConfigProvider",
+            "type": "String",
+            "class": "",
+            "module": "starter",
+            "submodule": "run"
+        }
+    ],
+    "warnings": []
+}
