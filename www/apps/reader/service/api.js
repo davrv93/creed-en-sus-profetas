@@ -1,7 +1,7 @@
 app.factory('API_READER', function ($resource) {
 
-  //   var url = "http://davrv93.pythonanywhere.com/api/believe/";
-  var url = "http://localhost:8000/api/believe/";
+  var url = "http://davrv93.pythonanywhere.com/api/believe/";
+  // var url = "http://localhost:8000/api/believe/";
 
   return {
     Book: $resource(url + 'book/:id/:micro/', {
@@ -44,6 +44,14 @@ app.factory('API_READER', function ($resource) {
       'get': {
         method: 'GET',
         isArray: false
+      },
+      'getList': {
+        method: 'GET',
+        isArray: true
+      },
+      'post': {
+        method: 'POST',
+        isArray: false
       }
     }),
     Testament: $resource(url + 'testament/:id/:micro/', {
@@ -70,6 +78,15 @@ app.factory('API_READER', function ($resource) {
       'destroy': {
         method: 'POST'
       }
+    }),
+    Sucursal: $resource(url + 'sucursales/:id/:micro/', {
+      'id': '@id',
+      'micro': '@micro'
+    }, {
+      'get': {
+        method: 'GET',
+        isArray: true
+      },
     }),
 
     Verse: $resource(url + 'verses/:id/:micro/', {

@@ -1,7 +1,7 @@
 "use strict"; // <-- add it here
 (function () {
 
-  angular.module('starter').controller('HomeCtrl', function ($scope, $rootScope, $filter, $translate, LanguageModal, ionicToast) {
+  angular.module('starter').controller('HomeCtrl', function ($scope, $rootScope, $filter, $translate, LanguageModal) {
 
     if (localStorage.appVersion != undefined) {
       $rootScope.appVersion = localStorage.appVersion
@@ -12,6 +12,7 @@
     $scope.openLanguageModal = function () {
       LanguageModal.open();
     };
+
 
     $rootScope.change_language = function (locale) {
       console.log('locale', locale)

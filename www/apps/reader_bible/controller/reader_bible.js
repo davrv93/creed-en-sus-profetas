@@ -1,4 +1,4 @@
-angular.module('starter').controller('ReaderCtrl', function ($scope, $sce, $state, $ionicScrollDelegate, $http, ionicToast, $cordovaClipboard, $filter, API_READER, $stateParams, $translate, $rootScope, $cordovaSocialSharing) {
+angular.module('starter').controller('ReaderCtrl', function ($scope, $sce, $state, $ionicScrollDelegate, $http, ionicToast, $cordovaClipboard, $filter, API_READER, $stateParams, $translate, $rootScope, $cordovaSocialSharing, pictureModal) {
   var $translateFilter = $filter('translate');
   $scope.conditionPlayer = false;
   $scope.searchMode = false;
@@ -40,15 +40,39 @@ angular.module('starter').controller('ReaderCtrl', function ($scope, $sce, $stat
   $scope.buildVerse = function () {
     $scope.list_underline = $scope.list_underline.sort(orderBy("id"));
     var hashtag = $translateFilter('hashtag');
-    var book = $scope.book.name + ': ' + $scope.verse[0].chapter + '\n'
+    var book = $scope.book.name + ': ' + $scope.verses[0].chapter + '\n'
     var verse = "";
     for (key in $scope.list_underline) {
       verse += $scope.list_underline[key]['verse'] + '. ' + $scope.list_underline[key]['data'] + '\n';
 
     }
     var text = hashtag + ' ' + book + verse;
-    console.log($scope.list_underline);
+
     return text
+  }
+
+  $scope.buildPicture = function () {
+    $scope.list_underline = $scope.list_underline.sort(orderBy("id"));
+
+    $rootScope.progress = true;
+
+    var lecture = {};
+
+    lecture.book = $scope.book.name;
+    lecture.chapter = $scope.verses[0].chapter;
+    lecture.verses = $scope.list_underline
+
+    var data = {
+      micro: 'picture',
+      lecture: lecture
+    }
+
+    API_READER.BibleReading.post(data).$promise.then(function (success) {
+      $rootScope.progress = false;
+
+      pictureModal.open(success);
+    });
+
   }
 
   $scope.inObject = function (target, data) {
@@ -109,7 +133,7 @@ angular.module('starter').controller('ReaderCtrl', function ($scope, $sce, $stat
     $scope.list_underline = [];
     $translate.use(locale);
     localStorage.language = locale;
-    $scope.onListReading();
+    $scope.getBibleRead();
     if ($scope.conditionPlayer) {
       $scope.dropPlayer();
       $scope.conditionPlayer = true;
@@ -248,7 +272,6 @@ angular.module('starter').controller('ReaderCtrl', function ($scope, $sce, $stat
   }
 
   $scope.getBibleRead = function () {
-
     $rootScope.progress = true;
 
     var param_date = $scope.getDate();
@@ -258,9 +281,9 @@ angular.module('starter').controller('ReaderCtrl', function ($scope, $sce, $stat
     }
 
 
-    API_READER.BibleReading.get(data).$promise.then(function (success) {
-      var results = success.results
-      if (results && results.length > 0) {
+    API_READER.BibleReading.getList(data).$promise.then(function (success) {
+      var results = success
+      if (results) {
         $scope.bible_reading = results[0];
         $scope.getVerses($scope.bible_reading);
         $scope.getBook($scope.bible_reading)

@@ -54,6 +54,15 @@ var app = angular.module('starter', ['ionic', 'ionic-toast', 'ngResource', // in
     $httpProvider.useApplyAsync(true);
   })
 
+  .config(function ($resourceProvider) {
+    $resourceProvider.defaults.stripTrailingSlashes = false;
+  })
+
+
+
+  .config(function ($compileProvider) {
+    $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https|ftp|mailto|file|tel|data)/);
+  })
 
   .config(['$translateProvider', '$translatePartialLoaderProvider', function ($translateProvider, $translatePartialLoaderProvider) {
 

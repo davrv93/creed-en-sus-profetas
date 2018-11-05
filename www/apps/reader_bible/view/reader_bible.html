@@ -10,7 +10,7 @@
       ng-click="handlePlayer()"></a>
     <a class="button button-icon icon ion-android-share-alt" aria-label="Share in social networks" ng-if="conditionPlayer && chapter.audio"
       ng-click="handlePlayer()"></a>
-    <a class="button button-icon icon ion-refresh" aria-label="Refresh" ng-click="onListReading()"></a>
+    <a class="button button-icon icon ion-refresh" aria-label="Refresh" ng-click="getBibleRead()"></a>
     <a class="button button-icon icon ion-earth" aria-label="Open language menu" menu-toggle="right"></a>
   </ion-nav-buttons>
   <ion-content class="home-container responsive-sm " align="center" style=" padding-bottom:40px" overflow-scroll="false">
@@ -37,5 +37,7 @@
       title="{{'tooltip.facebook' | translate}}" aria-label="{{'tooltip.facebook' | translate}}"></i>
     <i align="center" id="over" class="icon ion-social-whatsapp footer-icon col col-30" ng-click="shareSocial( 'whatsapp') "
       title="{{'tooltip.whatsapp' | translate}}" aria-label="{{'tooltip.whatsapp' | translate}}"></i>
+    <!--<i align="center" id="over" class="icon ion-images footer-icon col col-30" ng-click="buildPicture() " title="{{'tooltip.whatsapp' | translate}}"
+      aria-label="{{'tooltip.whatsapp' | translate}}"></i>-->
   </ion-footer-bar>
 </ion-view>

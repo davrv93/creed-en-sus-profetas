@@ -131,6 +131,8 @@ angular.module('starter').config(function ($stateProvider, $urlRouterProvider, $
                 "lib/react/dist/resize-observer-polyfill.js",
                 "lib/react-responsive-audio-player/dist/audioplayer.css",
                 "lib/react-responsive-audio-player/dist/audioplayer.js",
+                "apps/reader_bible//factory/picture.js",
+
                 "apps/reader/service/api.js",
                 "apps/reader_bible/controller/reader_bible.js"
               ]
