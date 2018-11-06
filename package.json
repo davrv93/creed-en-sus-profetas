@@ -11,7 +11,9 @@
     "es6-promise-plugin": "^4.2.2",
     "ionicons": "^4.1.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@ionic/v1-toolkit": "1.0.12"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

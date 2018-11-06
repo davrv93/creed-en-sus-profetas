@@ -65,10 +65,10 @@ angular.module('starter').config(function ($stateProvider, $urlRouterProvider, $
         },
         tabBible: ['$ocLazyLoad', function ($ocLazyLoad) {
           return $ocLazyLoad.load({
-              name: "about",
-              serie: true,
-              files: ["apps/about/controller/about.js"]
-            }
+            name: "about",
+            serie: true,
+            files: ["apps/about/controller/about.js"]
+          }
 
           ); // Resolve promise and load before view 
         }]
@@ -91,10 +91,39 @@ angular.module('starter').config(function ($stateProvider, $urlRouterProvider, $
       }
     }).state('app.reader_spirit_prophecy', {
       url: "/reader_spirit_prophecy",
+      controller: 'SpiritProphecyReadCtrl',
       views: {
         'content': {
-          templateUrl: "apps/reader/view/reader_spirit_prophecy.html"
+          templateUrl: "apps/reader/view/reader_spirit_prophecy.html",
+          controller: 'SpiritProphecyReadCtrl'
         }
+      },
+      resolve: {
+        translatePartialLoader: function loadPartialLoader($translate, $translatePartialLoader) {
+          $translatePartialLoader.addPart('tab_bible');
+          $translate.use()
+          return $translate.refresh();
+        },
+
+        readerSpiritProphecy: ['$ocLazyLoad', function ($ocLazyLoad) {
+          return $ocLazyLoad.load({
+            name: "readerSpiritProphecy",
+            serie: true,
+            files: [
+              "apps/reader/controller/spirit_prophecy_read.js",
+              "lib/react/dist/react.js",
+              "lib/react/dist/react-dom.js",
+              "lib/react/dist/prop-types.js",
+              "lib/react/dist/resize-observer-polyfill.js",
+              "lib/react-responsive-audio-player/dist/audioplayer.css",
+              "lib/react-responsive-audio-player/dist/audioplayer.js",
+              "apps/reader_bible//factory/picture.js",
+              "apps/reader/service/api.js",
+            ]
+          }
+
+          ); // Resolve promise and load before view 
+        }]
       }
     }).state('app.reader_bible', {
       parent: 'app',
@@ -123,20 +152,20 @@ angular.module('starter').config(function ($stateProvider, $urlRouterProvider, $
 
         tabBible: ['$ocLazyLoad', function ($ocLazyLoad) {
           return $ocLazyLoad.load({
-              name: "tabBible",
-              serie: true,
-              files: ["lib/react/dist/react.js",
-                "lib/react/dist/react-dom.js",
-                "lib/react/dist/prop-types.js",
-                "lib/react/dist/resize-observer-polyfill.js",
-                "lib/react-responsive-audio-player/dist/audioplayer.css",
-                "lib/react-responsive-audio-player/dist/audioplayer.js",
-                "apps/reader_bible//factory/picture.js",
+            name: "tabBible",
+            serie: true,
+            files: ["lib/react/dist/react.js",
+              "lib/react/dist/react-dom.js",
+              "lib/react/dist/prop-types.js",
+              "lib/react/dist/resize-observer-polyfill.js",
+              "lib/react-responsive-audio-player/dist/audioplayer.css",
+              "lib/react-responsive-audio-player/dist/audioplayer.js",
+              "apps/reader_bible//factory/picture.js",
 
-                "apps/reader/service/api.js",
-                "apps/reader_bible/controller/reader_bible.js"
-              ]
-            }
+              "apps/reader/service/api.js",
+              "apps/reader_bible/controller/reader_bible.js"
+            ]
+          }
 
           ); // Resolve promise and load before view 
         }]
