@@ -98,5 +98,5 @@
     </plugin>
     <plugin name="cordova-plugin-x-socialsharing" spec="https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin.git" />
     <plugin name="cordova-clipboard" spec="^1.2.1" />
-    <engine name="android" spec="^7.0.0" />
+    <engine name="android" spec="~7.1.1" />
 </widget>
