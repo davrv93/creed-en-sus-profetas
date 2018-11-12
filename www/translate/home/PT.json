@@ -1,0 +1,19 @@
+{
+  "app": "Creed a sus profetas",
+  "volver": "Voltar",
+  "reavivados": "Reavivados por sua Palavra",
+  "espiritu_profecia": "Espíritu de profecía",
+  "configuracion": "Configuração",
+  "calendario": "Calendar",
+  "sobre_aplicacion": "Sobre o aplicativo",
+  "home": "Menu principal",
+  "menu": "Menu",
+  "idioma_titulo": "Selecione o idioma",
+  "cerrar": "Fechar",
+  "ayuda": "Ajuda",
+  "versiculo": "Verso",
+  "home_msg": "Clique no botão no canto superior esquerdo para ver as opções.",
+  "errors": {
+    "404": "Ocorreu um problema ao obter a leitura hoje, verifique sua conexão com a Internet. Se você tiver uma conexão com a internet ativada, a leitura de hoje não foi atualizada pelo programador, notifique o Google Play sobre o caso. Obrigado"
+  }
+}
