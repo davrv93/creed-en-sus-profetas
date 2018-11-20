@@ -6,9 +6,9 @@
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
   <ion-nav-buttons side="right">
-    <a class="button button-icon icon ion-music-note" aria-label="Hear the audio" ng-if="!conditionPlayer && chapter.audio"
+    <a class="button button-icon icon ion-music-note" aria-label="Hear the audio" ng-if="!conditionPlayer && audio"
       ng-click="handlePlayer()"></a>
-    <a class="button button-icon icon ion-android-share-alt" aria-label="Share in social networks" ng-if="conditionPlayer && chapter.audio"
+    <a class="button button-icon icon ion-android-share-alt" aria-label="Share in social networks" ng-if="conditionPlayer && audio"
       ng-click="handlePlayer()"></a>
     <a class="button button-icon icon ion-refresh" aria-label="Refresh" ng-click="getBibleRead()"></a>
     <a class="button button-icon icon ion-earth" aria-label="Open language menu" menu-toggle="right"></a>
@@ -26,16 +26,16 @@
       </div>
     </div>
   </ion-content>
-  <ion-footer-bar class="bar-stable">
-    <div id="audio_player_container" ref="player ">
+  <ion-footer-bar class="bar-stable  " ng-class="conditionPlayer?'bar-dark':''">
+    <div ng-show="conditionPlayer"  id="audio_player_container" ref="player ">
     </div>
-    <i align="center" id="over" class="icon ion-ios-copy footer-icon col col-30" ng-click="shareSocial( 'copy') " title="{{'tooltip.copy' | translate}}"
+    <i ng-show="!conditionPlayer" align="center" id="over" class="icon ion-ios-copy footer-icon col col-30" ng-click="shareSocial( 'copy') " title="{{'tooltip.copy' | translate}}"
       aria-label="{{'tooltip.copy' | translate}}"></i>
-    <i align="center" id="over" class="icon ion-social-twitter footer-icon col col-30" ng-click="shareSocial( 'twitter') "
+    <i ng-show="!conditionPlayer" align="center" id="over" class="icon ion-social-twitter footer-icon col col-30" ng-click="shareSocial( 'twitter') "
       title="{{'tooltip.twitter' | translate}}" aria-label="{{'tooltip.twitter' | translate}}"></i>
-    <i align="center" id="over" class="icon ion-social-facebook footer-icon col col-30" ng-click="shareSocial( 'facebook') "
+    <i ng-show="!conditionPlayer" align="center" id="over" class="icon ion-social-facebook footer-icon col col-30" ng-click="shareSocial( 'facebook') "
       title="{{'tooltip.facebook' | translate}}" aria-label="{{'tooltip.facebook' | translate}}"></i>
-    <i align="center" id="over" class="icon ion-social-whatsapp footer-icon col col-30" ng-click="shareSocial( 'whatsapp') "
+    <i ng-show="!conditionPlayer" align="center" id="over" class="icon ion-social-whatsapp footer-icon col col-30" ng-click="shareSocial( 'whatsapp') "
       title="{{'tooltip.whatsapp' | translate}}" aria-label="{{'tooltip.whatsapp' | translate}}"></i>
     <!--<i align="center" id="over" class="icon ion-images footer-icon col col-30" ng-click="buildPicture() " title="{{'tooltip.whatsapp' | translate}}"
       aria-label="{{'tooltip.whatsapp' | translate}}"></i>-->

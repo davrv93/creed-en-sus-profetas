@@ -147,8 +147,8 @@ angular.module('starter').controller('ReaderCtrl', function ($scope, $sce, $stat
 
   $scope.renderPlayer = function () {
     var audio = ''
-    if ($scope.chapter.audio) {
-      audio = 'http://davrv93.pythonanywhere.com/' + $scope.chapter.audio
+    if ($scope.audio) {
+      audio = $scope.audio
     } else {
       audio = ''
     }
@@ -285,8 +285,10 @@ angular.module('starter').controller('ReaderCtrl', function ($scope, $sce, $stat
       var results = success
       if (results) {
         $scope.bible_reading = results[0];
+        console.log('$scope.bible_reading', $scope.bible_reading)
         $scope.getVerses($scope.bible_reading);
         $scope.getBook($scope.bible_reading)
+        $scope.getChapter($scope.bible_reading);
       }
     });
   }
@@ -317,10 +319,52 @@ angular.module('starter').controller('ReaderCtrl', function ($scope, $sce, $stat
     });
   };
 
+  $scope.getChapter = function (bible_reading) {
+    var params = {};
+    params.book = bible_reading.book;
+    params.chapter = bible_reading.start_chapter;
+    params.code_iso = $translate.use().toUpperCase();
+
+    API_READER.Chapter.get(params).$promise.then(function (success) {
+      var results = success.results
+      if (results && results.length > 0) {
+        $scope.chapter = results[0];
+
+        $scope.getAudio($scope.chapter.id)
+
+      } else {
+
+        API_READER.Chapter.post(params).$promise.then(
+          function (success) {
+            $scope.getChapter(bible_reading);
+            console.log('success', success)
+          },
+          function (error) {
+            console.log('error', error)
+          }
+        )
+      }
+    });
+  };
+
+  $scope.getAudio = function (id) {
+    var params = {};
+    params.micro = 'audio';
+    params.id = id;
+
+    API_READER.Chapter.get(params).$promise.then(function (success) {
+
+      $scope.audio = success.url;
+
+    });
+  };
+
   $scope.trustSrc = function (src) {
     return $sce.trustAsResourceUrl(src);
   }
 
   $scope.getBibleRead();
+
+
 
 });
