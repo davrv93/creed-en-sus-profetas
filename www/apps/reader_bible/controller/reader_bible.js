@@ -285,7 +285,7 @@ angular.module('starter').controller('ReaderCtrl', function ($scope, $sce, $stat
       var results = success
       if (results) {
         $scope.bible_reading = results[0];
-        console.log('$scope.bible_reading', $scope.bible_reading)
+
         $scope.getVerses($scope.bible_reading);
         $scope.getBook($scope.bible_reading)
         $scope.getChapter($scope.bible_reading);
@@ -337,11 +337,8 @@ angular.module('starter').controller('ReaderCtrl', function ($scope, $sce, $stat
         API_READER.Chapter.post(params).$promise.then(
           function (success) {
             $scope.getChapter(bible_reading);
-            console.log('success', success)
           },
-          function (error) {
-            console.log('error', error)
-          }
+          function (error) {}
         )
       }
     });

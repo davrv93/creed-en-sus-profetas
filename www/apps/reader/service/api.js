@@ -1,7 +1,7 @@
 app.factory('API_READER', function ($resource) {
 
-  //var url = "http://davrv93.pythonanywhere.com/api/believe/";
-  var url = "http://localhost:8000/api/believe/";
+  var url = "http://davrv93.pythonanywhere.com/api/believe/";
+  // var url = "http://localhost:8000/api/believe/";
 
   return {
     Book: $resource(url + 'book/:id/:micro/', {
